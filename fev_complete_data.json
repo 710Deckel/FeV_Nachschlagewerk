@@ -1,0 +1,1673 @@
+{
+  "version": "3.5",
+  "lastUpdate": "2025-12-23T19:57:43.064Z",
+  "categories": {
+    "free": [
+      {
+        "id": 1,
+        "name": "Pedelec (EPAC)",
+        "icon": "🚴",
+        "license": "Keine",
+        "age": "Keine",
+        "speed": "bis 25 km/h",
+        "power": "250W",
+        "bbh": "25 km/h",
+        "desc": "Fahrrad mit elektrischer Tretunterstützung",
+        "legal": [
+          "§1 Abs.3 StVG",
+          "§4 Abs.1 FeV",
+          "EN 15194"
+        ],
+        "reqs": [
+          "Tretunterstützung nur beim Treten",
+          "Abschaltung bei 25 km/h",
+          "Schiebehilfe bis 6 km/h OK"
+        ],
+        "note": "Gilt rechtlich als Fahrrad",
+        "attention": "Motor muss sich bei 25 km/h automatisch abschalten! Schiebehilfe bis 6 km/h erlaubt, höhere Geschwindigkeiten ohne Treten = Kraftfahrzeug.",
+        "merksatz": "📌 \"25-250-6\" → 25 km/h max, 250 Watt, 6 km/h Schiebehilfe",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße (bbH zu niedrig). Radwege erlaubt/Pflicht."
+      },
+      {
+        "id": 2,
+        "name": "E-Scooter",
+        "icon": "🛴",
+        "license": "Keine",
+        "age": "ab 14 Jahre",
+        "speed": "max 20 km/h",
+        "power": "500W",
+        "bbh": "20 km/h",
+        "desc": "Elektrokleinstfahrzeug",
+        "legal": [
+          "§1 eKFV",
+          "§2 eKFV"
+        ],
+        "reqs": [
+          "ABE erforderlich",
+          "Versicherungsplakette",
+          "Zwei Bremsen",
+          "Beleuchtung"
+        ],
+        "note": "Nur Radwege oder Fahrbahn",
+        "attention": "Gehwege TABU! Ohne Versicherung: 40€ Bußgeld + Strafverfahren wegen Pflichtversicherungsgesetz.",
+        "merksatz": "📌 \"ABE-14-20\" → ABE nötig, ab 14, max 20 km/h",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße. Radweg Pflicht, sonst Fahrbahn."
+      },
+      {
+        "id": 3,
+        "name": "Krankenfahrstuhl",
+        "icon": "♿",
+        "license": "Keine (bis 15 km/h)",
+        "age": "Keine",
+        "speed": "max 15 km/h",
+        "power": "Elektrisch",
+        "bbh": "15 km/h",
+        "desc": "Motorisierter Krankenfahrstuhl",
+        "legal": [
+          "§4 Abs.1 Nr.2 FeV"
+        ],
+        "reqs": [
+          "Einsitzig",
+          "Max 300kg",
+          "Breite max 110cm"
+        ],
+        "note": "Nur für gehbehinderte Personen",
+        "attention": "Nur für Menschen mit Gehbehinderung! Über 15 km/h = AM nötig",
+        "merksatz": "📌 \"15-frei, drüber AM\"",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße. Gehweg bei Schrittgeschwindigkeit erlaubt."
+      },
+      {
+        "id": 4,
+        "name": "Fahrrad",
+        "icon": "🚲",
+        "license": "Keine",
+        "age": "Keine",
+        "speed": "Muskelkraft",
+        "power": "Keine",
+        "bbh": "Unbegrenzt",
+        "desc": "Klassisches Fahrrad",
+        "legal": [
+          "§63a StVZO",
+          "§67 StVZO"
+        ],
+        "reqs": [
+          "2 Bremsen",
+          "Klingel",
+          "Beleuchtung",
+          "Reflektoren"
+        ],
+        "note": "Radwegebenutzungspflicht beachten",
+        "attention": "Beleuchtung Pflicht bei Dunkelheit! Ohne Licht: 20€. Handy: 55€. Alkohol: ab 1,6‰ Straftat.",
+        "merksatz": "📌 \"2 Bremsen, 1 Klingel, Licht\"",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße. Radweg Pflicht wenn vorhanden und beschildert."
+      },
+      {
+        "id": 5,
+        "name": "LoF-Zugmaschine (6 km/h)",
+        "icon": "🚜",
+        "license": "Keine",
+        "age": "Keine",
+        "speed": "max 6 km/h",
+        "power": "Unbegrenzt",
+        "bbh": "6 km/h",
+        "desc": "Land-/Forstwirtschaftliche Zugmaschine",
+        "legal": [
+          "§4 Abs.1 Nr.3 FeV",
+          "EU-VO 167/2013"
+        ],
+        "reqs": [
+          "Nur LoF-Zwecke",
+          "Betriebserlaubnis"
+        ],
+        "note": "Schrittgeschwindigkeit",
+        "attention": "Nur für Land-/Forstwirtschaft! Keine Privatfahrten zur Freizeitgestaltung.",
+        "merksatz": "📌 \"Schritt = 6 km/h, nur LoF\"",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße. Nur für LoF-Zwecke auf öffentlichen Straßen."
+      },
+      {
+        "id": 6,
+        "name": "Arbeitsmaschine (6 km/h)",
+        "icon": "🏗️",
+        "license": "Keine",
+        "age": "Keine",
+        "speed": "max 6 km/h",
+        "power": "Unbegrenzt",
+        "bbh": "6 km/h",
+        "desc": "Selbstfahrende Arbeitsmaschine",
+        "legal": [
+          "§4 Abs.1 Nr.3 FeV"
+        ],
+        "reqs": [
+          "Nur Arbeitszwecke",
+          "Betriebserlaubnis"
+        ],
+        "note": "Z.B. Straßenwalzen, Bagger",
+        "attention": "Nur für Arbeitsfahrten! Keine Spazierfahrten erlaubt.",
+        "merksatz": "📌 \"Arbeit ja, Spaß nein\"",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße. Nur für Arbeitsfahrten."
+      },
+      {
+        "id": 7,
+        "name": "Mobilitätshilfe",
+        "icon": "🦽",
+        "license": "Keine",
+        "age": "Keine",
+        "speed": "max 6 km/h",
+        "power": "Elektrisch",
+        "bbh": "6 km/h",
+        "desc": "Elektrische Mobilitätshilfe",
+        "legal": [
+          "§1 Abs.2 MobHV"
+        ],
+        "reqs": [
+          "Schrittgeschwindigkeit",
+          "Für gehbehinderte Personen"
+        ],
+        "note": "Gehwegnutzung erlaubt",
+        "attention": "Gehweg OK bei Schrittgeschwindigkeit! Rücksicht auf Fußgänger Pflicht.",
+        "merksatz": "📌 \"Gehweg OK bei Schritt\"",
+        "bbhInfo": "Gehweg erlaubt bei Schrittgeschwindigkeit. Keine Autobahn/Kraftfahrstraße."
+      },
+      {
+        "id": 8,
+        "name": "Betriebsgelände-Fahrzeuge",
+        "icon": "🏭",
+        "license": "Keine (§4 Abs.3 FeV)",
+        "age": "Variable",
+        "speed": "Variable",
+        "power": "Variable",
+        "bbh": "Variable",
+        "desc": "Fahrzeuge auf nicht-öffentlichem Verkehrsgrund",
+        "legal": [
+          "§4 Abs.3 FeV"
+        ],
+        "reqs": [
+          "Nur auf umschlossenem Betriebsgelände",
+          "Keine öffentlichen Straßen",
+          "Privatgrundstück"
+        ],
+        "note": "Sobald öffentliche Straße: FeV gilt!",
+        "attention": "FALLE! Werkshof = OK ohne FE. Öffentliche Straße überqueren = FeV gilt! Zufahrtskontrolle muss vorhanden sein.",
+        "merksatz": "📌 \"Betriebsgelände = frei, Straße = FeV\"",
+        "bbhInfo": "Nur Privatgelände - keine öffentlichen Straßen."
+      }
+    ],
+    "mofa": [
+      {
+        "id": 10,
+        "name": "Mofa (25 km/h)",
+        "icon": "🛵",
+        "license": "Mofa-Prüfung",
+        "age": "15 Jahre",
+        "speed": "max 25 km/h",
+        "power": "50ccm/4kW",
+        "bbh": "25 km/h",
+        "desc": "Motorfahrrad",
+        "legal": [
+          "§5 FeV",
+          "EU-VO 168/2013 L1e-B"
+        ],
+        "reqs": [
+          "Theorieprüfung",
+          "Versicherung",
+          "Helmpflicht"
+        ],
+        "note": "Auch ohne Pedale möglich",
+        "attention": "Nur Theorie, keine Praxis! Tuning = Betriebserlaubnis weg → Straftat!",
+        "merksatz": "📌 \"25 und fertig\" → Max 25, nur Theorie, Helm",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße (bbH <60 km/h). Normale Straßen OK."
+      },
+      {
+        "id": 11,
+        "name": "Leichtmofa (20 km/h)",
+        "icon": "🛵",
+        "license": "Mofa-Prüfung",
+        "age": "15 Jahre",
+        "speed": "max 20 km/h",
+        "power": "30ccm/0,5kW",
+        "bbh": "20 km/h",
+        "desc": "Leichtmofa mit Pedalen",
+        "legal": [
+          "§5 FeV"
+        ],
+        "reqs": [
+          "Pedale Pflicht",
+          "Max 30kg leer",
+          "Versicherung"
+        ],
+        "note": "Keine Helmpflicht unter 20 km/h",
+        "attention": "Pedale sind Pflicht! Ohne Pedale = kein Leichtmofa. Keine Helmpflicht = Vorteil!",
+        "merksatz": "📌 \"20 ohne Helm, aber mit Pedalen\"",
+        "bbhInfo": "Keine Autobahn/Kraftfahrstraße. Radweg teilweise erlaubt."
+      },
+      {
+        "id": 12,
+        "name": "Gedrosselt L1e-B",
+        "icon": "🛵",
+        "license": "Mofa-Prüfung",
+        "age": "15 Jahre",
+        "speed": "auf 25 gedrosselt",
+        "power": "50ccm/4kW",
+        "bbh": "25 km/h (gedrosselt)",
+        "desc": "Kleinkraftrad gedrosselt",
+        "legal": [
+          "§5 FeV",
+          "EU-VO 168/2013"
+        ],
+        "reqs": [
+          "Drosselung eingetragen",
+          "Versicherung",
+          "Helm"
+        ],
+        "note": "Ungedrosselt = AM nötig",
+        "attention": "Drosselung MUSS eingetragen sein! Selbst drosseln reicht nicht. Ungedrosselt fahren = Straftat!",
+        "merksatz": "📌 \"Eingetragen oder Straftat\"",
+        "bbhInfo": "Durch Drosselung bbH auf 25 km/h → Keine Autobahn/Kraftfahrstraße."
+      },
+      {
+        "id": 13,
+        "name": "Dreirad L2e gedrosselt",
+        "icon": "🛺",
+        "license": "Mofa-Prüfung",
+        "age": "15 Jahre",
+        "speed": "auf 25 gedrosselt",
+        "power": "4kW/50ccm",
+        "bbh": "25 km/h (gedrosselt)",
+        "desc": "Dreirad z.B. Piaggio Ape",
+        "legal": [
+          "§5 FeV",
+          "EU-VO 168/2013 L2e"
+        ],
+        "reqs": [
+          "Max 270kg leer",
+          "Max 2 Sitze",
+          "Versicherung"
+        ],
+        "note": "L2e-P=Personen, L2e-U=Güter",
+        "attention": "Nur gedrosselt auf 25! Gewicht beachten: Max 270kg leer.",
+        "merksatz": "📌 \"3 Räder, 25 km/h, 2 Sitze\"",
+        "bbhInfo": "Gedrosselt auf 25 km/h → Keine Autobahn/Kraftfahrstraße."
+      }
+    ],
+    "license": [
+      {
+        "id": 20,
+        "name": "AM",
+        "icon": "🛵",
+        "license": "AM",
+        "age": "15 Jahre",
+        "speed": "45 km/h",
+        "power": "4kW/50ccm (5,4 PS)",
+        "bbh": "45 km/h",
+        "desc": "Kleinkrafträder",
+        "legal": [
+          "§6 Abs.1 FeV",
+          "§6 Abs.3 FeV",
+          "EU-VO 168/2013"
+        ],
+        "reqs": [
+          "L1e-B, L2e, L6e",
+          "S-Pedelecs",
+          "Bis 16: nur in DE gültig"
+        ],
+        "note": "Mopedführerschein ab 15 bundesweit",
+        "attention": "Ab 15 BUNDESWEIT! Aber: Bis 16 nur in Deutschland gültig. Im EU-Ausland erst ab 16 fahren!",
+        "merksatz": "📌 \"45-4-50\" → 45 km/h, 4kW/5,4PS, 50ccm | Ab 15 DE-weit, EU ab 16",
+        "bbhInfo": "bbH 45 km/h → Keine Autobahn (braucht >60 km/h). Manche Kraftfahrstraßen verboten."
+      },
+      {
+        "id": 21,
+        "name": "A1",
+        "icon": "🏍️",
+        "license": "A1",
+        "age": "16 Jahre",
+        "speed": "unbegrenzt",
+        "power": "11kW/125ccm (15 PS)",
+        "bbh": "Unbegrenzt",
+        "desc": "Leichtkrafträder + Dreiräder bis 15kW",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.1 S.2 FeV",
+          "§6 Abs.3 FeV",
+          "EU-VO 168/2013 L3e-A1"
+        ],
+        "reqs": [
+          "Max 125ccm",
+          "Max 11kW",
+          "Max 0,1kW/kg",
+          "Auch mit Beiwagen",
+          "Dreiräder bis 15kW (L5e)"
+        ],
+        "note": "Einschluss: AM",
+        "attention": "Leistungsgewicht 0,1kW/kg! Bei 11kW mind. 110kg Motorradgewicht nötig! Dreiräder symmetrisch bis 15kW auch erlaubt!",
+        "merksatz": "📌 \"16-11-125 + Dreirad 15kW\" | 11kW = 15PS",
+        "bbhInfo": "Unbegrenzte bbH möglich → Autobahn/Kraftfahrstraße erlaubt (wenn Fahrzeug >60 km/h fährt)."
+      },
+      {
+        "id": 22,
+        "name": "A2",
+        "icon": "🏍️",
+        "license": "A2",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "35kW (48 PS)",
+        "bbh": "Unbegrenzt",
+        "desc": "Mittlere Krafträder",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV",
+          "EU-VO 168/2013 L3e-A2"
+        ],
+        "reqs": [
+          "Max 35kW",
+          "Max 0,2kW/kg",
+          "Original max 70kW (gedrosselt)"
+        ],
+        "note": "Aufstieg zu A nach 2 Jahren",
+        "attention": "Original max 70kW! 100kW auf 35kW gedrosselt = VERBOTEN. Leistungsgewicht 0,2kW/kg = bei 35kW mind. 175kg.",
+        "merksatz": "📌 \"35kW (48PS), Original ≤70kW, 0,2kW/kg\"",
+        "bbhInfo": "Unbegrenzte bbH → Autobahn/Kraftfahrstraße erlaubt."
+      },
+      {
+        "id": 23,
+        "name": "A",
+        "icon": "🏍️",
+        "license": "A",
+        "age": "24 Jahre (20 Aufstieg)",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Unbegrenzt",
+        "desc": "Alle Krafträder",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV",
+          "§10 Abs.1 Nr.1 FeV",
+          "EU-VO 168/2013 L3e-A3"
+        ],
+        "reqs": [
+          "Alle Krafträder",
+          "Krafträder mit Beiwagen",
+          "L5e über 15kW ab 21"
+        ],
+        "note": "Einschluss: A2, A1, AM",
+        "attention": "Mehrere Wege: Direkt ab 24 oder Stufen (A1→A2→A je 2 Jahre). Stufenweg = verkürzte Prüfung! Dreiräder >15kW erst ab 21!",
+        "merksatz": "📌 \"24 direkt oder 16-18-20 Stufen | Dreirad >15kW ab 21\"",
+        "bbhInfo": "Unbegrenzte bbH → Autobahn/Kraftfahrstraße erlaubt."
+      },
+      {
+        "id": 24,
+        "name": "B",
+        "icon": "🚗",
+        "license": "B",
+        "age": "18 Jahre (BF17)",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "PKW bis 3,5t + Dreiräder bis 15kW",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV",
+          "§6 Abs.3a FeV",
+          "EU-VO 2018/858"
+        ],
+        "reqs": [
+          "zGM max 3.500kg",
+          "Max 8+1 Sitze",
+          "Anhänger bis 750kg",
+          "Dreiräder L5e bis 15kW"
+        ],
+        "note": "Einschluss: AM, L",
+        "attention": "zGM ist entscheidend! Nicht Leergewicht. BF17 = nur mit Begleitperson. Dreiräder bis 15kW erlaubt (§6 Abs.3a)!",
+        "merksatz": "📌 \"3,5t zGM, 8+1 Sitze + Dreirad 15kW\"",
+        "bbhInfo": "PKW haben meist bbH >60 km/h → Autobahn/Kraftfahrstraße erlaubt."
+      },
+      {
+        "id": 25,
+        "name": "BE",
+        "icon": "🚙",
+        "license": "BE",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "PKW mit schwerem Anhänger",
+        "legal": [
+          "§6 FeV"
+        ],
+        "reqs": [
+          "Zugfahrzeug B",
+          "Anhänger max 3.500kg"
+        ],
+        "note": "Vorbesitz B erforderlich",
+        "attention": "BE für SCHWERE Anhänger! Anhänger bis 3,5t. KEINE Begrenzung der Kombination mehr .",
+        "merksatz": "📌 \"B-Auto + 3,5t-Anhänger = BE\"",
+        "bbhInfo": "Gespanne können >60 km/h → Autobahn erlaubt (wenn Gespann zugelassen)."
+      },
+      {
+        "id": 26,
+        "name": "B96",
+        "icon": "🚐",
+        "license": "B + SZ 96",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Variable",
+        "desc": "PKW + Anhänger bis 4,25t",
+        "legal": [
+          "§6a FeV",
+          "Anlage 9 FeV"
+        ],
+        "reqs": [
+          "Kombination 3,5-4,25t",
+          "Schulung ohne Prüfung"
+        ],
+        "note": "Keine eigene Klasse",
+        "attention": "KEINE Prüfung! Nur Schulung. Kombination 3,5-4,25t. Günstiger als BE!",
+        "merksatz": "📌 \"96 = bis 4,25t, keine Prüfung\"",
+        "bbhInfo": "Je nach Gespann → Autobahn möglich wenn Kombination zugelassen."
+      },
+      {
+        "id": 27,
+        "name": "B196",
+        "icon": "🏍️",
+        "license": "B + SZ 196",
+        "age": "mind. 25 Jahre",
+        "speed": "unbegrenzt",
+        "power": "11kW/125ccm (15 PS)",
+        "bbh": "Unbegrenzt",
+        "desc": "125er mit Autoführerschein",
+        "legal": [
+          "§6b FeV",
+          "Anlage 9 FeV"
+        ],
+        "reqs": [
+          "5 Jahre B-Vorbesitz",
+          "4x Theorie + 5x Praxis á 90min",
+          "NUR in Deutschland gültig!"
+        ],
+        "note": "Kein Aufstieg zu A2 möglich",
+        "attention": "NUR Deutschland! Im Ausland VERBOTEN. Keine Prüfung. KEIN Aufstieg zu A2. 5 Jahre B Pflicht!",
+        "merksatz": "📌 \"B196 = 125er nur DE, keine Prüfung, ab 25\"",
+        "bbhInfo": "Wie A1: Autobahn erlaubt bei Motorrädern >60 km/h bbH."
+      },
+      {
+        "id": 28,
+        "name": "B197",
+        "icon": "🚗",
+        "license": "B + SZ 197",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Automatik mit Schaltberechtigung",
+        "legal": [
+          "§17 Abs.2a FeV",
+          "Anlage 9 FeV"
+        ],
+        "reqs": [
+          "10 Schaltstunden",
+          "15min Testfahrt",
+          "Prüfung auf Automatik"
+        ],
+        "note": "International: Code 78",
+        "attention": "Prüfung Automatik, Schalter fahren OK! Im Ausland Code 78 = nur Automatik!",
+        "merksatz": "📌 \"197 = Automatikprüfung, Schalter OK\"",
+        "bbhInfo": "Normale PKW → Autobahn erlaubt."
+      },
+      {
+        "id": 29,
+        "name": "C1",
+        "icon": "🚚",
+        "license": "C1",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Mittlere LKW 3,5-7,5t",
+        "legal": [
+          "§6 FeV",
+          "§11 FeV",
+          "§12 FeV",
+          "§23 FeV"
+        ],
+        "reqs": [
+          "zGM 3,5-7,5t",
+          "Max 8+1 Sitze",
+          "Ärztliche Untersuchung"
+        ],
+        "note": "Befristung 5 Jahre bis 50",
+        "attention": "Ärztliche Untersuchung Pflicht! Alle 5 Jahre verlängern. Unter 50: einmalig, ab 50: alle 5 Jahre.",
+        "merksatz": "📌 \"C1 = 3,5-7,5t, Arzt alle 5 Jahre\"",
+        "bbhInfo": "LKW haben meist >60 km/h → Autobahn erlaubt."
+      },
+      {
+        "id": 30,
+        "name": "C1E",
+        "icon": "🚛",
+        "license": "C1E",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Mittlere LKW + Anhänger",
+        "legal": [
+          "§6 FeV"
+        ],
+        "reqs": [
+          "Zugfahrzeug C1",
+          "Anhänger über 750kg",
+          "Kombi max 12t"
+        ],
+        "note": "Vorbesitz C1",
+        "attention": "Kombination max 12t! C1 (bis 7,5t) + Anhänger, zusammen nicht über 12t.",
+        "merksatz": "📌 \"C1E = C1 + Hänger, max 12t\"",
+        "bbhInfo": "LKW-Gespanne → Autobahn erlaubt."
+      },
+      {
+        "id": 31,
+        "name": "C",
+        "icon": "🚛",
+        "license": "C",
+        "age": "21 Jahre (18 Ausb.)",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Schwere LKW über 7,5t",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV",
+          "§11 FeV",
+          "§12 FeV",
+          "§23 FeV"
+        ],
+        "reqs": [
+          "zGM über 3,5t",
+          "Ärztliche Untersuchung"
+        ],
+        "note": "Einschluss: C1. Befristung 5 Jahre",
+        "attention": "Ab 18 nur mit Ausbildung! Sonst 21. Keine Gewichtsgrenze nach oben!",
+        "merksatz": "📌 \"C = über 7,5t, ab 21\"",
+        "bbhInfo": "Schwere LKW → Autobahn erlaubt."
+      },
+      {
+        "id": 32,
+        "name": "CE",
+        "icon": "🚛",
+        "license": "CE",
+        "age": "21 Jahre (18 Ausb.)",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Schwere LKW + Anhänger",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV"
+        ],
+        "reqs": [
+          "Zugfahrzeug C",
+          "Anhänger über 750kg",
+          "Keine Grenze"
+        ],
+        "note": "Einschluss: BE, C1E, T",
+        "attention": "Königsklasse! Keine Gewichtsbegrenzung. 40t mit Hänger OK. Schließt BE, C1E, T ein!",
+        "merksatz": "📌 \"CE = Alles bei LKW+Anhänger\"",
+        "bbhInfo": "Schwerste Gespanne → Autobahn erlaubt."
+      },
+      {
+        "id": 33,
+        "name": "D1",
+        "icon": "🚌",
+        "license": "D1",
+        "age": "21 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Kleinbusse 9-16 Sitze",
+        "legal": [
+          "§6 FeV",
+          "§11 FeV",
+          "§12 FeV",
+          "§23 FeV"
+        ],
+        "reqs": [
+          "9-16 Sitze + Fahrer",
+          "Max 8m Länge",
+          "Ärztliche Unters."
+        ],
+        "note": "Befristung 5 Jahre",
+        "attention": "Minibus! Max 16 Fahrgäste. Max 8m. Befristung alle 5 Jahre mit Arzt.",
+        "merksatz": "📌 \"D1 = Minibus 16 Sitze, 8m\"",
+        "bbhInfo": "Busse → Autobahn erlaubt."
+      },
+      {
+        "id": 34,
+        "name": "D1E",
+        "icon": "🚌",
+        "license": "D1E",
+        "age": "21 Jahre",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Variable",
+        "desc": "Kleinbusse + Anhänger",
+        "legal": [
+          "§6 FeV"
+        ],
+        "reqs": [
+          "Zugfahrzeug D1",
+          "Anhänger über 750kg",
+          "Kombi max 12t"
+        ],
+        "note": "Vorbesitz D1",
+        "attention": "Minibus mit Anhänger z.B. für Gepäck. Kombi max 12t.",
+        "merksatz": "📌 \"D1E = Minibus + Hänger, 12t\"",
+        "bbhInfo": "Bus-Gespanne → Autobahn erlaubt."
+      },
+      {
+        "id": 35,
+        "name": "D",
+        "icon": "🚌",
+        "license": "D",
+        "age": "24 Jahre (20 Ausb.)",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Meist >60 km/h",
+        "desc": "Busse über 8 Sitze",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV",
+          "§11 FeV",
+          "§12 FeV",
+          "§23 FeV"
+        ],
+        "reqs": [
+          "Über 8 Sitze + Fahrer",
+          "Ärztliche Unters."
+        ],
+        "note": "Einschluss: D1. Befristung 5 Jahre",
+        "attention": "Busführerschein! Oft 50+ Personen! Ab 20 mit Ausbildung, sonst 24.",
+        "merksatz": "📌 \"D = Alle Busse, ab 24\"",
+        "bbhInfo": "Reisebusse → Autobahn erlaubt."
+      },
+      {
+        "id": 36,
+        "name": "DE",
+        "icon": "🚌",
+        "license": "DE",
+        "age": "24 Jahre (20 Ausb.)",
+        "speed": "unbegrenzt",
+        "power": "unbegrenzt",
+        "bbh": "Variable",
+        "desc": "Busse + Anhänger",
+        "legal": [
+          "§6 FeV",
+          "§6 Abs.3 FeV"
+        ],
+        "reqs": [
+          "Zugfahrzeug D",
+          "Anhänger über 750kg"
+        ],
+        "note": "Einschluss: BE, D1E. Vorbesitz D",
+        "attention": "Reisebus mit Anhänger! Keine Gewichtsbegrenzung. Höchste Anforderung!",
+        "merksatz": "📌 \"DE = Bus + schwerer Hänger\"",
+        "bbhInfo": "Bus mit Anhänger → Autobahn erlaubt."
+      },
+      {
+        "id": 37,
+        "name": "L",
+        "icon": "🚜",
+        "license": "L",
+        "age": "16 Jahre",
+        "speed": "40 km/h (25 mit Hänger)",
+        "power": "unbegrenzt",
+        "bbh": "40 km/h (25 mit Hänger)",
+        "desc": "LoF-Zugmaschinen",
+        "legal": [
+          "§6 Abs.5 FeV",
+          "§6 Abs.3 FeV",
+          "EU-VO 167/2013"
+        ],
+        "reqs": [
+          "LoF-Zugmaschinen bis 40",
+          "Arbeitsmaschinen bis 25",
+          "Mit Hänger nur 25"
+        ],
+        "note": "In B und T enthalten",
+        "attention": "Traktor für Jugendliche! Nur LoF-Zwecke. Mit Anhänger nur 25! Wer B hat, braucht L nicht.",
+        "merksatz": "📌 \"L = Traktor 40, mit Hänger 25\"",
+        "bbhInfo": "bbH 40 km/h (25 mit Hänger) → Keine Autobahn. Normale Straßen OK."
+      },
+      {
+        "id": 38,
+        "name": "T",
+        "icon": "🚜",
+        "license": "T",
+        "age": "16 (40 km/h) / 18 (60 km/h)",
+        "speed": "max 60 km/h",
+        "power": "unbegrenzt",
+        "bbh": "40 km/h (ab 16) / 60 km/h (ab 18)",
+        "desc": "Schnelle LoF-Zugmaschinen",
+        "legal": [
+          "§6 Abs.5 FeV",
+          "§6 Abs.3 FeV",
+          "EU-VO 167/2013"
+        ],
+        "reqs": [
+          "LoF-Zugmaschinen bis 60",
+          "Arbeitsmaschinen bis 40",
+          "Nur LoF-Zwecke"
+        ],
+        "note": "Einschluss: L, AM",
+        "attention": "Stufenführerschein! Ab 16: nur 40 km/h. Ab 18: volle 60 km/h. Nur Land-/Forstwirtschaft!",
+        "merksatz": "📌 \"T = Turbo-Traktor 60, ab 18 voll\"",
+        "bbhInfo": "bbH bis 60 km/h → Autobahn erlaubt wenn bbH exakt >60 km/h (selten bei Traktoren)."
+      }
+    ],
+    "special": [
+      {
+        "id": 50,
+        "name": "S-Pedelec L1e-B",
+        "icon": "⚡",
+        "license": "AM",
+        "age": "15 Jahre",
+        "speed": "45 km/h",
+        "power": "4kW (5,4 PS)",
+        "bbh": "45 km/h",
+        "desc": "Schnelles Pedelec = Kleinkraftrad",
+        "legal": [
+          "§4 Abs.4 Nr.2 FeV",
+          "EU-VO 168/2013 L1e-B"
+        ],
+        "reqs": [
+          "Führerschein AM",
+          "Versicherung",
+          "Helmpflicht",
+          "KEIN Radweg"
+        ],
+        "note": "KEIN Fahrrad!",
+        "attention": "Variante 2: Tretunterstützung bis 45 km/h, >0,25kW → L1e-B Kleinkraftrad. AM Pflicht (ab 15 J.). Helm! Versicherung! Radweg VERBOTEN (außer freigegeben). Bei Tuning >45 km/h → A1/A2/A erforderlich!",
+        "merksatz": "📌 \"S-Pedelec = Mofa auf Steroiden, KEIN Radweg!\"",
+        "bbhInfo": "bbH 45 km/h → Keine Autobahn. Radweg verboten (außer freigegeben)."
+      },
+      {
+        "id": 51,
+        "name": "Quad L6e",
+        "icon": "🎯",
+        "license": "AM",
+        "age": "15 Jahre",
+        "speed": "45 km/h",
+        "power": "4kW/50ccm (5,4 PS)",
+        "bbh": "45 km/h",
+        "desc": "Leichtes vierrädriges Kfz",
+        "legal": [
+          "§6 FeV",
+          "EU-VO 168/2013 L6e"
+        ],
+        "reqs": [
+          "Max 425kg leer",
+          "Max 2 Sitze",
+          "Versicherung"
+        ],
+        "note": "\"Moped-Auto\"",
+        "attention": "Moped-Auto für Jugendliche! Max 425kg, 2 Sitze, 45 km/h. Anschnallen Pflicht! Kein Helm.",
+        "merksatz": "📌 \"L6e = Moped-Auto, 45, ab 15\"",
+        "bbhInfo": "bbH 45 km/h → Keine Autobahn/Kraftfahrstraße."
+      },
+      {
+        "id": 52,
+        "name": "Quad L7e",
+        "icon": "🎯",
+        "license": "B",
+        "age": "18 Jahre",
+        "speed": "unbegrenzt",
+        "power": "15kW (20 PS)",
+        "bbh": "Meist >45 km/h",
+        "desc": "Schweres vierrädriges Kfz",
+        "legal": [
+          "§6 FeV",
+          "EU-VO 168/2013 L7e"
+        ],
+        "reqs": [
+          "Max 15kW",
+          "Max 450kg (600kg Güter)"
+        ],
+        "note": "Gilt als PKW",
+        "attention": "Schweres Quad mit B! Max 15kW (20PS). Zählt als PKW. Helm NICHT Pflicht. Anschnallen Pflicht!",
+        "merksatz": "📌 \"L7e = Schwer-Quad mit B, kein Helm | 15kW = 20PS\"",
+        "bbhInfo": "Je nach Modell → Autobahn möglich wenn bbH >60 km/h."
+      },
+      {
+        "id": 53,
+        "name": "Trike L5e (bis 15kW)",
+        "icon": "🛺",
+        "license": "A1 (ab 16) oder B (ab 18)",
+        "age": "16 (A1) / 18 (B)",
+        "speed": "unbegrenzt",
+        "power": "max 15kW (20 PS)",
+        "bbh": "Unbegrenzt",
+        "desc": "Dreirädriges Kraftfahrzeug",
+        "legal": [
+          "§6 Abs.1 S.2 FeV",
+          "§6 Abs.3a FeV",
+          "EU-VO 168/2013 L5e"
+        ],
+        "reqs": [
+          "Symmetrische Räder",
+          "Max 15kW",
+          "A1 ab 16 ODER B ab 18"
+        ],
+        "note": "Mit A1 oder B fahrbar",
+        "attention": "A1 ab 16 ODER B ab 18! Symmetrische Räder wichtig. Bis 15kW. Darüber = A nötig!",
+        "merksatz": "📌 \"Trike bis 15kW = A1 oder B | 15kW = 20PS\"",
+        "bbhInfo": "Trikes können >60 km/h → Autobahn erlaubt."
+      },
+      {
+        "id": 54,
+        "name": "Trike L5e (über 15kW)",
+        "icon": "🛺",
+        "license": "A (ab 21)",
+        "age": "21 Jahre",
+        "speed": "unbegrenzt",
+        "power": "über 15kW (>20 PS)",
+        "bbh": "Unbegrenzt",
+        "desc": "Starkes Dreirad",
+        "legal": [
+          "§6 Abs.3a FeV",
+          "§10 Abs.1 Nr.1 FeV",
+          "EU-VO 168/2013 L5e"
+        ],
+        "reqs": [
+          "Symmetrische Räder",
+          "Über 15kW",
+          "Klasse A",
+          "Mindestalter 21"
+        ],
+        "note": "Nur mit A fahrbar, ab 21!",
+        "attention": "Starke Trikes brauchen A! NICHT mit B fahrbar. Erst ab 21 (§10 FeV). Oft Harley-Trikes.",
+        "merksatz": "📌 \"Trike über 15kW = nur A, ab 21\"",
+        "bbhInfo": "Starke Trikes → Autobahn erlaubt."
+      },
+      {
+        "id": 55,
+        "name": "Krankenfahrstuhl (über 15)",
+        "icon": "♿",
+        "license": "AM (ab 15 km/h)",
+        "age": "15 Jahre",
+        "speed": "15-25 km/h",
+        "power": "Elektrisch",
+        "bbh": "15-25 km/h",
+        "desc": "Schneller Krankenfahrstuhl",
+        "legal": [
+          "§4 Abs.4 Nr.1 FeV"
+        ],
+        "reqs": [
+          "Über 15 km/h: AM",
+          "Einsitzig",
+          "Max 25 km/h"
+        ],
+        "note": "Selten, meist auf 15 begrenzt",
+        "attention": "Über 15 km/h = AM nötig! Daher werden die meisten auf 15 begrenzt.",
+        "merksatz": "📌 \"Krankenfahrstuhl: bis 15 frei, drüber AM\"",
+        "bbhInfo": "bbH 15-25 km/h → Keine Autobahn."
+      },
+      {
+        "id": 56,
+        "name": "Arbeitsmaschine 6-20",
+        "icon": "🏗️",
+        "license": "Keine (bis 20)",
+        "age": "ab 15 Jahre",
+        "speed": "6-20 km/h",
+        "power": "unbegrenzt",
+        "bbh": "6-20 km/h",
+        "desc": "Mittlere Arbeitsmaschine",
+        "legal": [
+          "§4 Abs.1 Nr.4 FeV"
+        ],
+        "reqs": [
+          "Nur Arbeitsfahrten",
+          "Betriebserlaubnis"
+        ],
+        "note": "Keine FE, aber Mindestalter 15",
+        "attention": "Ab 15 OHNE Führerschein bis 20 km/h! Nur Arbeitsfahrten. Kein Radlader-Spritztour!",
+        "merksatz": "📌 \"15 Jahre, 20 km/h Arbeitsmaschine OK\"",
+        "bbhInfo": "bbH 6-20 km/h → Keine Autobahn."
+      },
+      {
+        "id": 57,
+        "name": "LoF-Zugmaschine 6-25",
+        "icon": "🚜",
+        "license": "Keine (bis 25)",
+        "age": "ab 15 Jahre",
+        "speed": "6-25 km/h",
+        "power": "unbegrenzt",
+        "bbh": "6-25 km/h",
+        "desc": "Mittlere LoF-Zugmaschine",
+        "legal": [
+          "§4 Abs.1 Nr.4a FeV",
+          "EU-VO 167/2013"
+        ],
+        "reqs": [
+          "Nur LoF-Zwecke",
+          "Betriebserlaubnis"
+        ],
+        "note": "Keine FE, aber Mindestalter 15",
+        "attention": "Traktor ab 15 ohne Führerschein bis 25! Nur Land-/Forstwirtschaft. Jugendliche auf dem Hof.",
+        "merksatz": "📌 \"15 Jahre, 25 km/h Traktor für LoF OK\"",
+        "bbhInfo": "bbH 6-25 km/h → Keine Autobahn."
+      },
+      {
+        "id": 58,
+        "name": "Einachsschlepper",
+        "icon": "🚜",
+        "license": "Keine / L",
+        "age": "Variabel",
+        "speed": "variabel",
+        "power": "unbegrenzt",
+        "bbh": "Bis 25 km/h frei, darüber L",
+        "desc": "Einachsige Zugmaschine",
+        "legal": [
+          "§4 FeV",
+          "StVZO",
+          "EU-VO 167/2013"
+        ],
+        "reqs": [
+          "Mit Lenkstangen geführt",
+          "Bis 25: keine FE",
+          "Über 25: L"
+        ],
+        "note": "Vom gehenden Führer gelenkt",
+        "attention": "Geführt, nicht gefahren! Führer geht neben Maschine. Bis 25 frei, darüber L.",
+        "merksatz": "📌 \"Einachser = Nebenher gehen, bis 25 frei\"",
+        "bbhInfo": "Gehgeschwindigkeit → Keine Autobahn."
+      },
+      {
+        "id": 59,
+        "name": "Stapler (öffentlich)",
+        "icon": "🏗️",
+        "license": "Abhängig von bbH",
+        "age": "Variabel",
+        "speed": "variabel",
+        "power": "unbegrenzt",
+        "bbh": "Variable",
+        "desc": "Gabelstapler im Straßenverkehr",
+        "legal": [
+          "§4 FeV",
+          "DGUV 68"
+        ],
+        "reqs": [
+          "Bis 6: keine FE",
+          "6-20: ab 15",
+          "Über 20: FE nötig",
+          "Staplerschein für Bedienung"
+        ],
+        "note": "Staplerschein ≠ Fahrerlaubnis!",
+        "attention": "Staplerschein ≠ Straßenfahrerlaubnis! Staplerschein = nur Betriebsgelände. Straße: je nach Geschwindigkeit FE nötig!",
+        "merksatz": "📌 \"Staplerschein ≠ Straßenfahrerlaubnis\"",
+        "bbhInfo": "Je nach bbH: Meist keine Autobahn."
+      },
+      {
+        "id": 60,
+        "name": "Ellenator (L5e Umbau)",
+        "icon": "🛺",
+        "license": "A1 (ab 16)",
+        "age": "16 Jahre",
+        "speed": "unbegrenzt",
+        "power": "15kW gedrosselt (20 PS)",
+        "bbh": "Gedrosselt",
+        "desc": "Zwillingsräder-Trike auf 15kW",
+        "legal": [
+          "§6 Abs.1 S.2 FeV",
+          "EU-VO 168/2013 L5e",
+          "Twinned wheels ≤460mm"
+        ],
+        "reqs": [
+          "Zwillingsräder hinten ≤460mm",
+          "Gedrosselt auf 15kW",
+          "Symmetrische Anordnung",
+          "A1 ab 16"
+        ],
+        "note": "Sonderfall: Zwillingsräder = 1 Rad",
+        "attention": "Spezialfall! Zwillingsräder hinten (Abstand ≤460mm) gelten als EIN Rad. Drossel auf 15kW → A1 möglich ab 16!",
+        "merksatz": "📌 \"Ellenator = Twinned wheels ≤460mm, 15kW, A1 ab 16\"",
+        "bbhInfo": "Gedrosselt, aber → Autobahn möglich wenn Fahrzeug >60 km/h fährt."
+      }
+    ],
+    "forbidden": [
+      {
+        "id": 70,
+        "name": "Hoverboard ohne ABE",
+        "icon": "🛹",
+        "license": "VERBOTEN",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Selbstbalancierendes Board ohne Zulassung",
+        "legal": [
+          "§1 eKFV",
+          "§6 StVG",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "Keine ABE verfügbar"
+        ],
+        "note": "Nur auf Privatgelände",
+        "warning": "Illegal im Straßenverkehr! Bußgeld + Strafverfahren!",
+        "attention": "STRAFTAT! Fahren ohne Versicherung + Zulassung. Punkte + Geldstrafe möglich. Nur Privatgelände!",
+        "merksatz": "📌 \"Hoverboard = Privat ja, Straße NEIN\"",
+        "bbhInfo": "Keine Straßenzulassung möglich."
+      },
+      {
+        "id": 71,
+        "name": "E-Monowheel ohne ABE",
+        "icon": "⚙️",
+        "license": "VERBOTEN",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Elektrisches Einrad ohne Zulassung",
+        "legal": [
+          "§1 eKFV",
+          "§6 StVG",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "Keine ABE"
+        ],
+        "note": "Nur Privatgelände",
+        "warning": "Strafbar nach §6 StVG!",
+        "attention": "Hochgefährlich! Straftat nach §6 StVG. Verstoß Pflichtversicherungsgesetz. Geld- oder Freiheitsstrafe!",
+        "merksatz": "📌 \"Monowheel = Straße verboten, Strafe droht\"",
+        "bbhInfo": "Keine Straßenzulassung möglich."
+      },
+      {
+        "id": 72,
+        "name": "Oxboard ohne ABE",
+        "icon": "🛹",
+        "license": "VERBOTEN",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Selbstbalancierendes Board",
+        "legal": [
+          "§1 eKFV",
+          "§6 StVG",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "Keine ABE"
+        ],
+        "note": "Nur privat",
+        "warning": "Fahren öffentlich = Straftat!",
+        "attention": "Wie Hoverboard VERBOTEN auf öffentlichen Wegen! Auch Gehwege nicht. Nur Privatgrundstück.",
+        "merksatz": "📌 \"Oxboard = wie Hoverboard verboten\"",
+        "bbhInfo": "Keine Straßenzulassung."
+      },
+      {
+        "id": 73,
+        "name": "E-Skateboard ohne ABE",
+        "icon": "🛹",
+        "license": "VERBOTEN",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Elektrisches Skateboard",
+        "legal": [
+          "§1 eKFV",
+          "§6 StVG",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "Keine ABE",
+          "Keine Lenkstange"
+        ],
+        "note": "Erfüllt nicht eKFV",
+        "warning": "Im öffentlichen Raum verboten!",
+        "attention": "Erfüllt eKFV nicht (keine Lenkstange)! Keine ABE möglich. Komplett illegal im Straßenverkehr.",
+        "merksatz": "📌 \"E-Skateboard = keine Lenkstange, keine Straße\"",
+        "bbhInfo": "Keine Zulassung möglich."
+      },
+      {
+        "id": 74,
+        "name": "E-Scooter über 20",
+        "icon": "🛴",
+        "license": "AM erforderlich",
+        "age": "15 Jahre",
+        "speed": "20-45 km/h",
+        "power": "4kW (5,4 PS)",
+        "bbh": "20-45 km/h",
+        "desc": "Schneller E-Scooter = Kleinkraftrad",
+        "legal": [
+          "EU-VO 168/2013 L1e-B",
+          "§4 FeV",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "AM zwingend",
+          "Versicherung",
+          "Helmpflicht"
+        ],
+        "note": "Über 20 = KEIN Elektrokleinstfahrzeug!",
+        "warning": "Ohne AM: Fahren ohne Fahrerlaubnis = Straftat!",
+        "attention": "FALLE! Sieht aus wie E-Scooter, IST Kleinkraftrad! Über 20 = AM + Helm + Versicherung Pflicht. Sonst Straftat!",
+        "merksatz": "📌 \"E-Scooter über 20 = Kleinkraftrad AM\"",
+        "bbhInfo": "Über 20 km/h = Kleinkraftrad → Keine Autobahn."
+      },
+      {
+        "id": 75,
+        "name": "Pedelec über 25",
+        "icon": "🚴",
+        "license": "AM erforderlich",
+        "age": "15 Jahre",
+        "speed": "über 25 km/h",
+        "power": "4kW (5,4 PS)",
+        "bbh": "Über 25 km/h",
+        "desc": "S-Pedelec ohne FE",
+        "legal": [
+          "EU-VO 168/2013 L1e-B",
+          "§4 FeV",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "AM zwingend",
+          "Versicherung",
+          "Helm"
+        ],
+        "note": "Ab 25 = Kleinkraftrad!",
+        "warning": "Ohne Führerschein: Straftat §21 StVG!",
+        "attention": "Variante 1: Pedelec >0,25kW aber bis 25 km/h → fahrerlaubnisfrei, ABER Mofa-Prüfbescheinigung nötig (§4 Abs.1 Nr.1b, §5 Abs.1 FeV). Darüber 25 km/h = L1e-B → AM Pflicht! Viele fahren illegal ohne AM/Prüfbescheinigung.",
+        "merksatz": "📌 \"Pedelec über 25 = S-Pedelec = AM\"",
+        "bbhInfo": "Über 25 = S-Pedelec → Keine Autobahn."
+      },
+      {
+        "id": 76,
+        "name": "Tuning-Mofa über 25",
+        "icon": "🛵",
+        "license": "Illegal",
+        "age": "-",
+        "speed": "über 25 km/h",
+        "power": "-",
+        "bbh": "Über 25 km/h",
+        "desc": "Entdrosseltes Mofa",
+        "legal": [
+          "§22a StVG",
+          "§69a StVZO",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "Betriebserlaubnis erloschen"
+        ],
+        "note": "Tuning = Straftat!",
+        "warning": "Straftat §22a StVG! Geld-/Freiheitsstrafe + Führerscheinentzug!",
+        "attention": "SCHWERE STRAFTAT! Tuning = BE erloschen + Fahren ohne FE + ohne Versicherung. Führerschein kann entzogen werden!",
+        "merksatz": "📌 \"Mofa-Tuning = Führerschein weg, Strafe sicher\"",
+        "bbhInfo": "Illegal getunt → Keine bbH-Einstufung."
+      },
+      {
+        "id": 77,
+        "name": "Tuning-Kleinkraftrad über 45",
+        "icon": "🛵",
+        "license": "Illegal",
+        "age": "-",
+        "speed": "über 45 km/h",
+        "power": "-",
+        "bbh": "Über 45 km/h",
+        "desc": "Entdrosseltes AM-Fahrzeug",
+        "legal": [
+          "§22a StVG",
+          "§69a StVZO",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "BE erloschen"
+        ],
+        "note": "Tuning = Versicherungsschutz weg",
+        "warning": "Schwere Straftat! Bei Unfall kein Versicherungsschutz!",
+        "attention": "EXTREM GEFÄHRLICH! Tuning → BE weg → Versicherung ungültig! Bei Unfall zahlt Versicherung NICHTS. Du zahlst allen Schaden selbst + Strafverfahren!",
+        "merksatz": "📌 \"Kleinkraftrad-Tuning = Versicherung weg, Privatinsolvenz droht\"",
+        "bbhInfo": "Illegal getunt → Versicherung erloschen."
+      },
+      {
+        "id": 78,
+        "name": "Pocket-Bike",
+        "icon": "🏍️",
+        "license": "Keine Zulassung",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Mini-Motorrad für Rennstrecke",
+        "legal": [
+          "§3 FZV",
+          "StVZO"
+        ],
+        "reqs": [
+          "Keine Zulassung möglich"
+        ],
+        "note": "Erfüllt keine StVZO",
+        "warning": "Auf öffentlichen Straßen verboten!",
+        "attention": "Rennstrecken-Spielzeug! Keine Beleuchtung, keine Spiegel, keine Zulassung möglich. Nur Privatgelände oder Rennstrecke.",
+        "merksatz": "📌 \"Pocket-Bike = Rennstrecke ja, Straße NEIN\"",
+        "bbhInfo": "Keine Straßenzulassung möglich."
+      },
+      {
+        "id": 79,
+        "name": "Go-Kart nicht zugelassen",
+        "icon": "🎯",
+        "license": "Keine Zulassung",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Renn-Kart ohne Zulassung",
+        "legal": [
+          "§3 FZV",
+          "StVZO"
+        ],
+        "reqs": [
+          "Keine Zulassung"
+        ],
+        "note": "Nur für Kartbahnen",
+        "warning": "Nutzung öffentlich illegal!",
+        "attention": "Kartbahn-Fahrzeug! Keine Zulassung möglich (zu niedrig, keine Beleuchtung). Nur Kartbahn!",
+        "merksatz": "📌 \"Go-Kart = Kartbahn, nicht Straße\"",
+        "bbhInfo": "Rennfahrzeug - keine Straßenzulassung."
+      },
+      {
+        "id": 80,
+        "name": "Segway ohne ABE",
+        "icon": "🛴",
+        "license": "Eingeschränkt",
+        "age": "-",
+        "speed": "20 km/h",
+        "power": "-",
+        "bbh": "20 km/h",
+        "desc": "Selbstbalancierender Transporter",
+        "legal": [
+          "§1 eKFV (nicht erfüllt)",
+          "MobHV"
+        ],
+        "reqs": [
+          "Keine eKFV-Konformität"
+        ],
+        "note": "Sondergenehmigungen möglich",
+        "warning": "Ohne Genehmigung verboten!",
+        "attention": "Grauzone! Erfüllt eKFV nicht (Selbstbalancierung >500W). Manche Städte erteilen Ausnahmegenehmigungen für Stadtführungen. Privat meist verboten.",
+        "merksatz": "📌 \"Segway = meist verboten, Ausnahmen per Sondergenehmigung\"",
+        "bbhInfo": "Meist keine Zulassung."
+      },
+      {
+        "id": 81,
+        "name": "E-Bike über 25 ohne Pedale",
+        "icon": "⚡",
+        "license": "AM erforderlich",
+        "age": "15 Jahre",
+        "speed": "über 25 km/h",
+        "power": "4kW (5,4 PS)",
+        "bbh": "Über 25 km/h",
+        "desc": "E-Bike mit Selbstfahrfunktion/Daumengas ohne Tretpflicht",
+        "legal": [
+          "EU-VO 168/2013 L1e-A/B",
+          "§4 FeV",
+          "§1 PflVG"
+        ],
+        "reqs": [
+          "AM",
+          "Versicherung",
+          "Helm"
+        ],
+        "note": "Kein Fahrrad - Kleinkraftrad!",
+        "warning": "Ohne AM: Fahren ohne Fahrerlaubnis!",
+        "attention": "E-Bike = Selbstfahrfunktion (Daumengas bis 20/25/45 km/h) ohne Tretpflicht. Kann auch MIT Pedalen sein, aber unabhängig vom Treten! >25 km/h = L1e-B Kleinkraftrad → AM, Helm, Versicherung Pflicht. Oft verwechselt!",
+        "merksatz": "📌 \"E-Bike ohne Pedale über 25 = Kleinkraftrad AM\"",
+        "bbhInfo": "Kleinkraftrad → Keine Autobahn."
+      }
+    ],
+    "procedure": [
+      {
+        "id": 90,
+        "name": "§21 FeV - Antrag",
+        "icon": "📝",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Antrag auf Erteilung Fahrerlaubnis",
+        "legal": [
+          "§21 FeV",
+          "§22 FeV",
+          "§11 FeV",
+          "§12 FeV"
+        ],
+        "reqs": [
+          "Persönliche Vorsprache bei Behörde",
+          "Lichtbild biometrisch",
+          "Sehtest",
+          "Erste-Hilfe-Kurs",
+          "Nachweis Fahrschulausbildung"
+        ],
+        "note": "Zuständig: Wohnsitz-Behörde",
+        "attention": "Antrag VOR Prüfung stellen! Ohne Antrag keine Prüfung. Unterlagen komplett einreichen. Bearbeitungszeit beachten!",
+        "merksatz": "📌 \"§21 = Antrag mit allen Unterlagen VOR Prüfung\"",
+        "bbhInfo": "Verwaltungsverfahren - keine bbH."
+      },
+      {
+        "id": 91,
+        "name": "§20 FeV - Erweiterung",
+        "icon": "➕",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Erweiterung bestehender Fahrerlaubnis",
+        "legal": [
+          "§20 FeV",
+          "§7 Abs.2 FahrschAusbO"
+        ],
+        "reqs": [
+          "Vorbesitz einer Klasse",
+          "Teilweise Prüfungsbefreiung",
+          "Verkürzte Ausbildung möglich"
+        ],
+        "note": "Anrechnung Vorbesitz",
+        "attention": "Erweiterung = oft verkürzt! A1→A2 und A2→A nach 2 Jahren nur praktische Kurzprüfung. B→BE nur Praxis. B→B96 nur Schulung. Vorbesitz wird angerechnet!",
+        "merksatz": "📌 \"§20 = Erweiterung mit Erleichterungen\"",
+        "bbhInfo": "Verwaltungsverfahren."
+      },
+      {
+        "id": 92,
+        "name": "§46 FeV - Entziehung",
+        "icon": "🚫",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Entziehung der Fahrerlaubnis",
+        "legal": [
+          "§46 FeV",
+          "§11 FeV"
+        ],
+        "reqs": [
+          "Ungeeignetheit festgestellt",
+          "Alkohol/Drogen",
+          "Verkehrsverstöße",
+          "MPU oft erforderlich"
+        ],
+        "note": "Sperrfrist wird verhängt",
+        "attention": "SCHWERWIEGEND! Führerschein weg, Sperrfrist 6 Monate bis 5 Jahre. Neuerteilung nur nach Eignungsnachweis. Oft MPU erforderlich!",
+        "merksatz": "📌 \"§46 = Entziehung mit Sperrfrist + MPU\"",
+        "bbhInfo": "Verwaltungsverfahren."
+      },
+      {
+        "id": 93,
+        "name": "§47 FeV - Neuerteilung",
+        "icon": "🔄",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Neuerteilung nach Entziehung",
+        "legal": [
+          "§47 FeV",
+          "§11 FeV",
+          "§7 Abs.2 FahrschAusbO"
+        ],
+        "reqs": [
+          "Sperrfrist abgelaufen",
+          "Eignung nachgewiesen",
+          "Meist MPU erforderlich",
+          "Prüfung meist nötig"
+        ],
+        "note": "Fahrschule kann entfallen",
+        "attention": "Nach Entzug: Sperrfrist abwarten, MPU bestehen, Eignung nachweisen. Behörde KANN auf Fahrschule verzichten (§7 Abs.2 FahrschAusbO). Prüfung meist Pflicht!",
+        "merksatz": "📌 \"§47 = Neuerteilung nach MPU + Prüfung\"",
+        "bbhInfo": "Verwaltungsverfahren."
+      },
+      {
+        "id": 94,
+        "name": "Umschreibung EU/EWR",
+        "icon": "🇪🇺",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "EU-Führerschein in Deutschland",
+        "legal": [
+          "§28 FeV",
+          "§29 FeV",
+          "RL 2006/126/EG"
+        ],
+        "reqs": [
+          "EU/EWR-FS grundsätzlich gültig",
+          "Auflagen bleiben bestehen",
+          "Umtausch bei Wohnsitz optional",
+          "Befristungen beachten (C/D)"
+        ],
+        "note": "Gegenseitige Anerkennung",
+        "attention": "EU-FS gilt in DE! Umschreibung freiwillig, aber bei Auflagen/Befristungen empfohlen. C/D-Klassen: Befristungen beachten!",
+        "merksatz": "📌 \"EU-FS = direkt gültig, Umschreibung freiwillig\"",
+        "bbhInfo": "Verwaltungsverfahren."
+      },
+      {
+        "id": 95,
+        "name": "Umschreibung Drittstaat",
+        "icon": "🌍",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Ausländischer FS → deutscher FS",
+        "legal": [
+          "§30 FeV",
+          "§31 FeV",
+          "Anlage 11 FeV"
+        ],
+        "reqs": [
+          "6 Monate Wohnsitz → Umschreibung",
+          "Anlage 11: Prüfungen je nach Land",
+          "Übersetzung erforderlich",
+          "Ggf. theoretische/praktische Prüfung"
+        ],
+        "note": "Länderliste Anlage 11 prüfen!",
+        "attention": "Nach 6 Monaten Wohnsitz MUSS umgeschrieben werden! Anlage 11 prüfen: manche Länder ohne Prüfung, andere mit. USA variiert je nach Bundesstaat!",
+        "merksatz": "📌 \"Drittstaat = 6 Monate, dann Umschreibung nach Anlage 11\"",
+        "bbhInfo": "Verwaltungsverfahren."
+      },
+      {
+        "id": 96,
+        "name": "§76 FeV Übergangsrecht",
+        "icon": "⏳",
+        "license": "Verfahren",
+        "age": "-",
+        "speed": "-",
+        "power": "-",
+        "bbh": "-",
+        "desc": "Alte Führerscheine und Besitzstände",
+        "legal": [
+          "§76 FeV"
+        ],
+        "reqs": [
+          "Besitzstand bleibt",
+          "Umtauschfristen beachten",
+          "Alte Klassen = neue Klassen",
+          "Schlüsselzahlen prüfen"
+        ],
+        "note": "Lange Übergangsregelungen",
+        "attention": "Alter FS = oft mehr Rechte! Klasse 3 alt = B, BE, C1, C1E, L. Umtauschpflicht bis 2033 je nach Geburtsjahr!",
+        "merksatz": "📌 \"§76 = Besitzstand + Umtauschfristen\"",
+        "bbhInfo": "Übergangsrecht."
+      }
+    ]
+  },
+  "laws": {
+    "§1 Abs.3 StVG": {
+      "title": "§ 1 Abs. 3 Straßenverkehrsgesetz (StVG)",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 1 Zulassung</strong></p>\n                    <p>(3) Die Zulassungspflicht besteht nicht für</p>\n                    <p>1. selbstfahrende Arbeitsmaschinen,</p>\n                    <p>2. Stapler im Sinne des § 2 Nummer 18,</p>\n                    <p>3. Zugmaschinen, die nach ihrer Bauart für die Verwendung für land- oder forstwirtschaftliche Zwecke bestimmt sind,</p>\n                    <p>4. einachsige Zugmaschinen, wenn sie von dem gehenden Führer mittels Holmen gelenkt werden,</p>\n                    <p>5. Fahrräder im Sinne der Straßenverkehrs-Ordnung,</p>\n                    <p>6. motorbetriebene Krankenfahrstühle,</p>\n                    <p>7. Fahrzeuge, die von der Bundeswehr oder den ausländischen NATO-Truppen im Rahmen von Vereinbarungen zwischen der Bundesrepublik Deutschland und den Stationierungsstreitkräften eingesetzt werden.</p>\n                </div>"
+    },
+    "§4 Abs.1 FeV": {
+      "title": "§ 4 Abs. 1 Fahrerlaubnis-Verordnung (FeV)",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 4 Erlaubnispflicht und Ausweispflicht für das Führen von Kraftfahrzeugen</strong></p>\n                    <p>(1) Wer auf öffentlichen Straßen ein Kraftfahrzeug führt, bedarf der Fahrerlaubnis. Ausgenommen sind</p>\n                    <p>1. einspurige Fahrräder mit Hilfsmotor – auch ohne Tretkurbeln –, wenn ihre Bauart Gewähr dafür bietet, dass die Höchstgeschwindigkeit auf ebener Bahn nicht mehr als 25 km/h beträgt (Mofas); besondere Sitze für die Mitnahme von Kindern unter sieben Jahren dürfen jedoch angebracht sein,</p>\n                    <p>1a. Fahrräder mit elektrischem Antrieb, der sich auf eine bauartbedingte Geschwindigkeit von nicht mehr als 25 km/h selbsttätig abschaltet (Pedelecs),</p>\n                    <p>1b. zweirädrige Kraftfahrzeuge der Klasse L1e-B und dreirädrige Kraftfahrzeuge der Klassen L2e-P und L2e-U nach Artikel 4 Absatz 2 Buchstabe a und b der Verordnung (EU) Nr. 168/2013, wenn ihre Bauart Gewähr dafür bietet, dass die Höchstgeschwindigkeit auf ebener Bahn auf höchstens 25 km/h beschränkt ist,</p>\n                    <p>2. motorisierte Krankenfahrstühle (einsitzige, nach der Bauart zum Gebrauch durch körperlich behinderte Personen bestimmte Kraftfahrzeuge mit Elektroantrieb, einer Leermasse von nicht mehr als 300 kg einschließlich Batterien aber ohne Fahrer, einer zulässigen Gesamtmasse von nicht mehr als 500 kg, einer bauartbedingten Höchstgeschwindigkeit von nicht mehr als 15 km/h und einer Breite über alles von maximal 110 cm), wenn ihre bauartbedingte Höchstgeschwindigkeit 15 km/h nicht übersteigt,</p>\n                    <p>3. Zugmaschinen, die nach ihrer Bauart für die Verwendung für land- oder forstwirtschaftliche Zwecke bestimmt sind, selbstfahrende Arbeitsmaschinen, selbstfahrende Futtermischwagen, Stapler und andere Flurförderzeuge mit einer durch die Bauart bestimmten Höchstgeschwindigkeit von nicht mehr als 6 km/h.</p>\n                </div>"
+    },
+    "§4 Abs.3 FeV": {
+      "title": "§ 4 Abs. 3 FeV - Nicht-öffentlicher Verkehr",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 4 Abs. 3 Betriebsgelände</strong></p>\n        <p>(3) Eine Fahrerlaubnis ist nicht erforderlich für das Führen von Kraftfahrzeugen auf nicht-öffentlichem Verkehrsgrund (z.B. umschlossenes Betriebsgelände, Privatgrundstück).</p>\n        <p><strong>Wichtig:</strong> Sobald öffentlicher Verkehrsraum befahren wird, gelten alle FeV-Vorschriften!</p>\n        <p><strong>Beispiele nicht-öffentlicher Verkehrsgrund:</strong></p>\n        <p>• Werksgelände mit Zufahrtskontrolle</p>\n        <p>• Umzäuntes Privatgrundstück</p>\n        <p>• Geschlossene Kartbahn</p>\n        <p>• Lagerhallen-Innenflächen</p>\n    </div>"
+    },
+    "§5 FeV": {
+      "title": "§ 5 Fahrerlaubnis-Verordnung (FeV)",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 5 Sonderbestimmungen für das Führen von Mofas und geschwindigkeitsbeschränkten Kraftfahrzeugen</strong></p>\n                    <p>(1) Zum Führen eines Mofas nach § 4 Absatz 1 Satz 2 Nummer 1 und eines zwei- oder dreirädrigen Kraftfahrzeugs nach § 4 Absatz 1 Satz 2 Nummer 1b muss eine Prüfungsbescheinigung mitgeführt und zuständigen Personen auf Verlangen zur Prüfung ausgehändigt werden. Die Prüfungsbescheinigung gilt nicht zum Führen eines Kraftfahrzeugs, für das nach § 4 Absatz 1 Satz 1 eine Fahrerlaubnis vorgeschrieben ist.</p>\n                    <p>(2) Die Prüfungsbescheinigung wird nach Vollendung des 15. Lebensjahres auf Grund einer bestandenen Prüfung erteilt. Die Prüfung besteht aus einem theoretischen Teil.</p>\n                    <p>(3) Die theoretische Prüfung umfasst mindestens 20 Fragen aus einem Katalog, der vom Bundesministerium für Verkehr und digitale Infrastruktur im Verkehrsblatt veröffentlicht wird. Die Prüfung ist bestanden, wenn mindestens zwei Drittel der gestellten Fragen richtig beantwortet wurden.</p>\n                </div>"
+    },
+    "§6 FeV": {
+      "title": "§ 6 Fahrerlaubnis-Verordnung (FeV) - Fahrerlaubnisklassen",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 6 Einteilung der Fahrerlaubnisklassen</strong></p>\n                    <p>(1) Es werden folgende Klassen von Fahrerlaubnissen erteilt:</p>\n                    <p><strong>Klasse AM:</strong> leichte zweirädrige Kraftfahrzeuge der Klasse L1e-B nach Artikel 4 Absatz 2 Buchstabe a der Verordnung (EU) Nr. 168/2013 des Europäischen Parlaments und des Rates vom 15. Januar 2013 (ABl. L 60 vom 2.3.2013, S. 52) mit</p>\n                    <p>– einer durch die Bauart bestimmten Höchstgeschwindigkeit von nicht mehr als 45 km/h und</p>\n                    <p>– einer maximalen Nutzleistung von nicht mehr als 4 kW und</p>\n                    <p>– einem Verbrennungsmotor mit einem Hubraum von nicht mehr als 50 cm³ oder</p>\n                    <p>– einem Elektromotor mit einer maximalen Nenndauerleistung von nicht mehr als 4 kW</p>\n                    \n                    <p style=\"margin-top: 15px;\"><strong>Klasse A1:</strong> Krafträder (auch mit Beiwagen) mit einem Hubraum von bis zu 125 cm³ und einer Motorleistung von nicht mehr als 11 kW, bei denen das Verhältnis der Leistung zum Gewicht 0,1 kW/kg nicht übersteigt, und dreirädrige Kraftfahrzeuge mit symmetrisch angeordneten Rädern und einem Hubraum von mehr als 50 cm³ bei Verbrennungsmotoren oder einer bauartbedingten Höchstgeschwindigkeit von mehr als 45 km/h und mit einer Leistung von bis zu 15 kW.</p>\n                    \n                    <p style=\"margin-top: 15px;\"><strong>Klasse A2:</strong> Krafträder (auch mit Beiwagen) mit einer Motorleistung von nicht mehr als 35 kW, bei denen das Verhältnis der Leistung zum Gewicht 0,2 kW/kg nicht übersteigt. Die Motorleistung darf in ursprünglicher Ausführung nicht mehr als das Doppelte der für A2 zulässigen Motorleistung betragen (also maximal 70 kW vor Drosselung).</p>\n                    \n                    <p style=\"margin-top: 15px;\"><strong>Klasse A:</strong> Krafträder (auch mit Beiwagen) mit einem Hubraum von mehr als 50 cm³ oder mit einer durch die Bauart bestimmten Höchstgeschwindigkeit von mehr als 45 km/h und dreirädrige Kraftfahrzeuge mit einer Leistung von mehr als 15 kW und dreirädrige Kraftfahrzeuge mit symmetrisch angeordneten Rädern und einem Hubraum von mehr als 50 cm³ bei Verbrennungsmotoren oder einer bauartbedingten Höchstgeschwindigkeit von mehr als 45 km/h und mit einer Leistung von mehr als 15 kW.</p>\n                    \n                    <p style=\"margin-top: 15px;\"><strong>Einschlüsse nach § 6 Abs. 3 FeV:</strong></p>\n                    <p>• Klasse A schließt ein: A2, A1, AM</p>\n                    <p>• Klasse A2 schließt ein: A1, AM</p>\n                    <p>• Klasse A1 schließt ein: AM</p>\n                    <p>• Klasse B schließt ein: AM, L</p>\n                    <p>• Klasse C schließt ein: C1</p>\n                    <p>• Klasse CE schließt ein: C1E, BE, T (unter bestimmten Voraussetzungen)</p>\n                </div>"
+    },
+    "§6 Abs.1 S.2 FeV": {
+      "title": "§ 6 Abs. 1 Satz 2 FeV - Dreiräder in A1",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 6 Abs. 1 Fahrerlaubnisklassen - Satz 2</strong></p>\n                    <p>Klasse A1 berechtigt auch zum Führen von dreirädrigen Kraftfahrzeugen mit symmetrisch angeordneten Rädern und einem Hubraum von mehr als 50 cm³ bei Verbrennungsmotoren oder einer bauartbedingten Höchstgeschwindigkeit von mehr als 45 km/h und mit einer Leistung von bis zu 15 kW.</p>\n                    <p><strong>Wichtig:</strong> Dies bedeutet, dass Inhaber der Klasse A1 (ab 16 Jahren) auch Trikes/dreirädrige Fahrzeuge bis 15 kW (20 PS) fahren dürfen.</p>\n                </div>"
+    },
+    "§6 Abs.3 FeV": {
+      "title": "§ 6 Abs. 3 FeV - Einschlüsse",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 6 Abs. 3 Einschlüsse von Fahrerlaubnisklassen</strong></p>\n                    <p>Mit der Fahrerlaubnis der</p>\n                    <p><strong>Klasse A</strong> darf auch ein Kraftfahrzeug der Klassen A2, A1 und AM geführt werden.</p>\n                    <p><strong>Klasse A2</strong> darf auch ein Kraftfahrzeug der Klassen A1 und AM geführt werden.</p>\n                    <p><strong>Klasse A1</strong> darf auch ein Kraftfahrzeug der Klasse AM geführt werden.</p>\n                    <p><strong>Klasse B</strong> darf auch ein Kraftfahrzeug der Klassen AM und L geführt werden.</p>\n                    <p><strong>Klasse C</strong> darf auch ein Kraftfahrzeug der Klasse C1 geführt werden.</p>\n                    <p><strong>Klasse CE</strong> darf auch ein Kraftfahrzeug der Klassen C1E, BE und T geführt werden, sofern die jeweiligen Voraussetzungen erfüllt sind.</p>\n                    <p><strong>Klasse D</strong> darf auch ein Kraftfahrzeug der Klasse D1 geführt werden.</p>\n                    <p><strong>Klasse DE</strong> darf auch ein Kraftfahrzeug der Klassen D1E und BE geführt werden.</p>\n                </div>"
+    },
+    "§6 Abs.3a FeV": {
+      "title": "§ 6 Abs. 3a FeV - Dreiräder in Klasse B",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 6 Abs. 3a Dreirädrige Kraftfahrzeuge in Klasse B</strong></p>\n                    <p>Die Fahrerlaubnis der Klasse B berechtigt auch zum Führen von dreirädrigen Kraftfahrzeugen im Inland, im Falle eines Kraftfahrzeuges mit einer Motorleistung von mehr als 15 kW jedoch nur, soweit der Inhaber der Fahrerlaubnis mindestens 21 Jahre alt ist.</p>\n                    <p><strong>Bedeutung:</strong></p>\n                    <p>• Dreiräder bis 15 kW: Mit Klasse B ab 18 Jahren</p>\n                    <p>• Dreiräder über 15 kW: Mit Klasse B ab 21 Jahren</p>\n                    <p><strong>⚠️ Diese Regelung gilt NUR im Inland (Deutschland)!</strong></p>\n                </div>"
+    },
+    "§6b FeV": {
+      "title": "§ 6b FeV - Schlüsselzahl 196",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 6b Fahrerlaubnis der Klasse B mit der Schlüsselzahl 196</strong></p>\n                    <p>(1) Wer eine Fahrerlaubnis der Klasse B besitzt, ist auch zum Führen von Krafträdern der Klasse A1 berechtigt, wenn in der Fahrerlaubnis die Schlüsselzahl 196 eingetragen ist.</p>\n                    <p>(2) Die Schlüsselzahl 196 wird auf Antrag in die Fahrerlaubnis eingetragen, wenn der Fahrerlaubnisinhaber</p>\n                    <p>1. das 25. Lebensjahr vollendet hat,</p>\n                    <p>2. seit mindestens fünf Jahren im Besitz einer Fahrerlaubnis der Klasse B ist und</p>\n                    <p>3. eine Schulung von mindestens vier theoretischen und fünf praktischen Unterrichtseinheiten zu jeweils 90 Minuten absolviert hat.</p>\n                    <p><strong>WICHTIG:</strong> Die Berechtigung nach Absatz 1 gilt NICHT im Ausland! B196 ist nur in Deutschland gültig.</p>\n                    <p>Es findet keine Prüfung statt, und ein Aufstieg zu Klasse A2 ist nicht möglich.</p>\n                </div>"
+    },
+    "§10 Abs.1 Nr.1 FeV": {
+      "title": "§ 10 Abs. 1 Nr. 1 FeV - Mindestalter Klasse A",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 10 Mindestalter</strong></p>\n                    <p>(1) Das Mindestalter beträgt</p>\n                    <p>1. für die Klassen AM, A1, A2, A, B, BE, L und T:</p>\n                    <p>a) bei Klasse AM 15 Jahre (bundesweit gültig, aber bis zum 16. Lebensjahr nur in Deutschland),</p>\n                    <p>b) bei Klasse A1 16 Jahre,</p>\n                    <p>c) bei Klasse A2 18 Jahre,</p>\n                    <p>d) bei Klasse A</p>\n                    <p>– 24 Jahre für Krafträder bei direktem Zugang,</p>\n                    <p>– 20 Jahre für Krafträder bei einem Vorbesitz der Klasse A2 von mindestens zwei Jahren,</p>\n                    <p>– 21 Jahre für dreirädrige Kraftfahrzeuge der Klasse A mit einer Leistung von mehr als 15 kW.</p>\n                </div>"
+    },
+    "§11 FeV": {
+      "title": "§ 11 FeV - Eignung",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 11 Eignung</strong></p>\n        <p>(1) Bewerber um eine Fahrerlaubnis müssen die hierfür notwendigen körperlichen und geistigen Anforderungen erfüllen. Die Anforderungen sind insbesondere nicht erfüllt, wenn eine Erkrankung oder ein Mangel nach Anlage 4 oder 5 vorliegt, wodurch die Eignung zum Führen von Kraftfahrzeugen ausgeschlossen wird.</p>\n        <p>(2) Zur Vorbereitung von Entscheidungen über die Erteilung oder die Verlängerung der Fahrerlaubnis oder über die Anordnung von Beschränkungen oder Auflagen ordnet die Fahrerlaubnisbehörde an, dass</p>\n        <p>1. ein ärztliches Gutachten (Anlage 4a) beizubringen ist, wenn Tatsachen bekannt werden, die Bedenken gegen die körperliche oder geistige Eignung begründen,</p>\n        <p>2. ein Gutachten eines amtlich anerkannten Sachverständigen oder Prüfers für den Kraftfahrzeugverkehr beizubringen ist,</p>\n        <p>3. ein medizinisch-psychologisches Gutachten (MPU) beizubringen ist.</p>\n        <p><strong>Wichtig für C/D-Klassen:</strong> Hier sind regelmäßige ärztliche Untersuchungen verpflichtend (siehe § 23 FeV)!</p>\n    </div>"
+    },
+    "§12 FeV": {
+      "title": "§ 12 FeV - Sehvermögen",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 12 Sehvermögen</strong></p>\n        <p>(1) Für die Fahrerlaubnisklassen A, A1, A2, AM, B, BE, L und T genügt ein Nachweis über einen Sehtest nach Anlage 6.</p>\n        <p>(2) Für die Fahrerlaubnisklassen C, C1, CE, C1E, D, D1, DE und D1E ist ein augenärztliches Zeugnis oder ein Zeugnis eines Arztes mit der Zusatzbezeichnung \"Betriebsmedizin\" oder der Gebietsbezeichnung \"Arbeitsmedizin\" erforderlich, das nach Maßgabe der Anlage 6 erstellt wurde.</p>\n        <p><strong>Sehtest erforderlich bei:</strong></p>\n        <p>• Ersterteilung einer Fahrerlaubnis</p>\n        <p>• Erweiterung auf Klassen C/D</p>\n        <p>• Verlängerung C/D-Klassen (alle 5 Jahre)</p>\n        <p><strong>Anforderungen Sehtest:</strong></p>\n        <p>• Sehschärfe: mindestens 0,7 auf jedem Auge (mit/ohne Korrektur)</p>\n        <p>• Bei Sehhilfe: Schlüsselzahl 01 im Führerschein</p>\n    </div>"
+    },
+    "§17 Abs.2a FeV": {
+      "title": "§ 17 Abs. 2a FeV - Automatikprüfung (B197)",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 17 Abs. 2a Schlüsselzahl 197 (Automatikprüfung mit Schaltberechtigung)</strong></p>\n                    <p>Wird die Prüfung auf einem Kraftfahrzeug mit Automatikgetriebe abgelegt, ist die Fahrerlaubnis auf das Führen von Kraftfahrzeugen mit Automatikgetriebe beschränkt (Schlüsselzahl 78).</p>\n                    <p>Die Beschränkung entfällt, wenn der Bewerber</p>\n                    <p>1. mindestens zehn Fahrstunden zu je 45 Minuten auf einem Kraftfahrzeug mit Schaltgetriebe absolviert hat,</p>\n                    <p>2. eine 15-minütige Testfahrt absolviert und dabei nachgewiesen hat, dass er ein Kraftfahrzeug mit Schaltgetriebe sicher, verantwortungsvoll und umweltbewusst führen kann.</p>\n                    <p><strong>Wichtig:</strong> Im Inland dürfen dann auch Schaltwagen gefahren werden (Schlüsselzahl 197). Im Ausland gilt jedoch Code 78 (nur Automatik)!</p>\n                </div>"
+    },
+    "§20 FeV": {
+      "title": "§ 20 FeV - Erweiterung der Fahrerlaubnis",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 20 Erweiterung</strong></p>\n        <p>(1) Die Fahrerlaubnis wird für die beantragte Klasse erteilt. Sie kann auf eine andere Klasse erweitert werden.</p>\n        <p>(2) Bei der Erweiterung auf die Klassen A, B, C, D und T ist der Bewerber von der theoretischen und praktischen Prüfung ganz oder teilweise zu befreien, wenn er bereits eine Fahrerlaubnis einer anderen Klasse besitzt.</p>\n        <p><strong>Erweiterungsmöglichkeiten:</strong></p>\n        <p>• B → BE: Nur praktische Prüfung</p>\n        <p>• A1 → A2: Verkürzte praktische Prüfung nach 2 Jahren Vorbesitz</p>\n        <p>• A2 → A: Verkürzte praktische Prüfung nach 2 Jahren Vorbesitz</p>\n        <p>• B → C1/C: Theoretische + praktische Prüfung</p>\n        <p>• B → B96: Nur Schulung, keine Prüfung</p>\n        <p><strong>Wichtig:</strong> Bei Erweiterungen müssen nicht alle Ausbildungsinhalte wiederholt werden - der Vorbesitz wird angerechnet!</p>\n    </div>"
+    },
+    "§46 FeV": {
+      "title": "§ 46 FeV - Entziehung der Fahrerlaubnis",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 46 Entziehung</strong></p>\n        <p>(1) Die Fahrerlaubnis ist zu entziehen, wenn sich ihr Inhaber als ungeeignet oder nicht befähigt zum Führen von Kraftfahrzeugen erweist.</p>\n        <p>(2) Ungeeignet zum Führen von Kraftfahrzeugen ist insbesondere, wer</p>\n        <p>1. unter einer Erkrankung nach Anlage 4 oder 5 leidet,</p>\n        <p>2. erheblich oder wiederholt gegen verkehrsrechtliche Vorschriften oder Strafgesetze verstoßen hat,</p>\n        <p>3. einer Drogenabhängigkeit oder regelmäßigem übermäßigen Genuss alkoholischer Getränke verfallen ist.</p>\n        <p><strong>Folgen:</strong></p>\n        <p>• Führerschein muss abgegeben werden</p>\n        <p>• Sperrfrist wird verhängt (meist 6 Monate bis 5 Jahre)</p>\n        <p>• Nach Sperrfrist: Neuerteilung nur nach Nachweis der Eignung</p>\n        <p>• Oft MPU (medizinisch-psychologische Untersuchung) erforderlich</p>\n    </div>"
+    },
+    "§47 FeV": {
+      "title": "§ 47 FeV - Neuerteilung nach Entziehung",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 47 Neuerteilung der Fahrerlaubnis</strong></p>\n        <p>(1) Ist die Fahrerlaubnis entzogen worden, so ist eine neue Fahrerlaubnis nach Maßgabe des § 20 zu erteilen, wenn der Bewerber</p>\n        <p>1. die Sperrfrist abgewartet hat,</p>\n        <p>2. seine Eignung und Befähigung nachgewiesen hat,</p>\n        <p>3. die erforderlichen Prüfungen bestanden hat.</p>\n        <p>(2) Die Fahrerlaubnisbehörde ordnet die Beibringung eines medizinisch-psychologischen Gutachtens (MPU) an, wenn</p>\n        <p>1. die Entziehung wegen Alkohol- oder Drogenmissbrauch erfolgte,</p>\n        <p>2. die Entziehung wegen erheblicher Verstöße erfolgte,</p>\n        <p>3. Zweifel an der Fahreignung bestehen.</p>\n        <p>(3) Nach § 7 Abs. 2 FahrschAusbO kann die Behörde von einer erneuten Fahrschulausbildung ganz oder teilweise absehen.</p>\n        <p><strong>Wichtig:</strong> Bei Wiedererteilung kann auf Ausbildung verzichtet werden - aber Prüfung meist erforderlich!</p>\n    </div>"
+    },
+    "§48a FeV": {
+      "title": "§ 48a FeV - Begleitetes Fahren ab 17",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 48a Begleitetes Fahren (BF17)</strong></p>\n        <p>(1) Die Fahrerlaubnis der Klasse B oder BE kann bereits mit 17 Jahren erteilt werden, wenn der Fahrerlaubnisinhaber bis zur Vollendung des 18. Lebensjahres nur von einer in der Prüfungsbescheinigung namentlich benannten Begleitperson begleitet wird.</p>\n        <p><strong>Anforderungen an Begleitpersonen:</strong></p>\n        <p>• Mindestens 30 Jahre alt</p>\n        <p>• Seit mindestens 5 Jahren ununterbrochen Führerschein Klasse B</p>\n        <p>• Maximal 1 Punkt in Flensburg</p>\n        <p>• Nicht unter Alkohol- oder Drogeneinfluss (0,5‰-Grenze)</p>\n        <p><strong>Rechtsfolgen:</strong></p>\n        <p>• Mit 17: Nur mit Begleitperson fahren</p>\n        <p>• Ab 18: Automatisch unbeschränkte Klasse B</p>\n        <p>• Ohne Begleitperson fahren = Fahren ohne Fahrerlaubnis (§ 21 StVG)</p>\n        <p><strong>⚠️ ACHTUNG:</strong></p>\n        <p>Die Prüfungsbescheinigung gilt NICHT im Ausland! Erst ab 18 Jahren darf im Ausland gefahren werden.</p>\n        <p><strong>Praktischer Vorteil:</strong></p>\n        <p>Mehr Fahrpraxis vor dem 18. Geburtstag = sichereres Fahren!</p>\n    </div>"
+    },
+    "§21 FeV": {
+      "title": "§ 21 FeV - Antragstellung",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 21 Antrag</strong></p>\n                    <p>(1) Der Antrag auf Erteilung oder Erweiterung einer Fahrerlaubnis ist bei der nach § 73 zuständigen Behörde zu stellen.</p>\n                    <p>(2) Dem Antrag sind beizufügen:</p>\n                    <p>1. ein aktuelles Lichtbild nach den Vorgaben der Anlage 8 (biometrisches Passbild),</p>\n                    <p>2. eine Sehtestbescheinigung (Nachweis des Sehvermögens),</p>\n                    <p>3. bei Ersterteilung: Nachweis über eine Schulung in Erster Hilfe,</p>\n                    <p>4. Nachweis über Tag und Ort der Geburt,</p>\n                    <p>5. falls erforderlich: Nachweise über bereits erteilte Fahrerlaubnisse.</p>\n                    <p>(3) Die Fahrerlaubnisbehörde kann weitere Nachweise verlangen, insbesondere ein Führungszeugnis oder bei Zweifeln an der Eignung ein ärztliches oder medizinisch-psychologisches Gutachten.</p>\n                </div>"
+    },
+    "§23 FeV": {
+      "title": "§ 23 FeV - Befristung der Fahrerlaubnisklassen",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 23 Befristung</strong></p>\n                    <p>(1) Die Fahrerlaubnis der Klassen C, C1, CE, C1E, D, D1, DE und D1E wird für fünf Jahre erteilt; die Frist beginnt mit dem Tag der Erteilung der Fahrerlaubnis.</p>\n                    <p>(2) Nach Ablauf der Frist nach Absatz 1 wird die Fahrerlaubnis auf Antrag für weitere fünf Jahre verlängert, wenn der Antragsteller das vorgeschriebene Mindestalter noch nicht oder nicht mehr als fünf Jahre überschritten hat und nachweist, dass er die Anforderungen nach § 11 Absatz 9 erfüllt.</p>\n                    <p><strong>§ 11 Abs. 9 - Ärztliche Untersuchungen bei C/D:</strong></p>\n                    <p>• Ärztliches Gutachten nach Anlage 5</p>\n                    <p>• Augenärztliches Zeugnis nach § 12 Abs. 2</p>\n                    <p>(3) Hat der Inhaber der Fahrerlaubnis das 50. Lebensjahr vollendet, darf die Fahrerlaubnis längstens bis zur Vollendung des 55. Lebensjahres verlängert werden.</p>\n                    <p><strong>Praktische Bedeutung:</strong> C/D-Klassen müssen alle 5 Jahre verlängert werden mit ärztlicher und augenärztlicher Untersuchung!</p>\n                </div>"
+    },
+    "§25 FeV": {
+      "title": "§ 25 FeV - Theoretische Prüfung bei Erweiterung",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 25 Theoretische Prüfung</strong></p>\n        <p>(1) Bei der Erweiterung einer Fahrerlaubnis kann die theoretische Prüfung ganz oder teilweise entfallen, wenn bereits eine Fahrerlaubnis einer anderen Klasse vorhanden ist.</p>\n        <p><strong>Prüfungsbefreiungen:</strong></p>\n        <p>• A1 → A2: Theorieprüfung entfällt bei 2 Jahren Vorbesitz</p>\n        <p>• A2 → A: Theorieprüfung entfällt bei 2 Jahren Vorbesitz</p>\n        <p>• B → BE: Theorieprüfung entfällt</p>\n        <p>• B → C1/C: Reduzierte Theorieprüfung (nur Zusatzstoff)</p>\n        <p><strong>Wichtig:</strong></p>\n        <p>Die genauen Regelungen ergeben sich aus § 20 FeV in Verbindung mit der Fahrschüler-Ausbildungsordnung.</p>\n        <p><strong>Praktische Bedeutung:</strong></p>\n        <p>Wer bereits Fahrerfahrung hat, muss nicht alles neu lernen – Grundwissen wird angerechnet!</p>\n    </div>"
+    },
+    "§28 FeV": {
+      "title": "§ 28 FeV - EU/EWR-Führerscheine",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 28 Anerkennung von EU- oder EWR-Fahrerlaubnissen</strong></p>\n                    <p>(1) Inhaber einer gültigen EU- oder EWR-Fahrerlaubnis dürfen im Umfang ihrer Berechtigung im Inland Kraftfahrzeuge führen.</p>\n                    <p>(2) Beschränkungen, Auflagen und Zusatzangaben in der EU- oder EWR-Fahrerlaubnis sind auch im Inland zu beachten.</p>\n                    <p>(3) Die Vorschriften über die Geltungsdauer von Fahrerlaubnissen der Klassen C, C1, CE, C1E, D, D1, DE und D1E in § 23 Absatz 1 gelten auch für die entsprechenden EU- und EWR-Fahrerlaubnisse.</p>\n                    <p><strong>Wichtig:</strong> EU-Führerscheine sind in Deutschland direkt gültig! Eine Umschreibung ist freiwillig, wird aber bei Wohnsitzbegründung empfohlen.</p>\n                </div>"
+    },
+    "§30 FeV": {
+      "title": "§ 30 FeV - Drittstaaten-Führerscheine",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 30 Anerkennung von Fahrerlaubnissen aus Drittstaaten</strong></p>\n                    <p>(1) Inhaber einer ausländischen Fahrerlaubnis dürfen im Umfang ihrer Berechtigung für die Dauer von sechs Monaten nach Begründung eines ordentlichen Wohnsitzes im Inland Kraftfahrzeuge im Inland führen, wenn sie</p>\n                    <p>1. das nach deutschem Recht für die jeweilige Fahrerlaubnisklasse vorgeschriebene Mindestalter vollendet haben und</p>\n                    <p>2. im Besitz einer deutschen Übersetzung der Fahrerlaubnis sind.</p>\n                    <p>(2) Nach Ablauf der Frist nach Absatz 1 dürfen sie Kraftfahrzeuge nur führen, wenn sie im Besitz einer deutschen Fahrerlaubnis sind.</p>\n                    <p><strong>Wichtig:</strong> Nach 6 Monaten MUSS umgeschrieben werden! Sonst Fahren ohne Fahrerlaubnis!</p>\n                </div>"
+    },
+    "§31 FeV": {
+      "title": "§ 31 FeV - Umschreibung Drittstaaten",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 31 Umschreibung einer ausländischen Fahrerlaubnis aus Drittstaaten</strong></p>\n                    <p>(1) Auf Antrag wird eine ausländische Fahrerlaubnis umgeschrieben und eine deutsche Fahrerlaubnis erteilt.</p>\n                    <p>(2) Die Umschreibung setzt voraus:</p>\n                    <p>1. die Vorlage der ausländischen Fahrerlaubnis im Original,</p>\n                    <p>2. bei Zweifeln: Nachweis über die Echtheit und Gültigkeit der ausländischen Fahrerlaubnis,</p>\n                    <p>3. die Erfüllung der Anforderungen nach § 11 (Eignung),</p>\n                    <p>4. je nach Herkunftsstaat gemäß Anlage 11: theoretische und/oder praktische Prüfung.</p>\n                    <p><strong>Anlage 11 prüfen!</strong> Je nach Land keine, nur theoretische oder volle Prüfung erforderlich!</p>\n                </div>"
+    },
+    "§75 FeV": {
+      "title": "§ 75 FeV - Ordnungswidrigkeiten",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 75 Ordnungswidrigkeiten</strong></p>\n        <p>(1) Ordnungswidrig handelt, wer vorsätzlich oder fahrlässig</p>\n        <p>1. ohne die erforderliche Fahrerlaubnis ein Kraftfahrzeug führt,</p>\n        <p>2. als Halter anordnet oder zulässt, dass jemand ohne Fahrerlaubnis ein Kraftfahrzeug führt,</p>\n        <p>3. eine Prüfungsbescheinigung für das Führen eines Mofas nicht mitführt,</p>\n        <p>4. gegen Auflagen oder Beschränkungen der Fahrerlaubnis verstößt.</p>\n        <p><strong>Bußgelder (Auswahl):</strong></p>\n        <p>• Prüfungsbescheinigung nicht dabei: 10 €</p>\n        <p>• Führerschein nicht dabei: 10 €</p>\n        <p>• Fahren trotz Fahrverbot: 250 € + 1 Punkt</p>\n        <p>• Missachtung Auflagen (z.B. ohne Brille): 25 €</p>\n        <p><strong>⚠️ Wichtig - Abgrenzung zu Straftaten:</strong></p>\n        <p>• Fahren ohne gültige FE = Ordnungswidrigkeit (§ 75 FeV)</p>\n        <p>• Fahren ohne jemals FE gehabt = STRAFTAT (§ 21 StVG)</p>\n        <p>• Tuning mit BE-Erlöschen = STRAFTAT (§ 22a StVG)</p>\n    </div>"
+    },
+    "§76 FeV": {
+      "title": "§ 76 FeV - Übergangsrecht alte Führerscheine",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 76 Übergangsbestimmungen</strong></p>\n        <p>(1) Fahrerlaubnisse, die bis zum Inkrafttreten dieser Verordnung erteilt worden sind, gelten im Umfang der bisherigen Berechtigung weiter (Besitzstand).</p>\n        <p>(2) Alte Fahrerlaubnisklassen werden den neuen Klassen wie folgt zugeordnet:</p>\n        <p>• Klasse 3 (alt): B, BE, C1, C1E, AM, L (unter bestimmten Voraussetzungen auch CE)</p>\n        <p>• Klasse 2 (alt): A, A1, A2, AM, L, C, CE, BE</p>\n        <p>• Klasse 1 (alt): A, A2, A1, AM</p>\n        <p>• Klasse 4 (alt): AM, L</p>\n        <p>(3) Führerscheine sind gemäß der Umtausch-Fristen bis spätestens 19. Januar 2033 umzutauschen (gestaffelt nach Geburtsjahr).</p>\n        <p><strong>Wichtig:</strong> Alter FS = oft mehr Rechte! Besitzstand bleibt erhalten. Umtauschpflicht beachten!</p>\n    </div>"
+    },
+    "§76a FeV": {
+      "title": "§ 76a FeV - Modellversuche (AUFGEHOBEN)",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 76a Modellversuche (aufgehoben)</strong></p>\n        <p>Dieser Paragraph wurde durch die 13. Verordnung zur Änderung der Fahrerlaubnis-Verordnung vom 2. August 2021 aufgehoben.</p>\n        <p><strong>Historischer Kontext:</strong></p>\n        <p>§ 76a ermöglichte früher Modellversuche für neue Fahrerlaubnisregelungen (z.B. Begleitetes Fahren ab 17). Diese Regelungen sind mittlerweile fest in die FeV integriert.</p>\n        <p><strong>Aktuelle Rechtslage:</strong></p>\n        <p>• BF17 ist jetzt dauerhaft in § 48a FeV geregelt</p>\n        <p>• B196 ist in § 6b FeV geregelt</p>\n        <p>• Keine aktiven Modellversuche mehr erforderlich</p>\n    </div>"
+    },
+    "§1 eKFV": {
+      "title": "§ 1 Elektrokleinstfahrzeuge-Verordnung",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 1 Anwendungsbereich</strong></p>\n                    <p>(1) Diese Verordnung ist anzuwenden auf Kraftfahrzeuge mit elektrischem Antrieb und einer bauartbedingten Höchstgeschwindigkeit von nicht weniger als 6 km/h und nicht mehr als 20 km/h (Elektrokleinstfahrzeuge).</p>\n                    <p>(2) Elektrokleinstfahrzeuge müssen folgende Merkmale aufweisen:</p>\n                    <p>1. Lenkstange oder Haltestange,</p>\n                    <p>2. eine Nenndauerleistung von nicht mehr als 500 Watt, oder 1400 Watt bei selbstbalancierenden Fahrzeugen,</p>\n                    <p>3. bestimmte lichttechnische Einrichtungen,</p>\n                    <p>4. eine Haltevorrichtung,</p>\n                    <p>5. zwei voneinander unabhängige Bremsen.</p>\n                    <p><strong>Wichtig:</strong> E-Scooter brauchen ABE! Ohne ABE = illegal. Max. 20 km/h, max. 500W.</p>\n                </div>"
+    },
+    "§2 eKFV": {
+      "title": "§ 2 Elektrokleinstfahrzeuge-Verordnung - Zulassung",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>§ 2 Allgemeine Betriebserlaubnis</strong></p>\n                    <p>(1) Elektrokleinstfahrzeuge dürfen nur in Betrieb gesetzt werden, wenn sie über eine Allgemeine Betriebserlaubnis (ABE) verfügen.</p>\n                    <p>(2) Die ABE wird durch das Kraftfahrt-Bundesamt erteilt.</p>\n                    <p>(3) Fahrzeuge ohne ABE dürfen auf öffentlichen Straßen nicht geführt werden.</p>\n                    <p><strong>Mindestalter:</strong> 14 Jahre</p>\n                    <p><strong>Helmpflicht:</strong> Nein</p>\n                    <p><strong>Versicherungspflicht:</strong> Ja (Versicherungsplakette erforderlich)</p>\n                </div>"
+    },
+    "EU-VO 168/2013": {
+      "title": "EU-Verordnung 168/2013 - Fahrzeugklassifizierung",
+      "text": "<div class=\"law-paragraph\">\n                    <p><strong>Verordnung (EU) Nr. 168/2013 - Fahrzeugklassen</strong></p>\n                    <p><strong>Klasse L1e-B:</strong> Zweirädriges Kleinkraftrad</p>\n                    <p>• Hubraum max. 50 cm³ (Verbrennungsmotor)</p>\n                    <p>• Leistung max. 4 kW</p>\n                    <p>• Höchstgeschwindigkeit max. 45 km/h</p>\n                    <p>• Beispiel: Roller, Mofa, S-Pedelec</p>\n                    \n                    <p><strong>Klasse L2e:</strong> Dreirädriges Kleinkraftmoped</p>\n                    <p>• L2e-P: Personenbeförderung</p>\n                    <p>• L2e-U: Güterbeförderung</p>\n                    <p>• Max. 50 cm³, 4 kW, 45 km/h</p>\n                    <p>• Beispiel: Piaggio Ape gedrosselt</p>\n                    \n                    <p><strong>Klasse L3e-A1:</strong> Leichtkraftrad</p>\n                    <p>• Hubraum max. 125 cm³</p>\n                    <p>• Leistung max. 11 kW</p>\n                    <p>• Leistungsgewicht max. 0,1 kW/kg</p>\n                    \n                    <p><strong>Klasse L3e-A3:</strong> Kraftrad (volle Motorräder)</p>\n                    <p>• Über 125 cm³ oder über 11 kW</p>\n                    <p>• Keine Leistungsbegrenzung</p>\n                    <p>• Für Klasse A (ab 24 Jahre oder Stufenweg)</p>\n                    \n                    <p><strong>Klasse L5e:</strong> Dreirädriges Kraftfahrzeug</p>\n                    <p>• Symmetrisch angeordnete Räder</p>\n                    <p>• Über 50 cm³ oder über 45 km/h</p>\n                    <p>• Beispiel: Trike, Ellenator</p>\n                    \n                    <p><strong>Klasse L6e:</strong> Leichtes vierrädriges Kraftfahrzeug</p>\n                    <p>• Max. 425 kg Leermasse (ohne Batterie bei E-Fz.)</p>\n                    <p>• Max. 4 kW, 45 km/h</p>\n                    <p>• Beispiel: Aixam, Ligier (Mopedauto)</p>\n                    \n                    <p><strong>Klasse L7e:</strong> Schweres vierrädriges Kraftfahrzeug</p>\n                    <p>• Max. 450 kg (600 kg für Güterbeförderung)</p>\n                    <p>• Max. 15 kW</p>\n                    <p>• Beispiel: Quad</p>\n                </div>"
+    },
+    "EU-VO 168/2013 Art.18-22": {
+      "title": "EU-VO 168/2013 Art. 18-22 - Typgenehmigung",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>Artikel 18-22: Typgenehmigungsverfahren</strong></p>\n        <p><strong>Artikel 18 - EU-Typgenehmigung:</strong></p>\n        <p>Hersteller müssen für jedes Fahrzeugmodell eine EU-Typgenehmigung beantragen. Diese gilt dann in allen EU-Mitgliedstaaten.</p>\n        <p><strong>Artikel 19 - Übereinstimmungsbescheinigung (COC):</strong></p>\n        <p>Jedes Fahrzeug muss mit einer Übereinstimmungsbescheinigung (Certificate of Conformity) ausgeliefert werden.</p>\n        <p><strong>Artikel 20 - Herstellerpflichten:</strong></p>\n        <p>• Sicherstellung der Übereinstimmung der Produktion</p>\n        <p>• Dokumentation aller Änderungen</p>\n        <p>• Rückrufaktionen bei Sicherheitsmängeln</p>\n        <p><strong>Artikel 21 - Nationale Einzelgenehmigung:</strong></p>\n        <p>Für Einzelfahrzeuge oder Kleinserien können nationale Behörden Einzelgenehmigungen erteilen.</p>\n        <p><strong>Artikel 22 - Marktüberwachung:</strong></p>\n        <p>Mitgliedstaaten müssen Fahrzeuge im Markt überwachen und bei Verstößen eingreifen.</p>\n        <p><strong>Praktische Bedeutung:</strong></p>\n        <p>• COC-Papiere bei Fahrzeugkauf wichtig!</p>\n        <p>• Umbauten können Typgenehmigung ungültig machen</p>\n        <p>• Bei Import: EU-Typgenehmigung prüfen</p>\n    </div>"
+    },
+    "EU-VO 167/2013": {
+      "title": "EU-Verordnung 167/2013 - Land- und Forstwirtschaftliche Fahrzeuge",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>Verordnung (EU) Nr. 167/2013 - LoF-Fahrzeuge</strong></p>\n        <p><strong>Artikel 2 Begriffsbestimmungen:</strong></p>\n        <p><strong>Nr. 1 - Zugmaschine:</strong> Kraftfahrzeug zur Hauptverwendung zum Ziehen von Anhängern oder Maschinen</p>\n        <p><strong>Nr. 2 - Anhänger:</strong> Fahrzeug ohne eigenen Antrieb, zum Ziehen durch eine Zugmaschine bestimmt</p>\n        <p><strong>Nr. 3 - Auswechselbare gezogene Geräte:</strong> Nicht selbstfahrende Geräte für land-/forstwirtschaftliche Arbeiten</p>\n        <p><strong>Nr. 4 - Auswechselbare angebaute Geräte:</strong> An Zugmaschine montierte Arbeitsgeräte</p>\n        <p><strong>Wichtig für Klasse L und T:</strong></p>\n        <p>• Zugmaschinen bis 40 km/h → Klasse L (ab 16 Jahre)</p>\n        <p>• Zugmaschinen bis 60 km/h → Klasse T (ab 16/18 Jahre je nach bbH)</p>\n        <p>• Anhänger und Geräte müssen zur LoF-Verwendung bestimmt sein</p>\n        <p>• Mit Anhänger gelten reduzierte Geschwindigkeiten (L: 25 km/h)</p>\n    </div>"
+    },
+    "§30a StVZO": {
+      "title": "§ 30a StVZO - Bauartbedingte Höchstgeschwindigkeit",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 30a Geschwindigkeitsmesser</strong></p>\n        <p>(1) Kraftfahrzeuge – ausgenommen Krafträder ohne Beiwagen mit einem Hubraum von nicht mehr als 50 cm³ und einer durch die Bauart bestimmten Höchstgeschwindigkeit von nicht mehr als 45 km/h – müssen mit einem Geschwindigkeitsmesser ausgerüstet sein.</p>\n        <p><strong>Definition bbH:</strong></p>\n        <p>Die bauartbedingte Höchstgeschwindigkeit (bbH) ist die Geschwindigkeit, die ein Fahrzeug aufgrund seiner Bauart und technischen Auslegung maximal erreichen kann.</p>\n        <p><strong>Relevanz:</strong></p>\n        <p>• <strong>Autobahn:</strong> bbH muss mehr als 60 km/h betragen!</p>\n        <p>• <strong>Kraftfahrstraße:</strong> Abhängig von Beschilderung, in der Regel bbH >60 km/h erforderlich</p>\n        <p>• <strong>Drosselung:</strong> Verringert die bbH dauerhaft</p>\n        <p><strong>Beispiele:</strong></p>\n        <p>• Mofa 25 km/h bbH → Keine Autobahn/Kraftfahrstraße</p>\n        <p>• AM 45 km/h bbH → Keine Autobahn/Kraftfahrstraße</p>\n        <p>• Traktor 40 km/h bbH (Klasse L) → Keine Autobahn</p>\n        <p>• PKW unbegrenzt → Autobahn OK</p>\n    </div>"
+    },
+    "§1 PflVG": {
+      "title": "§ 1 Pflichtversicherungsgesetz",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 1 Versicherungspflicht</strong></p>\n        <p>(1) Der Halter eines Kraftfahrzeugs oder Anhängers mit regelmäßigem Standort im Inland ist verpflichtet, für sich, den Eigentümer und den Fahrer eine Haftpflichtversicherung zur Deckung der durch den Gebrauch des Fahrzeugs verursachten Personenschäden, Sachschäden und sonstigen Vermögensschäden abzuschließen und aufrechtzuerhalten.</p>\n        <p>(2) Die Versicherung muss bei einem im Inland zum Betrieb der Kraftfahrzeug-Haftpflichtversicherung befugten Versicherungsunternehmen genommen werden.</p>\n        <p><strong>Folgen bei Verstoß:</strong></p>\n        <p>• Geldstrafe oder Freiheitsstrafe bis zu 1 Jahr (§ 6 PflVG)</p>\n        <p>• Fahrzeug wird stillgelegt</p>\n        <p>• Bei Unfall: Voller Schadensersatz aus eigener Tasche!</p>\n        <p>• Versicherung kann Regress fordern</p>\n        <p><strong>Wichtig bei Tuning:</strong> Betriebserlaubnis erlischt → Versicherungsschutz erlischt automatisch!</p>\n    </div>"
+    },
+    "EN 15194": {
+      "title": "EN 15194 - Pedelec-Norm",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>EN 15194 Europäische Norm für Pedelecs</strong></p>\n        <p>Diese europäische Norm legt die Anforderungen und Prüfverfahren für Fahrräder mit elektrischer Tretunterstützung (EPAC = Electrically Power Assisted Cycles) fest.</p>\n        <p><strong>Anforderungen:</strong></p>\n        <p>1. Motor nur bei Tretbewegung aktiv</p>\n        <p>2. Nenndauerleistung max. 250 Watt</p>\n        <p>3. Unterstützung stoppt bei 25 km/h</p>\n        <p>4. Schiebehilfe bis 6 km/h ohne Treten erlaubt</p>\n        <p><strong>Rechtliche Einordnung:</strong></p>\n        <p>Pedelecs nach EN 15194 gelten in Deutschland NICHT als Kraftfahrzeug, sondern als Fahrrad!</p>\n        <p><strong>Folgen:</strong></p>\n        <p>• Keine Zulassung nötig</p>\n        <p>• Keine Versicherung nötig</p>\n        <p>• Kein Führerschein nötig</p>\n        <p>• Keine Helmpflicht</p>\n        <p>• Radweg erlaubt/Pflicht</p>\n    </div>"
+    },
+    "§63a StVZO": {
+      "title": "§ 63a StVZO - Fahrräder",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 63a Fahrräder</strong></p>\n        <p>(1) Fahrräder müssen mit einer Vorrichtung zur Abgabe von akustischen Warnzeichen ausgerüstet sein (Klingel). Andere Einrichtungen für Schallzeichen dürfen an Fahrrädern nicht angebracht sein.</p>\n        <p>(2) Fahrräder müssen für den Betrieb des Scheinwerfers und der Schlussleuchte mit einer Lichtmaschine ausgerüstet sein, deren Nennleistung mindestens 3 W und deren Nennspannung 6 V beträgt (Dynamo) oder mit einer Batterie mit einer Nennspannung von 6 V.</p>\n        <p><strong>Praktisch:</strong></p>\n        <p>• Klingel Pflicht!</p>\n        <p>• Beleuchtung Pflicht (Dynamo oder Batterie)</p>\n        <p>• Reflektoren vorn, hinten, seitlich</p>\n    </div>"
+    },
+    "§67 StVZO": {
+      "title": "§ 67 StVZO - Lichttechnische Einrichtungen an Fahrrädern",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 67 Lichttechnische Einrichtungen an Fahrrädern</strong></p>\n        <p>(1) Fahrräder müssen für den Betrieb des Scheinwerfers und der Schlussleuchte mit</p>\n        <p>1. einer Lichtmaschine (Dynamo) oder</p>\n        <p>2. einer Batterie mit einer Nennspannung von 6 V</p>\n        <p>ausgerüstet sein.</p>\n        <p>(2) Scheinwerfer müssen weißes Licht abstrahlen.</p>\n        <p>(3) Mindestens eine Schlussleuchte für rotes Licht erforderlich.</p>\n        <p>(4) Reflektoren:</p>\n        <p>• Vorn: weißer Reflektor</p>\n        <p>• Hinten: roter Reflektor</p>\n        <p>• Pedale: gelbe Reflektoren</p>\n        <p>• Speichen: gelbe Speichenreflektoren oder Reflexstreifen</p>\n        <p><strong>Bußgeld bei Verstoß:</strong> 20-35 €</p>\n    </div>"
+    },
+    "§22a StVG": {
+      "title": "§ 22a StVG - Änderung der Fahrzeugbeschaffenheit",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 22a Gefährdung des Straßenverkehrs durch Änderungen an Fahrzeugen</strong></p>\n        <p>Wer als Halter eines Kraftfahrzeugs oder Anhängers</p>\n        <p>1. eine Änderung vornimmt oder vornehmen lässt, durch die eine Gefahr für die Verkehrssicherheit entsteht, oder</p>\n        <p>2. die Verkehrssicherheit des Fahrzeugs durch Änderung der Fahrzeugteile oder deren Montage beeinträchtigt</p>\n        <p>und das Fahrzeug in diesem Zustand am Verkehr teilnehmen lässt, wird mit Freiheitsstrafe bis zu einem Jahr oder mit Geldstrafe bestraft.</p>\n        <p><strong>Tuning = Straftat!</strong></p>\n        <p>• Mofa über 25 km/h → §22a StVG + §21 StVG (Fahren ohne FE)</p>\n        <p>• Kleinkraftrad über 45 km/h → §22a StVG + Versicherungsschutz erloschen!</p>\n        <p>• Betriebserlaubnis erlischt automatisch</p>\n        <p>• Führerscheinentzug möglich</p>\n        <p>• Punkte in Flensburg</p>\n        <p>• Bei Unfall: Versicherung zahlt nicht → Private Haftung für alle Schäden!</p>\n    </div>"
+    },
+    "§19 StVZO": {
+      "title": "§ 19 StVZO - Änderung von Fahrzeugen",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 19 Änderungen</strong></p>\n        <p>(1) Wer ein Fahrzeug so verändert, dass die Verkehrssicherheit beeinträchtigt wird, muss die Änderung von einem amtlich anerkannten Sachverständigen begutachten und von der zuständigen Behörde genehmigen lassen.</p>\n        <p>(2) Bei folgenden Änderungen ist eine Abnahme erforderlich:</p>\n        <p>• Änderung der Motorleistung</p>\n        <p>• Änderung der Fahrwerksgeometrie (Tieferlegung, Spurverbreiterung)</p>\n        <p>• Änderung der Rad-/Reifenkombination</p>\n        <p>• Einbau von Gasanlagen</p>\n        <p>• Änderung der Karosserie</p>\n        <p><strong>Verfahren:</strong></p>\n        <p>1. Änderung planen und Teilegutachten beschaffen</p>\n        <p>2. Umbau durchführen</p>\n        <p>3. TÜV/DEKRA-Abnahme (§ 19.3 StVZO)</p>\n        <p>4. Eintragung in Fahrzeugpapiere</p>\n        <p><strong>⚠️ OHNE Eintragung:</strong></p>\n        <p>• Betriebserlaubnis erlischt (§ 69a StVZO)</p>\n        <p>• Versicherungsschutz erlischt (§ 1 PflVG)</p>\n        <p>• Straftat nach § 22a StVG</p>\n        <p><strong>Ausnahmen (keine Abnahme nötig):</strong></p>\n        <p>• Teile mit ABE (Allgemeine Betriebserlaubnis)</p>\n        <p>• Teile mit Teilegutachten nach § 19.3</p>\n        <p>• Geringfügige Änderungen ohne Sicherheitsrelevanz</p>\n    </div>"
+    },
+    "§69a StVZO": {
+      "title": "§ 69a StVZO - Erlöschen der Betriebserlaubnis",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 69a Erlöschen der Betriebserlaubnis</strong></p>\n        <p>(1) Bei Änderungen an einem Fahrzeug erlischt die Betriebserlaubnis oder Typgenehmigung, wenn</p>\n        <p>1. die in § 19 Absatz 2 genannten Vorschriften nicht eingehalten werden oder</p>\n        <p>2. Teile oder Ausrüstungen verwendet werden, für die eine Bauartgenehmigung vorgeschrieben ist, ohne dass die Teile oder Ausrüstungen diese Genehmigung haben.</p>\n        <p><strong>Praktische Folgen:</strong></p>\n        <p>• Tuning → BE weg!</p>\n        <p>• Ohne BE → Versicherungsschutz erlischt!</p>\n        <p>• Fahren ohne BE → Straftat nach § 6 Abs. 1 PflVG</p>\n        <p>• Bei Unfall: Du zahlst ALLES selbst (Personen-, Sachschäden)</p>\n        <p>• Fahren ohne Versicherungsschutz → Freiheitsstrafe bis 1 Jahr oder Geldstrafe</p>\n    </div>"
+    },
+    "§7 Abs.2 FahrschAusbO": {
+      "title": "§ 7 Abs. 2 Fahrschüler-Ausbildungsordnung",
+      "text": "<div class=\"law-paragraph\">\n        <p><strong>§ 7 Abs. 2 Ausnahmen von der Ausbildung</strong></p>\n        <p>Die Fahrerlaubnisbehörde kann auf Antrag des Bewerbers von der Ausbildung in einer Fahrschule ganz oder teilweise absehen, wenn</p>\n        <p>1. der Bewerber bereits eine Fahrerlaubnis besessen hat und diese entzogen wurde,</p>\n        <p>2. der Bewerber auf die Fahrerlaubnis verzichtet hat,</p>\n        <p>3. bei Erweiterung auf eine andere Klasse,</p>\n        <p>4. bei Aufstieg innerhalb der A-Klassen nach 2 Jahren Vorbesitz.</p>\n        <p><strong>Praktische Bedeutung:</strong></p>\n        <p>• Nach Führerscheinentzug kann Behörde auf Fahrschule verzichten</p>\n        <p>• A1→A2 und A2→A: Verkürzte Ausbildung möglich</p>\n        <p>• Bei Erweiterung: Anrechnung bereits erlernter Inhalte</p>\n        <p>• Entscheidung liegt im Ermessen der Behörde!</p>\n    </div>"
+    }
+  },
+  "totalEntries": 61
+}

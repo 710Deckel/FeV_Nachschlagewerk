@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeV/StVZO/EU-Nachschlagewerk Deutschland V3.5 - GitHub Edition</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+/* Animierter Hintergrund mit fliegenden Symbolen */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-symbol {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.15;
+    animation: float-diagonal linear infinite;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+@keyframes float-diagonal {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.15;
+    }
+    90% {
+        opacity: 0.15;
+    }
+    100% {
+        transform: translate(100vw, -100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Verschiedene Geschwindigkeiten und Startpositionen */
+.floating-symbol:nth-child(1) { animation-duration: 25s; animation-delay: 0s; left: 10%; top: 100%; }
+.floating-symbol:nth-child(2) { animation-duration: 30s; animation-delay: 2s; left: 20%; top: 100%; }
+.floating-symbol:nth-child(3) { animation-duration: 28s; animation-delay: 4s; left: 30%; top: 100%; }
+.floating-symbol:nth-child(4) { animation-duration: 32s; animation-delay: 1s; left: 40%; top: 100%; }
+.floating-symbol:nth-child(5) { animation-duration: 26s; animation-delay: 3s; left: 50%; top: 100%; }
+.floating-symbol:nth-child(6) { animation-duration: 29s; animation-delay: 5s; left: 60%; top: 100%; }
+.floating-symbol:nth-child(7) { animation-duration: 27s; animation-delay: 2.5s; left: 70%; top: 100%; }
+.floating-symbol:nth-child(8) { animation-duration: 31s; animation-delay: 4.5s; left: 80%; top: 100%; }
+.floating-symbol:nth-child(9) { animation-duration: 33s; animation-delay: 1.5s; left: 90%; top: 100%; }
+.floating-symbol:nth-child(10) { animation-duration: 28s; animation-delay: 3.5s; left: 15%; top: 100%; }
+.floating-symbol:nth-child(11) { animation-duration: 30s; animation-delay: 6s; left: 25%; top: 100%; }
+.floating-symbol:nth-child(12) { animation-duration: 27s; animation-delay: 0.5s; left: 35%; top: 100%; }
+.floating-symbol:nth-child(13) { animation-duration: 29s; animation-delay: 2.8s; left: 45%; top: 100%; }
+.floating-symbol:nth-child(14) { animation-duration: 31s; animation-delay: 4.2s; left: 55%; top: 100%; }
+.floating-symbol:nth-child(15) { animation-duration: 26s; animation-delay: 5.5s; left: 65%; top: 100%; }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-bottom: 100px;
+position: relative;
+z-index: 1;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .subtitle { opacity: 0.9; font-size: 0.95em; }
+        
+        /* GitHub Sync Status */
+        .sync-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .sync-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+        
+        .sync-indicator.syncing {
+            background: #fbbf24;
+            animation: spin 1s linear infinite;
+        }
+        
+        .sync-indicator.error {
+            background: #ef4444;
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .controls {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .filter-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #34495e;
+            background: white;
+            color: #34495e;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #34495e; color: white; }
+        .btn.active { background: #34495e; color: white; }
+        .content {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            min-height: 600px;
+        }
+        .sidebar {
+            background: #f8f9fa;
+            border-right: 2px solid #dee2e6;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+        .category { margin-bottom: 25px; }
+        .category h3 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+        .item {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-left: 3px solid #3498db;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .item:hover { background: #e3f2fd; transform: translateX(5px); }
+        .item.active { background: #3498db; color: white; }
+        .item.forbidden { border-left-color: #e74c3c; }
+        .item.procedure { border-left-color: #9b59b6; }
+        .detail {
+            padding: 30px;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+        .detail-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .detail-card h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        .detail-card h3 {
+            margin-top: 25px;
+            color: #2c3e50;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #27ae60;
+        }
+        .info-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 3px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .badge:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+        .badge.power { background: #e67e22; }
+        .requirements {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .requirements li { margin: 8px 0; padding-left: 20px; }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .forbidden-warning {
+            background: #dc3545;
+            color: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .converter {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .bbh-info {
+            background: #fff8e1;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        /* Erweiterte Suchfunktion */
+        .advanced-search {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        .advanced-search h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .search-field {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        .search-field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        .search-field input,
+        .search-field select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        .search-field input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        .search-field input:focus,
+        .search-field select:focus {
+            outline: none;
+            border-color: #fff;
+            background: rgba(255,255,255,0.3);
+        }
+        .search-field select option {
+            background: #667eea;
+            color: white;
+        }
+        .search-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .search-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .search-btn.primary {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        .search-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(17, 153, 142, 0.4);
+        }
+        .search-btn.secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        .search-btn.secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .search-results {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .search-results h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .result-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .result-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        .result-item .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .result-item .result-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .result-item .result-license {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .result-item .result-details {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        .result-item .result-info {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .result-item .result-badge {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            color: #495057;
+        }
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.1em;
+        }
+        .search-hint {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            overflow: auto;
+        }
+        .modal.show {
+            display: block;
+        }
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 900px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+        .modal-header h2 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        .close {
+            font-size: 32px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .close:hover {
+            color: #000;
+        }
+        .law-text {
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        .law-text p {
+            margin: 15px 0;
+        }
+        .law-paragraph {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #3498db;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<!-- Animierter Hintergrund -->
+<div class="background-animation">
+    <div class="floating-symbol">§4 FeV</div>
+    <div class="floating-symbol">🚗</div>
+    <div class="floating-symbol">§6 FeV</div>
+    <div class="floating-symbol">🏍️</div>
+    <div class="floating-symbol">§10 FeV</div>
+    <div class="floating-symbol">🚜</div>
+    <div class="floating-symbol">§5 FeV</div>
+    <div class="floating-symbol">🛵</div>
+    <div class="floating-symbol">§76 FeV</div>
+    <div class="floating-symbol">🚌</div>
+    <div class="floating-symbol">§46 FeV</div>
+    <div class="floating-symbol">🚚</div>
+    <div class="floating-symbol">§20 FeV</div>
+    <div class="floating-symbol">🚲</div>
+    <div class="floating-symbol">§6b FeV</div>
+</div>
+    <div class="container">
+        <header>
+            <h1>⚖️ FeV/StVZO/EU-Nachschlagewerk</h1>
+            <p class="subtitle">Alle Fahrzeugkategorien mit interaktiven Rechtsgrundlagen - Stand 2025 (V3.5 GitHub Edition mit Auto-Sync)</p>
+            
+            <div class="sync-status">
+                <div class="sync-indicator" id="syncIndicator"></div>
+                <span id="syncText">Synchronisiert</span>
+            </div>
+        </header>
+
+        <!-- Erweiterte FeV-Suchfunktion -->
+        <div class="advanced-search" id="advancedSearch">
+            <h2>🔍 FeV-Assistent: Welche Fahrerlaubnis brauche ich?</h2>
+            <p style="margin-bottom: 15px;">Geben Sie Ihre Fahrzeug- und Anhängerdaten ein - nicht alle Felder müssen ausgefüllt werden!</p>
+            
+            <div class="search-grid">
+                <div class="search-field">
+                    <label>🚗 Führerscheinklasse (optional)</label>
+                    <select id="searchLicense">
+                        <option value="">-- Bitte wählen --</option>
+                        <option value="AM">AM (Kleinkrafträder)</option>
+                        <option value="A1">A1 (125er)</option>
+                        <option value="A2">A2 (35 kW)</option>
+                        <option value="A">A (Unbegrenzt)</option>
+                        <option value="B">B (PKW)</option>
+                        <option value="BE">BE (PKW + Anhänger)</option>
+                        <option value="B96">B96 (Schlüsselzahl)</option>
+                        <option value="B196">B196 (Schlüsselzahl)</option>
+                        <option value="B197">B197 (Schlüsselzahl)</option>
+                        <option value="C1">C1 (LKW 3,5-7,5t)</option>
+                        <option value="C1E">C1E (C1 + Anhänger)</option>
+                        <option value="C">C (LKW > 7,5t)</option>
+                        <option value="CE">CE (C + Anhänger)</option>
+                        <option value="D1">D1 (Kleinbus)</option>
+                        <option value="D">D (Bus)</option>
+                        <option value="L">L (LoF 40 km/h)</option>
+                        <option value="T">T (LoF 60 km/h)</option>
+                    </select>
+                </div>
+
+                <div class="search-field">
+                    <label>🔢 Schlüsselzahl (optional)</label>
+                    <input type="text" id="searchKeyCode" placeholder="z.B. 96, 196, 197, 78, 01...">
+                </div>
+
+                <div class="search-field">
+                    <label>⚖️ zGM Zugfahrzeug in kg (optional)</label>
+                    <input type="number" id="searchVehicleWeight" placeholder="z.B. 2500">
+                </div>
+
+                <div class="search-field">
+                    <label>⚖️ zGM Anhänger in kg (optional)</label>
+                    <input type="number" id="searchTrailerWeight" placeholder="z.B. 1200">
+                </div>
+
+                <div class="search-field">
+                    <label>🚙 Fahrzeugart (optional)</label>
+                    <select id="searchVehicleType">
+                        <option value="">-- Bitte wählen --</option>
+                        <optgroup label="Zweirädrige Fahrzeuge">
+                            <option value="Motorrad">🏍️ Motorrad / Kraftrad (A1, A2, A)</option>
+                            <option value="Kleinkraftrad">🛵 Kleinkraftrad / Roller (AM)</option>
+                            <option value="Mofa">🛵 Mofa (Mofa-Prüfung)</option>
+                            <option value="Fahrrad">🚲 Fahrrad / Pedelec</option>
+                            <option value="E-Scooter">🛴 E-Scooter</option>
+                        </optgroup>
+                        <optgroup label="Dreirädrige Fahrzeuge">
+                            <option value="Trike">🛺 Trike / Dreirad (A1/B oder A je nach Leistung)</option>
+                            <option value="Dreirad-Kleinkraft">🛺 Dreirädriges Kleinkraftrad (AM)</option>
+                        </optgroup>
+                        <optgroup label="Vierrädrige Fahrzeuge">
+                            <option value="PKW">🚗 PKW / Auto (B)</option>
+                            <option value="LKW">🚚 LKW / Lastwagen (C1, C)</option>
+                            <option value="Bus">🚌 Bus / Omnibus (D1, D)</option>
+                            <option value="Quad">🎯 Quad (AM oder B je nach Leistung)</option>
+                            <option value="Mopedauto">🚐 Mopedauto / L6e (AM)</option>
+                        </optgroup>
+                        <optgroup label="Sonstige">
+                            <option value="Traktor">🚜 Traktor / Zugmaschine LoF (L, T)</option>
+                            <option value="Anhänger">🚙 Mit Anhänger (BE, B96, C1E, CE, etc.)</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="search-field">
+                    <label>⚡ Motorleistung in kW (optional)</label>
+                    <input type="number" id="searchPower" placeholder="z.B. 11 (entspricht 15 PS)">
+                </div>
+            </div>
+
+            <div class="search-actions">
+                <button class="search-btn primary" onclick="performAdvancedSearch()">🔍 FeV-Vorschrift suchen</button>
+                <button class="search-btn secondary" onclick="resetAdvancedSearch()">🔄 Zurücksetzen</button>
+            </div>
+
+            <div class="search-hint">
+                💡 <strong>Tipp:</strong> Sie müssen nicht alle Felder ausfüllen! Je mehr Informationen Sie angeben, desto genauer wird das Ergebnis.<br>
+                <strong>Beispiele:</strong><br>
+                • PKW 2200 kg + Anhänger 1000 kg → findet B, B96 oder BE<br>
+                • Schlüsselzahl "96" → zeigt B96-Regelung<br>
+                • Motorrad 11 kW → zeigt A1-Klasse<br>
+                • LKW 5000 kg → zeigt C1-Klasse<br>
+                • Fahrzeugart "Dreirädrige Fahrzeuge: Trike" → zeigt alle Trike-Klassen (A1/B oder A)<br>
+                • Fahrzeugart "Zweirädrige: Kleinkraftrad" → zeigt AM-Klasse<br>
+                • Fahrzeugart "Vierrädrige: Quad" → zeigt Quad-Kategorien (AM oder B)
+            </div>
+        </div>
+
+        <div class="search-results" id="searchResults" style="display: none;"></div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Suche...">
+            <div class="filter-buttons" id="filterButtons">
+                <button class="btn active" onclick="setFilter('all')">Alle</button>
+                <button class="btn" onclick="setFilter('free')">Fahrerlaubnisfrei</button>
+                <button class="btn" onclick="setFilter('mofa')">Mofa</button>
+                <button class="btn" onclick="setFilter('license')">Führerschein</button>
+                <button class="btn" onclick="setFilter('special')">Sonder</button>
+                <button class="btn" onclick="setFilter('forbidden')">Verboten</button>
+                <button class="btn" onclick="setFilter('procedure')">Verfahren</button>
+                <button class="btn" onclick="setFilter('glossary')">Glossar</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="sidebar" id="sidebar"></div>
+            <div class="detail" id="detail">
+                <div class="detail-card">
+                    <h2>📚 Willkommen</h2>
+                    <p style="line-height: 1.6;">Dieses Nachschlagewerk enthält alle Fahrzeugkategorien nach deutschem und EU-Recht mit:</p>
+                    <ul style="margin: 15px 0 15px 30px; line-height: 1.8;">
+                        <li><strong>Interaktive Rechtsgrundlagen</strong> - Klicken Sie auf Paragraphen für vollständige Gesetzestexte</li>
+                        <li><strong>bbH-Informationen</strong> - Bauartbedingte Höchstgeschwindigkeiten und Zufahrtsrechte</li>
+                        <li><strong>Erweiterte Schlüsselzahlen</strong> - Alle wichtigen Codes erklärt</li>
+                        <li>⚠️ ACHTUNG-Hinweisen zu häufigen Fallen</li>
+                        <li>📌 Einprägsamen Merksätzen</li>
+                        <li>Praktischen Tipps und Anforderungen</li>
+                        <li>🔄 kW/PS-Umrechnung</li>
+                    </ul>
+                    <div class="note">
+                        <strong>💡 Neu in V2.5:</strong> FeV-Assistent mit intelligenter Suche! Finden Sie die richtige Fahrerlaubnis durch Eingabe von Führerscheinklasse, Schlüsselzahl, Fahrzeuggewichten (zGM), Fahrzeugart oder Motorleistung. Besonders hilfreich für Anhänger-Kombinationen (B, B96, BE, C1E, etc.)!
+                    </div>
+                    <div class="converter">
+                        <strong>🔄 Schnellumrechnung:</strong><br>
+                        1 kW = 1,36 PS | 1 PS = 0,735 kW
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal für Gesetzestexte -->
+    <div id="lawModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Gesetzestext</h2>
+                <span class="close" onclick="closeLawModal()">&times;</span>
+            </div>
+            <div id="modalBody" class="law-text"></div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; padding: 30px; color: white; font-weight: 600; margin-top: 40px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; max-width: 1600px; margin-left: auto; margin-right: auto;">
+        FL-BE_10/25_Justin_Lee_Probis | V2.5 mit FeV-Assistent (intelligente Suche nach Klassen, Gewichten, Schlüsselzahlen)
+    </div>
+
+    <script>
+        // Gesetzestexte-Datenbank (ERWEITERT)
+        const LAWS = {
+            '§1 Abs.3 StVG': {
+                title: '§ 1 Abs. 3 Straßenverkehrsgesetz (StVG)',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 1 Zulassung</strong></p>
+                    <p>(3) Die Zulassungspflicht besteht nicht für</p>
+                    <p>1. selbstfahrende Arbeitsmaschinen,</p>
+                    <p>2. Stapler im Sinne des § 2 Nummer 18,</p>
+                    <p>3. Zugmaschinen, die nach ihrer Bauart für die Verwendung für land- oder forstwirtschaftliche Zwecke bestimmt sind,</p>
+                    <p>4. einachsige Zugmaschinen, wenn sie von dem gehenden Führer mittels Holmen gelenkt werden,</p>
+                    <p>5. Fahrräder im Sinne der Straßenverkehrs-Ordnung,</p>
+                    <p>6. motorbetriebene Krankenfahrstühle,</p>
+                    <p>7. Fahrzeuge, die von der Bundeswehr oder den ausländischen NATO-Truppen im Rahmen von Vereinbarungen zwischen der Bundesrepublik Deutschland und den Stationierungsstreitkräften eingesetzt werden.</p>
+                </div>`
+            },
+            '§4 Abs.1 FeV': {
+                title: '§ 4 Abs. 1 Fahrerlaubnis-Verordnung (FeV)',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 4 Erlaubnispflicht und Ausweispflicht für das Führen von Kraftfahrzeugen</strong></p>
+                    <p>(1) Wer auf öffentlichen Straßen ein Kraftfahrzeug führt, bedarf der Fahrerlaubnis. Ausgenommen sind</p>
+                    <p>1. einspurige Fahrräder mit Hilfsmotor – auch ohne Tretkurbeln –, wenn ihre Bauart Gewähr dafür bietet, dass die Höchstgeschwindigkeit auf ebener Bahn nicht mehr als 25 km/h beträgt (Mofas); besondere Sitze für die Mitnahme von Kindern unter sieben Jahren dürfen jedoch angebracht sein,</p>
+                    <p>1a. Fahrräder mit elektrischem Antrieb, der sich auf eine bauartbedingte Geschwindigkeit von nicht mehr als 25 km/h selbsttätig abschaltet (Pedelecs),</p>
+                    <p>1b. zweirädrige Kraftfahrzeuge der Klasse L1e-B und dreirädrige Kraftfahrzeuge der Klassen L2e-P und L2e-U nach Artikel 4 Absatz 2 Buchstabe a und b der Verordnung (EU) Nr. 168/2013, wenn ihre Bauart Gewähr dafür bietet, dass die Höchstgeschwindigkeit auf ebener Bahn auf höchstens 25 km/h beschränkt ist,</p>
+                    <p>2. motorisierte Krankenfahrstühle (einsitzige, nach der Bauart zum Gebrauch durch körperlich behinderte Personen bestimmte Kraftfahrzeuge mit Elektroantrieb, einer Leermasse von nicht mehr als 300 kg einschließlich Batterien aber ohne Fahrer, einer zulässigen Gesamtmasse von nicht mehr als 500 kg, einer bauartbedingten Höchstgeschwindigkeit von nicht mehr als 15 km/h und einer Breite über alles von maximal 110 cm), wenn ihre bauartbedingte Höchstgeschwindigkeit 15 km/h nicht übersteigt,</p>
+                    <p>3. Zugmaschinen, die nach ihrer Bauart für die Verwendung für land- oder forstwirtschaftliche Zwecke bestimmt sind, selbstfahrende Arbeitsmaschinen, selbstfahrende Futtermischwagen, Stapler und andere Flurförderzeuge mit einer durch die Bauart bestimmten Höchstgeschwindigkeit von nicht mehr als 6 km/h.</p>
+                </div>`
+            },
+           '§4 Abs.3 FeV': {
+    title: '§ 4 Abs. 3 FeV - Nicht-öffentlicher Verkehr',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 4 Abs. 3 Betriebsgelände</strong></p>
+        <p>(3) Eine Fahrerlaubnis ist nicht erforderlich für das Führen von Kraftfahrzeugen auf nicht-öffentlichem Verkehrsgrund (z.B. umschlossenes Betriebsgelände, Privatgrundstück).</p>
+        <p><strong>Wichtig:</strong> Sobald öffentlicher Verkehrsraum befahren wird, gelten alle FeV-Vorschriften!</p>
+        <p><strong>Beispiele nicht-öffentlicher Verkehrsgrund:</strong></p>
+        <p>• Werksgelände mit Zufahrtskontrolle</p>
+        <p>• Umzäuntes Privatgrundstück</p>
+        <p>• Geschlossene Kartbahn</p>
+        <p>• Lagerhallen-Innenflächen</p>
+    </div>`
+},
+            '§5 FeV': {
+                title: '§ 5 Fahrerlaubnis-Verordnung (FeV)',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 5 Sonderbestimmungen für das Führen von Mofas und geschwindigkeitsbeschränkten Kraftfahrzeugen</strong></p>
+                    <p>(1) Zum Führen eines Mofas nach § 4 Absatz 1 Satz 2 Nummer 1 und eines zwei- oder dreirädrigen Kraftfahrzeugs nach § 4 Absatz 1 Satz 2 Nummer 1b muss eine Prüfungsbescheinigung mitgeführt und zuständigen Personen auf Verlangen zur Prüfung ausgehändigt werden. Die Prüfungsbescheinigung gilt nicht zum Führen eines Kraftfahrzeugs, für das nach § 4 Absatz 1 Satz 1 eine Fahrerlaubnis vorgeschrieben ist.</p>
+                    <p>(2) Die Prüfungsbescheinigung wird nach Vollendung des 15. Lebensjahres auf Grund einer bestandenen Prüfung erteilt. Die Prüfung besteht aus einem theoretischen Teil.</p>
+                    <p>(3) Die theoretische Prüfung umfasst mindestens 20 Fragen aus einem Katalog, der vom Bundesministerium für Verkehr und digitale Infrastruktur im Verkehrsblatt veröffentlicht wird. Die Prüfung ist bestanden, wenn mindestens zwei Drittel der gestellten Fragen richtig beantwortet wurden.</p>
+                </div>`
+            },
+            '§6 FeV': {
+                title: '§ 6 Fahrerlaubnis-Verordnung (FeV) - Fahrerlaubnisklassen',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 6 Einteilung der Fahrerlaubnisklassen</strong></p>
+                    <p>(1) Es werden folgende Klassen von Fahrerlaubnissen erteilt:</p>
+                    <p><strong>Klasse AM:</strong> leichte zweirädrige Kraftfahrzeuge der Klasse L1e-B nach Artikel 4 Absatz 2 Buchstabe a der Verordnung (EU) Nr. 168/2013 des Europäischen Parlaments und des Rates vom 15. Januar 2013 (ABl. L 60 vom 2.3.2013, S. 52) mit</p>
+                    <p>– einer durch die Bauart bestimmten Höchstgeschwindigkeit von nicht mehr als 45 km/h und</p>
+                    <p>– einer maximalen Nutzleistung von nicht mehr als 4 kW und</p>
+                    <p>– einem Verbrennungsmotor mit einem Hubraum von nicht mehr als 50 cm³ oder</p>
+                    <p>– einem Elektromotor mit einer maximalen Nenndauerleistung von nicht mehr als 4 kW</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Klasse A1:</strong> Krafträder (auch mit Beiwagen) mit einem Hubraum von bis zu 125 cm³ und einer Motorleistung von nicht mehr als 11 kW, bei denen das Verhältnis der Leistung zum Gewicht 0,1 kW/kg nicht übersteigt, und dreirädrige Kraftfahrzeuge mit symmetrisch angeordneten Rädern und einem Hubraum von mehr als 50 cm³ bei Verbrennungsmotoren oder einer bauartbedingten Höchstgeschwindigkeit von mehr als 45 km/h und mit einer Leistung von bis zu 15 kW.</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Klasse A2:</strong> Krafträder (auch mit Beiwagen) mit einer Motorleistung von nicht mehr als 35 kW, bei denen das Verhältnis der Leistung zum Gewicht 0,2 kW/kg nicht übersteigt. Die Motorleistung darf in ursprünglicher Ausführung nicht mehr als das Doppelte der für A2 zulässigen Motorleistung betragen (also maximal 70 kW vor Drosselung).</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Klasse A:</strong> Krafträder (auch mit Beiwagen) mit einem Hubraum von mehr als 50 cm³ oder mit einer durch die Bauart bestimmten Höchstgeschwindigkeit von mehr als 45 km/h und dreirädrige Kraftfahrzeuge mit einer Leistung von mehr als 15 kW und dreirädrige Kraftfahrzeuge mit symmetrisch angeordneten Rädern und einem Hubraum von mehr als 50 cm³ bei Verbrennungsmotoren oder einer bauartbedingten Höchstgeschwindigkeit von mehr als 45 km/h und mit einer Leistung von mehr als 15 kW.</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Einschlüsse nach § 6 Abs. 3 FeV:</strong></p>
+                    <p>• Klasse A schließt ein: A2, A1, AM</p>
+                    <p>• Klasse A2 schließt ein: A1, AM</p>
+                    <p>• Klasse A1 schließt ein: AM</p>
+                    <p>• Klasse B schließt ein: AM, L</p>
+                    <p>• Klasse C schließt ein: C1</p>
+                    <p>• Klasse CE schließt ein: C1E, BE, T (unter bestimmten Voraussetzungen)</p>
+                </div>`
+            },
+            '§6 Abs.1 S.2 FeV': {
+                title: '§ 6 Abs. 1 Satz 2 FeV - Dreiräder in A1',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 6 Abs. 1 Fahrerlaubnisklassen - Satz 2</strong></p>
+                    <p>Klasse A1 berechtigt auch zum Führen von dreirädrigen Kraftfahrzeugen mit symmetrisch angeordneten Rädern und einem Hubraum von mehr als 50 cm³ bei Verbrennungsmotoren oder einer bauartbedingten Höchstgeschwindigkeit von mehr als 45 km/h und mit einer Leistung von bis zu 15 kW.</p>
+                    <p><strong>Wichtig:</strong> Dies bedeutet, dass Inhaber der Klasse A1 (ab 16 Jahren) auch Trikes/dreirädrige Fahrzeuge bis 15 kW (20 PS) fahren dürfen.</p>
+                </div>`
+            },
+            '§6 Abs.3 FeV': {
+                title: '§ 6 Abs. 3 FeV - Einschlüsse',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 6 Abs. 3 Einschlüsse von Fahrerlaubnisklassen</strong></p>
+                    <p>Mit der Fahrerlaubnis der</p>
+                    <p><strong>Klasse A</strong> darf auch ein Kraftfahrzeug der Klassen A2, A1 und AM geführt werden.</p>
+                    <p><strong>Klasse A2</strong> darf auch ein Kraftfahrzeug der Klassen A1 und AM geführt werden.</p>
+                    <p><strong>Klasse A1</strong> darf auch ein Kraftfahrzeug der Klasse AM geführt werden.</p>
+                    <p><strong>Klasse B</strong> darf auch ein Kraftfahrzeug der Klassen AM und L geführt werden.</p>
+                    <p><strong>Klasse C</strong> darf auch ein Kraftfahrzeug der Klasse C1 geführt werden.</p>
+                    <p><strong>Klasse CE</strong> darf auch ein Kraftfahrzeug der Klassen C1E, BE und T geführt werden, sofern die jeweiligen Voraussetzungen erfüllt sind.</p>
+                    <p><strong>Klasse D</strong> darf auch ein Kraftfahrzeug der Klasse D1 geführt werden.</p>
+                    <p><strong>Klasse DE</strong> darf auch ein Kraftfahrzeug der Klassen D1E und BE geführt werden.</p>
+                </div>`
+            },
+            '§6 Abs.3a FeV': {
+                title: '§ 6 Abs. 3a FeV - Dreiräder in Klasse B',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 6 Abs. 3a Dreirädrige Kraftfahrzeuge in Klasse B</strong></p>
+                    <p>Die Fahrerlaubnis der Klasse B berechtigt auch zum Führen von dreirädrigen Kraftfahrzeugen im Inland, im Falle eines Kraftfahrzeuges mit einer Motorleistung von mehr als 15 kW jedoch nur, soweit der Inhaber der Fahrerlaubnis mindestens 21 Jahre alt ist.</p>
+                    <p><strong>Bedeutung:</strong></p>
+                    <p>• Dreiräder bis 15 kW: Mit Klasse B ab 18 Jahren</p>
+                    <p>• Dreiräder über 15 kW: Mit Klasse B ab 21 Jahren</p>
+                    <p><strong>⚠️ Diese Regelung gilt NUR im Inland (Deutschland)!</strong></p>
+                </div>`
+            },
+            '§6b FeV': {
+                title: '§ 6b FeV - Schlüsselzahl 196',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 6b Fahrerlaubnis der Klasse B mit der Schlüsselzahl 196</strong></p>
+                    <p>(1) Wer eine Fahrerlaubnis der Klasse B besitzt, ist auch zum Führen von Krafträdern der Klasse A1 berechtigt, wenn in der Fahrerlaubnis die Schlüsselzahl 196 eingetragen ist.</p>
+                    <p>(2) Die Schlüsselzahl 196 wird auf Antrag in die Fahrerlaubnis eingetragen, wenn der Fahrerlaubnisinhaber</p>
+                    <p>1. das 25. Lebensjahr vollendet hat,</p>
+                    <p>2. seit mindestens fünf Jahren im Besitz einer Fahrerlaubnis der Klasse B ist und</p>
+                    <p>3. eine Schulung von mindestens vier theoretischen und fünf praktischen Unterrichtseinheiten zu jeweils 90 Minuten absolviert hat.</p>
+                    <p><strong>WICHTIG:</strong> Die Berechtigung nach Absatz 1 gilt NICHT im Ausland! B196 ist nur in Deutschland gültig.</p>
+                    <p>Es findet keine Prüfung statt, und ein Aufstieg zu Klasse A2 ist nicht möglich.</p>
+                </div>`
+            },
+            '§10 Abs.1 Nr.1 FeV': {
+                title: '§ 10 Abs. 1 Nr. 1 FeV - Mindestalter Klasse A',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 10 Mindestalter</strong></p>
+                    <p>(1) Das Mindestalter beträgt</p>
+                    <p>1. für die Klassen AM, A1, A2, A, B, BE, L und T:</p>
+                    <p>a) bei Klasse AM 15 Jahre (bundesweit gültig, aber bis zum 16. Lebensjahr nur in Deutschland),</p>
+                    <p>b) bei Klasse A1 16 Jahre,</p>
+                    <p>c) bei Klasse A2 18 Jahre,</p>
+                    <p>d) bei Klasse A</p>
+                    <p>– 24 Jahre für Krafträder bei direktem Zugang,</p>
+                    <p>– 20 Jahre für Krafträder bei einem Vorbesitz der Klasse A2 von mindestens zwei Jahren,</p>
+                    <p>– 21 Jahre für dreirädrige Kraftfahrzeuge der Klasse A mit einer Leistung von mehr als 15 kW.</p>
+                </div>`
+            },
+            '§11 FeV': {
+                title: '§ 11 FeV - Eignung',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 11 Eignung</strong></p>
+                    <p>(1) Bewerber um eine Fahrerlaubnis müssen die hierfür notwendigen körperlichen und geistigen Anforderungen erfüllen. Die Anforderungen sind insbesondere nicht erfüllt, wenn eine Erkrankung oder ein Mangel nach Anlage 4 oder 5 vorliegt, wodurch die Eignung zum Führen von Kraftfahrzeugen ausgeschlossen wird.</p>
+                    <p>(2) Zur Vorbereitung von Entscheidungen über die Erteilung oder die Verlängerung der Fahrerlaubnis oder über die Anordnung von Beschränkungen oder Auflagen ordnet die Fahrerlaubnisbehörde an, dass</p>
+                    <p>1. ein ärztliches Gutachten (Anlage 4a) beizubringen ist, wenn Tatsachen bekannt werden, die Bedenken gegen die körperliche oder geistige Eignung begründen,</p>
+                    <p>2. ein Gutachten eines amtlich anerkannten Sachverständigen oder Prüfers für den Kraftfahrzeugverkehr beizubringen ist,</p>
+                    <p>3. ein medizinisch-psychologisches Gutachten (MPU) beizubringen ist.</p>
+                    <p><strong>Wichtig für C/D-Klassen:</strong> Hier sind regelmäßige ärztliche Untersuchungen verpflichtend (siehe § 23 FeV)!</p>
+                </div>`
+            },
+            '§12 FeV': {
+                title: '§ 12 FeV - Sehvermögen',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 12 Sehvermögen</strong></p>
+                    <p>(1) Für die Fahrerlaubnisklassen A, A1, A2, AM, B, BE, L und T genügt ein Nachweis über einen Sehtest nach Anlage 6.</p>
+                    <p>(2) Für die Fahrerlaubnisklassen C, C1, CE, C1E, D, D1, DE und D1E ist ein augenärztliches Zeugnis oder ein Zeugnis eines Arztes mit der Zusatzbezeichnung "Betriebsmedizin" oder der Gebietsbezeichnung "Arbeitsmedizin" erforderlich, das nach Maßgabe der Anlage 6 erstellt wurde.</p>
+                    <p><strong>Sehtest erforderlich bei:</strong></p>
+                    <p>• Ersterteilung einer Fahrerlaubnis</p>
+                    <p>• Erweiterung auf Klassen C/D</p>
+                    <p>• Verlängerung C/D-Klassen (alle 5 Jahre)</p>
+                    <p><strong>Anforderungen Sehtest:</strong></p>
+                    <p>• Sehschärfe: mindestens 0,7 auf jedem Auge (mit/ohne Korrektur)</p>
+                    <p>• Bei Sehhilfe: Schlüsselzahl 01 im Führerschein</p>
+                </div>`
+            },
+            '§17 Abs.2a FeV': {
+                title: '§ 17 Abs. 2a FeV - Automatikprüfung (B197)',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 17 Abs. 2a Schlüsselzahl 197 (Automatikprüfung mit Schaltberechtigung)</strong></p>
+                    <p>Wird die Prüfung auf einem Kraftfahrzeug mit Automatikgetriebe abgelegt, ist die Fahrerlaubnis auf das Führen von Kraftfahrzeugen mit Automatikgetriebe beschränkt (Schlüsselzahl 78).</p>
+                    <p>Die Beschränkung entfällt, wenn der Bewerber</p>
+                    <p>1. mindestens zehn Fahrstunden zu je 45 Minuten auf einem Kraftfahrzeug mit Schaltgetriebe absolviert hat,</p>
+                    <p>2. eine 15-minütige Testfahrt absolviert und dabei nachgewiesen hat, dass er ein Kraftfahrzeug mit Schaltgetriebe sicher, verantwortungsvoll und umweltbewusst führen kann.</p>
+                    <p><strong>Wichtig:</strong> Im Inland dürfen dann auch Schaltwagen gefahren werden (Schlüsselzahl 197). Im Ausland gilt jedoch Code 78 (nur Automatik)!</p>
+                </div>`
+            },
+            '§20 FeV': {
+    title: '§ 20 FeV - Erweiterung der Fahrerlaubnis',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 20 Erweiterung</strong></p>
+        <p>(1) Die Fahrerlaubnis wird für die beantragte Klasse erteilt. Sie kann auf eine andere Klasse erweitert werden.</p>
+        <p>(2) Bei der Erweiterung auf die Klassen A, B, C, D und T ist der Bewerber von der theoretischen und praktischen Prüfung ganz oder teilweise zu befreien, wenn er bereits eine Fahrerlaubnis einer anderen Klasse besitzt.</p>
+        <p><strong>Erweiterungsmöglichkeiten:</strong></p>
+        <p>• B → BE: Nur praktische Prüfung</p>
+        <p>• A1 → A2: Verkürzte praktische Prüfung nach 2 Jahren Vorbesitz</p>
+        <p>• A2 → A: Verkürzte praktische Prüfung nach 2 Jahren Vorbesitz</p>
+        <p>• B → C1/C: Theoretische + praktische Prüfung</p>
+        <p>• B → B96: Nur Schulung, keine Prüfung</p>
+        <p><strong>Wichtig:</strong> Bei Erweiterungen müssen nicht alle Ausbildungsinhalte wiederholt werden - der Vorbesitz wird angerechnet!</p>
+    </div>`
+},
+'§46 FeV': {
+    title: '§ 46 FeV - Entziehung der Fahrerlaubnis',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 46 Entziehung</strong></p>
+        <p>(1) Die Fahrerlaubnis ist zu entziehen, wenn sich ihr Inhaber als ungeeignet oder nicht befähigt zum Führen von Kraftfahrzeugen erweist.</p>
+        <p>(2) Ungeeignet zum Führen von Kraftfahrzeugen ist insbesondere, wer</p>
+        <p>1. unter einer Erkrankung nach Anlage 4 oder 5 leidet,</p>
+        <p>2. erheblich oder wiederholt gegen verkehrsrechtliche Vorschriften oder Strafgesetze verstoßen hat,</p>
+        <p>3. einer Drogenabhängigkeit oder regelmäßigem übermäßigen Genuss alkoholischer Getränke verfallen ist.</p>
+        <p><strong>Folgen:</strong></p>
+        <p>• Führerschein muss abgegeben werden</p>
+        <p>• Sperrfrist wird verhängt (meist 6 Monate bis 5 Jahre)</p>
+        <p>• Nach Sperrfrist: Neuerteilung nur nach Nachweis der Eignung</p>
+        <p>• Oft MPU (medizinisch-psychologische Untersuchung) erforderlich</p>
+    </div>`
+},
+'§47 FeV': {
+    title: '§ 47 FeV - Neuerteilung nach Entziehung',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 47 Neuerteilung der Fahrerlaubnis</strong></p>
+        <p>(1) Ist die Fahrerlaubnis entzogen worden, so ist eine neue Fahrerlaubnis nach Maßgabe des § 20 zu erteilen, wenn der Bewerber</p>
+        <p>1. die Sperrfrist abgewartet hat,</p>
+        <p>2. seine Eignung und Befähigung nachgewiesen hat,</p>
+        <p>3. die erforderlichen Prüfungen bestanden hat.</p>
+        <p>(2) Die Fahrerlaubnisbehörde ordnet die Beibringung eines medizinisch-psychologischen Gutachtens (MPU) an, wenn</p>
+        <p>1. die Entziehung wegen Alkohol- oder Drogenmissbrauch erfolgte,</p>
+        <p>2. die Entziehung wegen erheblicher Verstöße erfolgte,</p>
+        <p>3. Zweifel an der Fahreignung bestehen.</p>
+        <p>(3) Nach § 7 Abs. 2 FahrschAusbO kann die Behörde von einer erneuten Fahrschulausbildung ganz oder teilweise absehen.</p>
+        <p><strong>Wichtig:</strong> Bei Wiedererteilung kann auf Ausbildung verzichtet werden - aber Prüfung meist erforderlich!</p>
+    </div>`
+},
+'§48a FeV': {
+    title: '§ 48a FeV - Begleitetes Fahren ab 17',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 48a Begleitetes Fahren (BF17)</strong></p>
+        <p>(1) Die Fahrerlaubnis der Klasse B oder BE kann bereits mit 17 Jahren erteilt werden, wenn der Fahrerlaubnisinhaber bis zur Vollendung des 18. Lebensjahres nur von einer in der Prüfungsbescheinigung namentlich benannten Begleitperson begleitet wird.</p>
+        <p><strong>Anforderungen an Begleitpersonen:</strong></p>
+        <p>• Mindestens 30 Jahre alt</p>
+        <p>• Seit mindestens 5 Jahren ununterbrochen Führerschein Klasse B</p>
+        <p>• Maximal 1 Punkt in Flensburg</p>
+        <p>• Nicht unter Alkohol- oder Drogeneinfluss (0,5‰-Grenze)</p>
+        <p><strong>Rechtsfolgen:</strong></p>
+        <p>• Mit 17: Nur mit Begleitperson fahren</p>
+        <p>• Ab 18: Automatisch unbeschränkte Klasse B</p>
+        <p>• Ohne Begleitperson fahren = Fahren ohne Fahrerlaubnis (§ 21 StVG)</p>
+        <p><strong>⚠️ ACHTUNG:</strong></p>
+        <p>Die Prüfungsbescheinigung gilt NICHT im Ausland! Erst ab 18 Jahren darf im Ausland gefahren werden.</p>
+        <p><strong>Praktischer Vorteil:</strong></p>
+        <p>Mehr Fahrpraxis vor dem 18. Geburtstag = sichereres Fahren!</p>
+    </div>`
+},
+            '§21 FeV': {
+                title: '§ 21 FeV - Antragstellung',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 21 Antrag</strong></p>
+                    <p>(1) Der Antrag auf Erteilung oder Erweiterung einer Fahrerlaubnis ist bei der nach § 73 zuständigen Behörde zu stellen.</p>
+                    <p>(2) Dem Antrag sind beizufügen:</p>
+                    <p>1. ein aktuelles Lichtbild nach den Vorgaben der Anlage 8 (biometrisches Passbild),</p>
+                    <p>2. eine Sehtestbescheinigung (Nachweis des Sehvermögens),</p>
+                    <p>3. bei Ersterteilung: Nachweis über eine Schulung in Erster Hilfe,</p>
+                    <p>4. Nachweis über Tag und Ort der Geburt,</p>
+                    <p>5. falls erforderlich: Nachweise über bereits erteilte Fahrerlaubnisse.</p>
+                    <p>(3) Die Fahrerlaubnisbehörde kann weitere Nachweise verlangen, insbesondere ein Führungszeugnis oder bei Zweifeln an der Eignung ein ärztliches oder medizinisch-psychologisches Gutachten.</p>
+                </div>`
+            },
+            '§23 FeV': {
+                title: '§ 23 FeV - Befristung der Fahrerlaubnisklassen',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 23 Befristung</strong></p>
+                    <p>(1) Die Fahrerlaubnis der Klassen C, C1, CE, C1E, D, D1, DE und D1E wird für fünf Jahre erteilt; die Frist beginnt mit dem Tag der Erteilung der Fahrerlaubnis.</p>
+                    <p>(2) Nach Ablauf der Frist nach Absatz 1 wird die Fahrerlaubnis auf Antrag für weitere fünf Jahre verlängert, wenn der Antragsteller das vorgeschriebene Mindestalter noch nicht oder nicht mehr als fünf Jahre überschritten hat und nachweist, dass er die Anforderungen nach § 11 Absatz 9 erfüllt.</p>
+                    <p><strong>§ 11 Abs. 9 - Ärztliche Untersuchungen bei C/D:</strong></p>
+                    <p>• Ärztliches Gutachten nach Anlage 5</p>
+                    <p>• Augenärztliches Zeugnis nach § 12 Abs. 2</p>
+                    <p>(3) Hat der Inhaber der Fahrerlaubnis das 50. Lebensjahr vollendet, darf die Fahrerlaubnis längstens bis zur Vollendung des 55. Lebensjahres verlängert werden.</p>
+                    <p><strong>Praktische Bedeutung:</strong> C/D-Klassen müssen alle 5 Jahre verlängert werden mit ärztlicher und augenärztlicher Untersuchung!</p>
+                </div>`
+            },
+'§25 FeV': {
+    title: '§ 25 FeV - Theoretische Prüfung bei Erweiterung',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 25 Theoretische Prüfung</strong></p>
+        <p>(1) Bei der Erweiterung einer Fahrerlaubnis kann die theoretische Prüfung ganz oder teilweise entfallen, wenn bereits eine Fahrerlaubnis einer anderen Klasse vorhanden ist.</p>
+        <p><strong>Prüfungsbefreiungen:</strong></p>
+        <p>• A1 → A2: Theorieprüfung entfällt bei 2 Jahren Vorbesitz</p>
+        <p>• A2 → A: Theorieprüfung entfällt bei 2 Jahren Vorbesitz</p>
+        <p>• B → BE: Theorieprüfung entfällt</p>
+        <p>• B → C1/C: Reduzierte Theorieprüfung (nur Zusatzstoff)</p>
+        <p><strong>Wichtig:</strong></p>
+        <p>Die genauen Regelungen ergeben sich aus § 20 FeV in Verbindung mit der Fahrschüler-Ausbildungsordnung.</p>
+        <p><strong>Praktische Bedeutung:</strong></p>
+        <p>Wer bereits Fahrerfahrung hat, muss nicht alles neu lernen – Grundwissen wird angerechnet!</p>
+    </div>`
+},
+            '§28 FeV': {
+                title: '§ 28 FeV - EU/EWR-Führerscheine',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 28 Anerkennung von EU- oder EWR-Fahrerlaubnissen</strong></p>
+                    <p>(1) Inhaber einer gültigen EU- oder EWR-Fahrerlaubnis dürfen im Umfang ihrer Berechtigung im Inland Kraftfahrzeuge führen.</p>
+                    <p>(2) Beschränkungen, Auflagen und Zusatzangaben in der EU- oder EWR-Fahrerlaubnis sind auch im Inland zu beachten.</p>
+                    <p>(3) Die Vorschriften über die Geltungsdauer von Fahrerlaubnissen der Klassen C, C1, CE, C1E, D, D1, DE und D1E in § 23 Absatz 1 gelten auch für die entsprechenden EU- und EWR-Fahrerlaubnisse.</p>
+                    <p><strong>Wichtig:</strong> EU-Führerscheine sind in Deutschland direkt gültig! Eine Umschreibung ist freiwillig, wird aber bei Wohnsitzbegründung empfohlen.</p>
+                </div>`
+            },
+            '§30 FeV': {
+                title: '§ 30 FeV - Drittstaaten-Führerscheine',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 30 Anerkennung von Fahrerlaubnissen aus Drittstaaten</strong></p>
+                    <p>(1) Inhaber einer ausländischen Fahrerlaubnis dürfen im Umfang ihrer Berechtigung für die Dauer von sechs Monaten nach Begründung eines ordentlichen Wohnsitzes im Inland Kraftfahrzeuge im Inland führen, wenn sie</p>
+                    <p>1. das nach deutschem Recht für die jeweilige Fahrerlaubnisklasse vorgeschriebene Mindestalter vollendet haben und</p>
+                    <p>2. im Besitz einer deutschen Übersetzung der Fahrerlaubnis sind.</p>
+                    <p>(2) Nach Ablauf der Frist nach Absatz 1 dürfen sie Kraftfahrzeuge nur führen, wenn sie im Besitz einer deutschen Fahrerlaubnis sind.</p>
+                    <p><strong>Wichtig:</strong> Nach 6 Monaten MUSS umgeschrieben werden! Sonst Fahren ohne Fahrerlaubnis!</p>
+                </div>`
+            },
+            '§31 FeV': {
+                title: '§ 31 FeV - Umschreibung Drittstaaten',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 31 Umschreibung einer ausländischen Fahrerlaubnis aus Drittstaaten</strong></p>
+                    <p>(1) Auf Antrag wird eine ausländische Fahrerlaubnis umgeschrieben und eine deutsche Fahrerlaubnis erteilt.</p>
+                    <p>(2) Die Umschreibung setzt voraus:</p>
+                    <p>1. die Vorlage der ausländischen Fahrerlaubnis im Original,</p>
+                    <p>2. bei Zweifeln: Nachweis über die Echtheit und Gültigkeit der ausländischen Fahrerlaubnis,</p>
+                    <p>3. die Erfüllung der Anforderungen nach § 11 (Eignung),</p>
+                    <p>4. je nach Herkunftsstaat gemäß Anlage 11: theoretische und/oder praktische Prüfung.</p>
+                    <p><strong>Anlage 11 prüfen!</strong> Je nach Land keine, nur theoretische oder volle Prüfung erforderlich!</p>
+                </div>`
+            },
+'§75 FeV': {
+    title: '§ 75 FeV - Ordnungswidrigkeiten',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 75 Ordnungswidrigkeiten</strong></p>
+        <p>(1) Ordnungswidrig handelt, wer vorsätzlich oder fahrlässig</p>
+        <p>1. ohne die erforderliche Fahrerlaubnis ein Kraftfahrzeug führt,</p>
+        <p>2. als Halter anordnet oder zulässt, dass jemand ohne Fahrerlaubnis ein Kraftfahrzeug führt,</p>
+        <p>3. eine Prüfungsbescheinigung für das Führen eines Mofas nicht mitführt,</p>
+        <p>4. gegen Auflagen oder Beschränkungen der Fahrerlaubnis verstößt.</p>
+        <p><strong>Bußgelder (Auswahl):</strong></p>
+        <p>• Prüfungsbescheinigung nicht dabei: 10 €</p>
+        <p>• Führerschein nicht dabei: 10 €</p>
+        <p>• Fahren trotz Fahrverbot: 250 € + 1 Punkt</p>
+        <p>• Missachtung Auflagen (z.B. ohne Brille): 25 €</p>
+        <p><strong>⚠️ Wichtig - Abgrenzung zu Straftaten:</strong></p>
+        <p>• Fahren ohne gültige FE = Ordnungswidrigkeit (§ 75 FeV)</p>
+        <p>• Fahren ohne jemals FE gehabt = STRAFTAT (§ 21 StVG)</p>
+        <p>• Tuning mit BE-Erlöschen = STRAFTAT (§ 22a StVG)</p>
+    </div>`
+},
+          '§76 FeV': {
+    title: '§ 76 FeV - Übergangsrecht alte Führerscheine',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 76 Übergangsbestimmungen</strong></p>
+        <p>(1) Fahrerlaubnisse, die bis zum Inkrafttreten dieser Verordnung erteilt worden sind, gelten im Umfang der bisherigen Berechtigung weiter (Besitzstand).</p>
+        <p>(2) Alte Fahrerlaubnisklassen werden den neuen Klassen wie folgt zugeordnet:</p>
+        <p>• Klasse 3 (alt): B, BE, C1, C1E, AM, L (unter bestimmten Voraussetzungen auch CE)</p>
+        <p>• Klasse 2 (alt): A, A1, A2, AM, L, C, CE, BE</p>
+        <p>• Klasse 1 (alt): A, A2, A1, AM</p>
+        <p>• Klasse 4 (alt): AM, L</p>
+        <p>(3) Führerscheine sind gemäß der Umtausch-Fristen bis spätestens 19. Januar 2033 umzutauschen (gestaffelt nach Geburtsjahr).</p>
+        <p><strong>Wichtig:</strong> Alter FS = oft mehr Rechte! Besitzstand bleibt erhalten. Umtauschpflicht beachten!</p>
+    </div>`
+},
+'§76a FeV': {
+    title: '§ 76a FeV - Modellversuche (AUFGEHOBEN)',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 76a Modellversuche (aufgehoben)</strong></p>
+        <p>Dieser Paragraph wurde durch die 13. Verordnung zur Änderung der Fahrerlaubnis-Verordnung vom 2. August 2021 aufgehoben.</p>
+        <p><strong>Historischer Kontext:</strong></p>
+        <p>§ 76a ermöglichte früher Modellversuche für neue Fahrerlaubnisregelungen (z.B. Begleitetes Fahren ab 17). Diese Regelungen sind mittlerweile fest in die FeV integriert.</p>
+        <p><strong>Aktuelle Rechtslage:</strong></p>
+        <p>• BF17 ist jetzt dauerhaft in § 48a FeV geregelt</p>
+        <p>• B196 ist in § 6b FeV geregelt</p>
+        <p>• Keine aktiven Modellversuche mehr erforderlich</p>
+    </div>`
+},
+'§11 FeV': {
+    title: '§ 11 FeV - Eignung',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 11 Eignung</strong></p>
+        <p>(1) Bewerber um eine Fahrerlaubnis müssen die hierfür notwendigen körperlichen und geistigen Anforderungen erfüllen. Die Anforderungen sind insbesondere nicht erfüllt, wenn eine Erkrankung oder ein Mangel nach Anlage 4 oder 5 vorliegt, wodurch die Eignung zum Führen von Kraftfahrzeugen ausgeschlossen wird.</p>
+        <p>(2) Zur Vorbereitung von Entscheidungen über die Erteilung oder die Verlängerung der Fahrerlaubnis oder über die Anordnung von Beschränkungen oder Auflagen ordnet die Fahrerlaubnisbehörde an, dass</p>
+        <p>1. ein ärztliches Gutachten (Anlage 4a) beizubringen ist, wenn Tatsachen bekannt werden, die Bedenken gegen die körperliche oder geistige Eignung begründen,</p>
+        <p>2. ein Gutachten eines amtlich anerkannten Sachverständigen oder Prüfers für den Kraftfahrzeugverkehr beizubringen ist,</p>
+        <p>3. ein medizinisch-psychologisches Gutachten (MPU) beizubringen ist.</p>
+        <p><strong>Wichtig für C/D-Klassen:</strong> Hier sind regelmäßige ärztliche Untersuchungen verpflichtend (siehe § 23 FeV)!</p>
+    </div>`
+},
+'§12 FeV': {
+    title: '§ 12 FeV - Sehvermögen',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 12 Sehvermögen</strong></p>
+        <p>(1) Für die Fahrerlaubnisklassen A, A1, A2, AM, B, BE, L und T genügt ein Nachweis über einen Sehtest nach Anlage 6.</p>
+        <p>(2) Für die Fahrerlaubnisklassen C, C1, CE, C1E, D, D1, DE und D1E ist ein augenärztliches Zeugnis oder ein Zeugnis eines Arztes mit der Zusatzbezeichnung "Betriebsmedizin" oder der Gebietsbezeichnung "Arbeitsmedizin" erforderlich, das nach Maßgabe der Anlage 6 erstellt wurde.</p>
+        <p><strong>Sehtest erforderlich bei:</strong></p>
+        <p>• Ersterteilung einer Fahrerlaubnis</p>
+        <p>• Erweiterung auf Klassen C/D</p>
+        <p>• Verlängerung C/D-Klassen (alle 5 Jahre)</p>
+        <p><strong>Anforderungen Sehtest:</strong></p>
+        <p>• Sehschärfe: mindestens 0,7 auf jedem Auge (mit/ohne Korrektur)</p>
+        <p>• Bei Sehhilfe: Schlüsselzahl 01 im Führerschein</p>
+    </div>`
+},
+            '§1 eKFV': {
+                title: '§ 1 Elektrokleinstfahrzeuge-Verordnung',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 1 Anwendungsbereich</strong></p>
+                    <p>(1) Diese Verordnung ist anzuwenden auf Kraftfahrzeuge mit elektrischem Antrieb und einer bauartbedingten Höchstgeschwindigkeit von nicht weniger als 6 km/h und nicht mehr als 20 km/h (Elektrokleinstfahrzeuge).</p>
+                    <p>(2) Elektrokleinstfahrzeuge müssen folgende Merkmale aufweisen:</p>
+                    <p>1. Lenkstange oder Haltestange,</p>
+                    <p>2. eine Nenndauerleistung von nicht mehr als 500 Watt, oder 1400 Watt bei selbstbalancierenden Fahrzeugen,</p>
+                    <p>3. bestimmte lichttechnische Einrichtungen,</p>
+                    <p>4. eine Haltevorrichtung,</p>
+                    <p>5. zwei voneinander unabhängige Bremsen.</p>
+                    <p><strong>Wichtig:</strong> E-Scooter brauchen ABE! Ohne ABE = illegal. Max. 20 km/h, max. 500W.</p>
+                </div>`
+            },
+            '§2 eKFV': {
+                title: '§ 2 Elektrokleinstfahrzeuge-Verordnung - Zulassung',
+                text: `<div class="law-paragraph">
+                    <p><strong>§ 2 Allgemeine Betriebserlaubnis</strong></p>
+                    <p>(1) Elektrokleinstfahrzeuge dürfen nur in Betrieb gesetzt werden, wenn sie über eine Allgemeine Betriebserlaubnis (ABE) verfügen.</p>
+                    <p>(2) Die ABE wird durch das Kraftfahrt-Bundesamt erteilt.</p>
+                    <p>(3) Fahrzeuge ohne ABE dürfen auf öffentlichen Straßen nicht geführt werden.</p>
+                    <p><strong>Mindestalter:</strong> 14 Jahre</p>
+                    <p><strong>Helmpflicht:</strong> Nein</p>
+                    <p><strong>Versicherungspflicht:</strong> Ja (Versicherungsplakette erforderlich)</p>
+                </div>`
+            },
+            'EU-VO 168/2013': {
+                title: 'EU-Verordnung 168/2013 - Fahrzeugklassifizierung',
+                text: `<div class="law-paragraph">
+                    <p><strong>Verordnung (EU) Nr. 168/2013 - Fahrzeugklassen</strong></p>
+                    <p><strong>Klasse L1e-B:</strong> Zweirädriges Kleinkraftrad</p>
+                    <p>• Hubraum max. 50 cm³ (Verbrennungsmotor)</p>
+                    <p>• Leistung max. 4 kW</p>
+                    <p>• Höchstgeschwindigkeit max. 45 km/h</p>
+                    <p>• Beispiel: Roller, Mofa, S-Pedelec</p>
+                    
+                    <p><strong>Klasse L2e:</strong> Dreirädriges Kleinkraftmoped</p>
+                    <p>• L2e-P: Personenbeförderung</p>
+                    <p>• L2e-U: Güterbeförderung</p>
+                    <p>• Max. 50 cm³, 4 kW, 45 km/h</p>
+                    <p>• Beispiel: Piaggio Ape gedrosselt</p>
+                    
+                    <p><strong>Klasse L3e-A1:</strong> Leichtkraftrad</p>
+                    <p>• Hubraum max. 125 cm³</p>
+                    <p>• Leistung max. 11 kW</p>
+                    <p>• Leistungsgewicht max. 0,1 kW/kg</p>
+                    
+                    <p><strong>Klasse L3e-A3:</strong> Kraftrad (volle Motorräder)</p>
+                    <p>• Über 125 cm³ oder über 11 kW</p>
+                    <p>• Keine Leistungsbegrenzung</p>
+                    <p>• Für Klasse A (ab 24 Jahre oder Stufenweg)</p>
+                    
+                    <p><strong>Klasse L5e:</strong> Dreirädriges Kraftfahrzeug</p>
+                    <p>• Symmetrisch angeordnete Räder</p>
+                    <p>• Über 50 cm³ oder über 45 km/h</p>
+                    <p>• Beispiel: Trike, Ellenator</p>
+                    
+                    <p><strong>Klasse L6e:</strong> Leichtes vierrädriges Kraftfahrzeug</p>
+                    <p>• Max. 425 kg Leermasse (ohne Batterie bei E-Fz.)</p>
+                    <p>• Max. 4 kW, 45 km/h</p>
+                    <p>• Beispiel: Aixam, Ligier (Mopedauto)</p>
+                    
+                    <p><strong>Klasse L7e:</strong> Schweres vierrädriges Kraftfahrzeug</p>
+                    <p>• Max. 450 kg (600 kg für Güterbeförderung)</p>
+                    <p>• Max. 15 kW</p>
+                    <p>• Beispiel: Quad</p>
+                </div>`
+            },
+'EU-VO 168/2013 Art.18-22': {
+    title: 'EU-VO 168/2013 Art. 18-22 - Typgenehmigung',
+    text: `<div class="law-paragraph">
+        <p><strong>Artikel 18-22: Typgenehmigungsverfahren</strong></p>
+        <p><strong>Artikel 18 - EU-Typgenehmigung:</strong></p>
+        <p>Hersteller müssen für jedes Fahrzeugmodell eine EU-Typgenehmigung beantragen. Diese gilt dann in allen EU-Mitgliedstaaten.</p>
+        <p><strong>Artikel 19 - Übereinstimmungsbescheinigung (COC):</strong></p>
+        <p>Jedes Fahrzeug muss mit einer Übereinstimmungsbescheinigung (Certificate of Conformity) ausgeliefert werden.</p>
+        <p><strong>Artikel 20 - Herstellerpflichten:</strong></p>
+        <p>• Sicherstellung der Übereinstimmung der Produktion</p>
+        <p>• Dokumentation aller Änderungen</p>
+        <p>• Rückrufaktionen bei Sicherheitsmängeln</p>
+        <p><strong>Artikel 21 - Nationale Einzelgenehmigung:</strong></p>
+        <p>Für Einzelfahrzeuge oder Kleinserien können nationale Behörden Einzelgenehmigungen erteilen.</p>
+        <p><strong>Artikel 22 - Marktüberwachung:</strong></p>
+        <p>Mitgliedstaaten müssen Fahrzeuge im Markt überwachen und bei Verstößen eingreifen.</p>
+        <p><strong>Praktische Bedeutung:</strong></p>
+        <p>• COC-Papiere bei Fahrzeugkauf wichtig!</p>
+        <p>• Umbauten können Typgenehmigung ungültig machen</p>
+        <p>• Bei Import: EU-Typgenehmigung prüfen</p>
+    </div>`
+},
+           'EU-VO 167/2013': {
+    title: 'EU-Verordnung 167/2013 - Land- und Forstwirtschaftliche Fahrzeuge',
+    text: `<div class="law-paragraph">
+        <p><strong>Verordnung (EU) Nr. 167/2013 - LoF-Fahrzeuge</strong></p>
+        <p><strong>Artikel 2 Begriffsbestimmungen:</strong></p>
+        <p><strong>Nr. 1 - Zugmaschine:</strong> Kraftfahrzeug zur Hauptverwendung zum Ziehen von Anhängern oder Maschinen</p>
+        <p><strong>Nr. 2 - Anhänger:</strong> Fahrzeug ohne eigenen Antrieb, zum Ziehen durch eine Zugmaschine bestimmt</p>
+        <p><strong>Nr. 3 - Auswechselbare gezogene Geräte:</strong> Nicht selbstfahrende Geräte für land-/forstwirtschaftliche Arbeiten</p>
+        <p><strong>Nr. 4 - Auswechselbare angebaute Geräte:</strong> An Zugmaschine montierte Arbeitsgeräte</p>
+        <p><strong>Wichtig für Klasse L und T:</strong></p>
+        <p>• Zugmaschinen bis 40 km/h → Klasse L (ab 16 Jahre)</p>
+        <p>• Zugmaschinen bis 60 km/h → Klasse T (ab 16/18 Jahre je nach bbH)</p>
+        <p>• Anhänger und Geräte müssen zur LoF-Verwendung bestimmt sein</p>
+        <p>• Mit Anhänger gelten reduzierte Geschwindigkeiten (L: 25 km/h)</p>
+    </div>`
+},
+'§30a StVZO': {
+    title: '§ 30a StVZO - Bauartbedingte Höchstgeschwindigkeit',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 30a Geschwindigkeitsmesser</strong></p>
+        <p>(1) Kraftfahrzeuge – ausgenommen Krafträder ohne Beiwagen mit einem Hubraum von nicht mehr als 50 cm³ und einer durch die Bauart bestimmten Höchstgeschwindigkeit von nicht mehr als 45 km/h – müssen mit einem Geschwindigkeitsmesser ausgerüstet sein.</p>
+        <p><strong>Definition bbH:</strong></p>
+        <p>Die bauartbedingte Höchstgeschwindigkeit (bbH) ist die Geschwindigkeit, die ein Fahrzeug aufgrund seiner Bauart und technischen Auslegung maximal erreichen kann.</p>
+        <p><strong>Relevanz:</strong></p>
+        <p>• <strong>Autobahn:</strong> bbH muss mehr als 60 km/h betragen!</p>
+        <p>• <strong>Kraftfahrstraße:</strong> Abhängig von Beschilderung, in der Regel bbH >60 km/h erforderlich</p>
+        <p>• <strong>Drosselung:</strong> Verringert die bbH dauerhaft</p>
+        <p><strong>Beispiele:</strong></p>
+        <p>• Mofa 25 km/h bbH → Keine Autobahn/Kraftfahrstraße</p>
+        <p>• AM 45 km/h bbH → Keine Autobahn/Kraftfahrstraße</p>
+        <p>• Traktor 40 km/h bbH (Klasse L) → Keine Autobahn</p>
+        <p>• PKW unbegrenzt → Autobahn OK</p>
+    </div>`
+},
+'§1 PflVG': {
+    title: '§ 1 Pflichtversicherungsgesetz',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 1 Versicherungspflicht</strong></p>
+        <p>(1) Der Halter eines Kraftfahrzeugs oder Anhängers mit regelmäßigem Standort im Inland ist verpflichtet, für sich, den Eigentümer und den Fahrer eine Haftpflichtversicherung zur Deckung der durch den Gebrauch des Fahrzeugs verursachten Personenschäden, Sachschäden und sonstigen Vermögensschäden abzuschließen und aufrechtzuerhalten.</p>
+        <p>(2) Die Versicherung muss bei einem im Inland zum Betrieb der Kraftfahrzeug-Haftpflichtversicherung befugten Versicherungsunternehmen genommen werden.</p>
+        <p><strong>Folgen bei Verstoß:</strong></p>
+        <p>• Geldstrafe oder Freiheitsstrafe bis zu 1 Jahr (§ 6 PflVG)</p>
+        <p>• Fahrzeug wird stillgelegt</p>
+        <p>• Bei Unfall: Voller Schadensersatz aus eigener Tasche!</p>
+        <p>• Versicherung kann Regress fordern</p>
+        <p><strong>Wichtig bei Tuning:</strong> Betriebserlaubnis erlischt → Versicherungsschutz erlischt automatisch!</p>
+    </div>`
+},
+'EN 15194': {
+    title: 'EN 15194 - Pedelec-Norm',
+    text: `<div class="law-paragraph">
+        <p><strong>EN 15194 Europäische Norm für Pedelecs</strong></p>
+        <p>Diese europäische Norm legt die Anforderungen und Prüfverfahren für Fahrräder mit elektrischer Tretunterstützung (EPAC = Electrically Power Assisted Cycles) fest.</p>
+        <p><strong>Anforderungen:</strong></p>
+        <p>1. Motor nur bei Tretbewegung aktiv</p>
+        <p>2. Nenndauerleistung max. 250 Watt</p>
+        <p>3. Unterstützung stoppt bei 25 km/h</p>
+        <p>4. Schiebehilfe bis 6 km/h ohne Treten erlaubt</p>
+        <p><strong>Rechtliche Einordnung:</strong></p>
+        <p>Pedelecs nach EN 15194 gelten in Deutschland NICHT als Kraftfahrzeug, sondern als Fahrrad!</p>
+        <p><strong>Folgen:</strong></p>
+        <p>• Keine Zulassung nötig</p>
+        <p>• Keine Versicherung nötig</p>
+        <p>• Kein Führerschein nötig</p>
+        <p>• Keine Helmpflicht</p>
+        <p>• Radweg erlaubt/Pflicht</p>
+    </div>`
+},
+'§63a StVZO': {
+    title: '§ 63a StVZO - Fahrräder',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 63a Fahrräder</strong></p>
+        <p>(1) Fahrräder müssen mit einer Vorrichtung zur Abgabe von akustischen Warnzeichen ausgerüstet sein (Klingel). Andere Einrichtungen für Schallzeichen dürfen an Fahrrädern nicht angebracht sein.</p>
+        <p>(2) Fahrräder müssen für den Betrieb des Scheinwerfers und der Schlussleuchte mit einer Lichtmaschine ausgerüstet sein, deren Nennleistung mindestens 3 W und deren Nennspannung 6 V beträgt (Dynamo) oder mit einer Batterie mit einer Nennspannung von 6 V.</p>
+        <p><strong>Praktisch:</strong></p>
+        <p>• Klingel Pflicht!</p>
+        <p>• Beleuchtung Pflicht (Dynamo oder Batterie)</p>
+        <p>• Reflektoren vorn, hinten, seitlich</p>
+    </div>`
+},
+'§67 StVZO': {
+    title: '§ 67 StVZO - Lichttechnische Einrichtungen an Fahrrädern',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 67 Lichttechnische Einrichtungen an Fahrrädern</strong></p>
+        <p>(1) Fahrräder müssen für den Betrieb des Scheinwerfers und der Schlussleuchte mit</p>
+        <p>1. einer Lichtmaschine (Dynamo) oder</p>
+        <p>2. einer Batterie mit einer Nennspannung von 6 V</p>
+        <p>ausgerüstet sein.</p>
+        <p>(2) Scheinwerfer müssen weißes Licht abstrahlen.</p>
+        <p>(3) Mindestens eine Schlussleuchte für rotes Licht erforderlich.</p>
+        <p>(4) Reflektoren:</p>
+        <p>• Vorn: weißer Reflektor</p>
+        <p>• Hinten: roter Reflektor</p>
+        <p>• Pedale: gelbe Reflektoren</p>
+        <p>• Speichen: gelbe Speichenreflektoren oder Reflexstreifen</p>
+        <p><strong>Bußgeld bei Verstoß:</strong> 20-35 €</p>
+    </div>`
+},
+'§22a StVG': {
+    title: '§ 22a StVG - Änderung der Fahrzeugbeschaffenheit',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 22a Gefährdung des Straßenverkehrs durch Änderungen an Fahrzeugen</strong></p>
+        <p>Wer als Halter eines Kraftfahrzeugs oder Anhängers</p>
+        <p>1. eine Änderung vornimmt oder vornehmen lässt, durch die eine Gefahr für die Verkehrssicherheit entsteht, oder</p>
+        <p>2. die Verkehrssicherheit des Fahrzeugs durch Änderung der Fahrzeugteile oder deren Montage beeinträchtigt</p>
+        <p>und das Fahrzeug in diesem Zustand am Verkehr teilnehmen lässt, wird mit Freiheitsstrafe bis zu einem Jahr oder mit Geldstrafe bestraft.</p>
+        <p><strong>Tuning = Straftat!</strong></p>
+        <p>• Mofa über 25 km/h → §22a StVG + §21 StVG (Fahren ohne FE)</p>
+        <p>• Kleinkraftrad über 45 km/h → §22a StVG + Versicherungsschutz erloschen!</p>
+        <p>• Betriebserlaubnis erlischt automatisch</p>
+        <p>• Führerscheinentzug möglich</p>
+        <p>• Punkte in Flensburg</p>
+        <p>• Bei Unfall: Versicherung zahlt nicht → Private Haftung für alle Schäden!</p>
+    </div>`
+},
+'§19 StVZO': {
+    title: '§ 19 StVZO - Änderung von Fahrzeugen',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 19 Änderungen</strong></p>
+        <p>(1) Wer ein Fahrzeug so verändert, dass die Verkehrssicherheit beeinträchtigt wird, muss die Änderung von einem amtlich anerkannten Sachverständigen begutachten und von der zuständigen Behörde genehmigen lassen.</p>
+        <p>(2) Bei folgenden Änderungen ist eine Abnahme erforderlich:</p>
+        <p>• Änderung der Motorleistung</p>
+        <p>• Änderung der Fahrwerksgeometrie (Tieferlegung, Spurverbreiterung)</p>
+        <p>• Änderung der Rad-/Reifenkombination</p>
+        <p>• Einbau von Gasanlagen</p>
+        <p>• Änderung der Karosserie</p>
+        <p><strong>Verfahren:</strong></p>
+        <p>1. Änderung planen und Teilegutachten beschaffen</p>
+        <p>2. Umbau durchführen</p>
+        <p>3. TÜV/DEKRA-Abnahme (§ 19.3 StVZO)</p>
+        <p>4. Eintragung in Fahrzeugpapiere</p>
+        <p><strong>⚠️ OHNE Eintragung:</strong></p>
+        <p>• Betriebserlaubnis erlischt (§ 69a StVZO)</p>
+        <p>• Versicherungsschutz erlischt (§ 1 PflVG)</p>
+        <p>• Straftat nach § 22a StVG</p>
+        <p><strong>Ausnahmen (keine Abnahme nötig):</strong></p>
+        <p>• Teile mit ABE (Allgemeine Betriebserlaubnis)</p>
+        <p>• Teile mit Teilegutachten nach § 19.3</p>
+        <p>• Geringfügige Änderungen ohne Sicherheitsrelevanz</p>
+    </div>`
+},
+'§69a StVZO': {
+    title: '§ 69a StVZO - Erlöschen der Betriebserlaubnis',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 69a Erlöschen der Betriebserlaubnis</strong></p>
+        <p>(1) Bei Änderungen an einem Fahrzeug erlischt die Betriebserlaubnis oder Typgenehmigung, wenn</p>
+        <p>1. die in § 19 Absatz 2 genannten Vorschriften nicht eingehalten werden oder</p>
+        <p>2. Teile oder Ausrüstungen verwendet werden, für die eine Bauartgenehmigung vorgeschrieben ist, ohne dass die Teile oder Ausrüstungen diese Genehmigung haben.</p>
+        <p><strong>Praktische Folgen:</strong></p>
+        <p>• Tuning → BE weg!</p>
+        <p>• Ohne BE → Versicherungsschutz erlischt!</p>
+        <p>• Fahren ohne BE → Straftat nach § 6 Abs. 1 PflVG</p>
+        <p>• Bei Unfall: Du zahlst ALLES selbst (Personen-, Sachschäden)</p>
+        <p>• Fahren ohne Versicherungsschutz → Freiheitsstrafe bis 1 Jahr oder Geldstrafe</p>
+    </div>`
+},
+'§7 Abs.2 FahrschAusbO': {
+    title: '§ 7 Abs. 2 Fahrschüler-Ausbildungsordnung',
+    text: `<div class="law-paragraph">
+        <p><strong>§ 7 Abs. 2 Ausnahmen von der Ausbildung</strong></p>
+        <p>Die Fahrerlaubnisbehörde kann auf Antrag des Bewerbers von der Ausbildung in einer Fahrschule ganz oder teilweise absehen, wenn</p>
+        <p>1. der Bewerber bereits eine Fahrerlaubnis besessen hat und diese entzogen wurde,</p>
+        <p>2. der Bewerber auf die Fahrerlaubnis verzichtet hat,</p>
+        <p>3. bei Erweiterung auf eine andere Klasse,</p>
+        <p>4. bei Aufstieg innerhalb der A-Klassen nach 2 Jahren Vorbesitz.</p>
+        <p><strong>Praktische Bedeutung:</strong></p>
+        <p>• Nach Führerscheinentzug kann Behörde auf Fahrschule verzichten</p>
+        <p>• A1→A2 und A2→A: Verkürzte Ausbildung möglich</p>
+        <p>• Bei Erweiterung: Anrechnung bereits erlernter Inhalte</p>
+        <p>• Entscheidung liegt im Ermessen der Behörde!</p>
+    </div>`
+}
+};
+const DATA = {
+        free: [
+            { id: 1, name: 'Pedelec (EPAC)', icon: '🚴', license: 'Keine', age: 'Keine', speed: 'bis 25 km/h', power: '250W', bbh: '25 km/h', desc: 'Fahrrad mit elektrischer Tretunterstützung', legal: ['§1 Abs.3 StVG', '§4 Abs.1 FeV', 'EN 15194'], reqs: ['Tretunterstützung nur beim Treten', 'Abschaltung bei 25 km/h', 'Schiebehilfe bis 6 km/h OK'], note: 'Gilt rechtlich als Fahrrad', attention: 'Motor muss sich bei 25 km/h automatisch abschalten! Schiebehilfe bis 6 km/h erlaubt, höhere Geschwindigkeiten ohne Treten = Kraftfahrzeug.', merksatz: '📌 "25-250-6" → 25 km/h max, 250 Watt, 6 km/h Schiebehilfe', bbhInfo: 'Keine Autobahn/Kraftfahrstraße (bbH zu niedrig). Radwege erlaubt/Pflicht.' },
+            { id: 2, name: 'E-Scooter', icon: '🛴', license: 'Keine', age: 'ab 14 Jahre', speed: 'max 20 km/h', power: '500W', bbh: '20 km/h', desc: 'Elektrokleinstfahrzeug', legal: ['§1 eKFV', '§2 eKFV'], reqs: ['ABE erforderlich', 'Versicherungsplakette', 'Zwei Bremsen', 'Beleuchtung'], note: 'Nur Radwege oder Fahrbahn', attention: 'Gehwege TABU! Ohne Versicherung: 40€ Bußgeld + Strafverfahren wegen Pflichtversicherungsgesetz.', merksatz: '📌 "ABE-14-20" → ABE nötig, ab 14, max 20 km/h', bbhInfo: 'Keine Autobahn/Kraftfahrstraße. Radweg Pflicht, sonst Fahrbahn.' },
+            { id: 3, name: 'Krankenfahrstuhl', icon: '♿', license: 'Keine (bis 15 km/h)', age: 'Keine', speed: 'max 15 km/h', power: 'Elektrisch', bbh: '15 km/h', desc: 'Motorisierter Krankenfahrstuhl', legal: ['§4 Abs.1 Nr.2 FeV'], reqs: ['Einsitzig', 'Max 300kg', 'Breite max 110cm'], note: 'Nur für gehbehinderte Personen', attention: 'Nur für Menschen mit Gehbehinderung! Über 15 km/h = AM nötig', merksatz: '📌 "15-frei, drüber AM"', bbhInfo: 'Keine Autobahn/Kraftfahrstraße. Gehweg bei Schrittgeschwindigkeit erlaubt.' },
+            { id: 4, name: 'Fahrrad', icon: '🚲', license: 'Keine', age: 'Keine', speed: 'Muskelkraft', power: 'Keine', bbh: 'Unbegrenzt', desc: 'Klassisches Fahrrad', legal: ['§63a StVZO', '§67 StVZO'], reqs: ['2 Bremsen', 'Klingel', 'Beleuchtung', 'Reflektoren'], note: 'Radwegebenutzungspflicht beachten', attention: 'Beleuchtung Pflicht bei Dunkelheit! Ohne Licht: 20€. Handy: 55€. Alkohol: ab 1,6‰ Straftat.', merksatz: '📌 "2 Bremsen, 1 Klingel, Licht"', bbhInfo: 'Keine Autobahn/Kraftfahrstraße. Radweg Pflicht wenn vorhanden und beschildert.' },
+            { id: 5, name: 'LoF-Zugmaschine (6 km/h)', icon: '🚜', license: 'Keine', age: 'Keine', speed: 'max 6 km/h', power: 'Unbegrenzt', bbh: '6 km/h', desc: 'Land-/Forstwirtschaftliche Zugmaschine', legal: ['§4 Abs.1 Nr.3 FeV', 'EU-VO 167/2013'], reqs: ['Nur LoF-Zwecke', 'Betriebserlaubnis'], note: 'Schrittgeschwindigkeit', attention: 'Nur für Land-/Forstwirtschaft! Keine Privatfahrten zur Freizeitgestaltung.', merksatz: '📌 "Schritt = 6 km/h, nur LoF"', bbhInfo: 'Keine Autobahn/Kraftfahrstraße. Nur für LoF-Zwecke auf öffentlichen Straßen.' },
+            { id: 6, name: 'Arbeitsmaschine (6 km/h)', icon: '🏗️', license: 'Keine', age: 'Keine', speed: 'max 6 km/h', power: 'Unbegrenzt', bbh: '6 km/h', desc: 'Selbstfahrende Arbeitsmaschine', legal: ['§4 Abs.1 Nr.3 FeV'], reqs: ['Nur Arbeitszwecke', 'Betriebserlaubnis'], note: 'Z.B. Straßenwalzen, Bagger', attention: 'Nur für Arbeitsfahrten! Keine Spazierfahrten erlaubt.', merksatz: '📌 "Arbeit ja, Spaß nein"', bbhInfo: 'Keine Autobahn/Kraftfahrstraße. Nur für Arbeitsfahrten.' },
+            { id: 7, name: 'Mobilitätshilfe', icon: '🦽', license: 'Keine', age: 'Keine', speed: 'max 6 km/h', power: 'Elektrisch', bbh: '6 km/h', desc: 'Elektrische Mobilitätshilfe', legal: ['§1 Abs.2 MobHV'], reqs: ['Schrittgeschwindigkeit', 'Für gehbehinderte Personen'], note: 'Gehwegnutzung erlaubt', attention: 'Gehweg OK bei Schrittgeschwindigkeit! Rücksicht auf Fußgänger Pflicht.', merksatz: '📌 "Gehweg OK bei Schritt"', bbhInfo: 'Gehweg erlaubt bei Schrittgeschwindigkeit. Keine Autobahn/Kraftfahrstraße.' },
+           { id: 8, name: 'Betriebsgelände-Fahrzeuge', icon: '🏭', license: 'Keine (§4 Abs.3 FeV)', age: 'Variable', speed: 'Variable', power: 'Variable', bbh: 'Variable', desc: 'Fahrzeuge auf nicht-öffentlichem Verkehrsgrund', legal: ['§4 Abs.3 FeV'], reqs: ['Nur auf umschlossenem Betriebsgelände', 'Keine öffentlichen Straßen', 'Privatgrundstück'], note: 'Sobald öffentliche Straße: FeV gilt!', attention: 'FALLE! Werkshof = OK ohne FE. Öffentliche Straße überqueren = FeV gilt! Zufahrtskontrolle muss vorhanden sein.', merksatz: '📌 "Betriebsgelände = frei, Straße = FeV"', bbhInfo: 'Nur Privatgelände - keine öffentlichen Straßen.' },
+        ],
+        mofa: [
+            { id: 10, name: 'Mofa (25 km/h)', icon: '🛵', license: 'Mofa-Prüfung', age: '15 Jahre', speed: 'max 25 km/h', power: '50ccm/4kW', bbh: '25 km/h', desc: 'Motorfahrrad', legal: ['§5 FeV', 'EU-VO 168/2013 L1e-B'], reqs: ['Theorieprüfung', 'Versicherung', 'Helmpflicht'], note: 'Auch ohne Pedale möglich', attention: 'Nur Theorie, keine Praxis! Tuning = Betriebserlaubnis weg → Straftat!', merksatz: '📌 "25 und fertig" → Max 25, nur Theorie, Helm', bbhInfo: 'Keine Autobahn/Kraftfahrstraße (bbH <60 km/h). Normale Straßen OK.' },
+            { id: 11, name: 'Leichtmofa (20 km/h)', icon: '🛵', license: 'Mofa-Prüfung', age: '15 Jahre', speed: 'max 20 km/h', power: '30ccm/0,5kW', bbh: '20 km/h', desc: 'Leichtmofa mit Pedalen', legal: ['§5 FeV'], reqs: ['Pedale Pflicht', 'Max 30kg leer', 'Versicherung'], note: 'Keine Helmpflicht unter 20 km/h', attention: 'Pedale sind Pflicht! Ohne Pedale = kein Leichtmofa. Keine Helmpflicht = Vorteil!', merksatz: '📌 "20 ohne Helm, aber mit Pedalen"', bbhInfo: 'Keine Autobahn/Kraftfahrstraße. Radweg teilweise erlaubt.' },
+            { id: 12, name: 'Gedrosselt L1e-B', icon: '🛵', license: 'Mofa-Prüfung', age: '15 Jahre', speed: 'auf 25 gedrosselt', power: '50ccm/4kW', bbh: '25 km/h (gedrosselt)', desc: 'Kleinkraftrad gedrosselt', legal: ['§5 FeV', 'EU-VO 168/2013'], reqs: ['Drosselung eingetragen', 'Versicherung', 'Helm'], note: 'Ungedrosselt = AM nötig', attention: 'Drosselung MUSS eingetragen sein! Selbst drosseln reicht nicht. Ungedrosselt fahren = Straftat!', merksatz: '📌 "Eingetragen oder Straftat"', bbhInfo: 'Durch Drosselung bbH auf 25 km/h → Keine Autobahn/Kraftfahrstraße.' },
+            { id: 13, name: 'Dreirad L2e gedrosselt', icon: '🛺', license: 'Mofa-Prüfung', age: '15 Jahre', speed: 'auf 25 gedrosselt', power: '4kW/50ccm', bbh: '25 km/h (gedrosselt)', desc: 'Dreirad z.B. Piaggio Ape', legal: ['§5 FeV', 'EU-VO 168/2013 L2e'], reqs: ['Max 270kg leer', 'Max 2 Sitze', 'Versicherung'], note: 'L2e-P=Personen, L2e-U=Güter', attention: 'Nur gedrosselt auf 25! Gewicht beachten: Max 270kg leer.', merksatz: '📌 "3 Räder, 25 km/h, 2 Sitze"', bbhInfo: 'Gedrosselt auf 25 km/h → Keine Autobahn/Kraftfahrstraße.' },
+        ],
+        license: [
+            { id: 20, name: 'AM', icon: '🛵', license: 'AM', age: '15 Jahre', speed: '45 km/h', power: '4kW/50ccm (5,4 PS)', bbh: '45 km/h', desc: 'Kleinkrafträder', legal: ['§6 Abs.1 FeV', '§6 Abs.3 FeV', 'EU-VO 168/2013'], reqs: ['L1e-B, L2e, L6e', 'S-Pedelecs', 'Bis 16: nur in DE gültig'], note: 'Mopedführerschein ab 15 bundesweit', attention: 'Ab 15 BUNDESWEIT! Aber: Bis 16 nur in Deutschland gültig. Im EU-Ausland erst ab 16 fahren!', merksatz: '📌 "45-4-50" → 45 km/h, 4kW/5,4PS, 50ccm | Ab 15 DE-weit, EU ab 16', bbhInfo: 'bbH 45 km/h → Keine Autobahn (braucht >60 km/h). Manche Kraftfahrstraßen verboten.' },
+            { id: 21, name: 'A1', icon: '🏍️', license: 'A1', age: '16 Jahre', speed: 'unbegrenzt', power: '11kW/125ccm (15 PS)', bbh: 'Unbegrenzt', desc: 'Leichtkrafträder + Dreiräder bis 15kW', legal: ['§6 FeV', '§6 Abs.1 S.2 FeV', '§6 Abs.3 FeV', 'EU-VO 168/2013 L3e-A1'], reqs: ['Max 125ccm', 'Max 11kW', 'Max 0,1kW/kg', 'Auch mit Beiwagen', 'Dreiräder bis 15kW (L5e)'], note: 'Einschluss: AM', attention: 'Leistungsgewicht 0,1kW/kg! Bei 11kW mind. 110kg Motorradgewicht nötig! Dreiräder symmetrisch bis 15kW auch erlaubt!', merksatz: '📌 "16-11-125 + Dreirad 15kW" | 11kW = 15PS', bbhInfo: 'Unbegrenzte bbH möglich → Autobahn/Kraftfahrstraße erlaubt (wenn Fahrzeug >60 km/h fährt).' },
+            { id: 22, name: 'A2', icon: '🏍️', license: 'A2', age: '18 Jahre', speed: 'unbegrenzt', power: '35kW (48 PS)', bbh: 'Unbegrenzt', desc: 'Mittlere Krafträder', legal: ['§6 FeV', '§6 Abs.3 FeV', 'EU-VO 168/2013 L3e-A2'], reqs: ['Max 35kW', 'Max 0,2kW/kg', 'Original max 70kW (gedrosselt)'], note: 'Aufstieg zu A nach 2 Jahren', attention: 'Original max 70kW! 100kW auf 35kW gedrosselt = VERBOTEN. Leistungsgewicht 0,2kW/kg = bei 35kW mind. 175kg.', merksatz: '📌 "35kW (48PS), Original ≤70kW, 0,2kW/kg"', bbhInfo: 'Unbegrenzte bbH → Autobahn/Kraftfahrstraße erlaubt.' },
+            { id: 23, name: 'A', icon: '🏍️', license: 'A', age: '24 Jahre (20 Aufstieg)', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Unbegrenzt', desc: 'Alle Krafträder', legal: ['§6 FeV', '§6 Abs.3 FeV', '§10 Abs.1 Nr.1 FeV', 'EU-VO 168/2013 L3e-A3'], reqs: ['Alle Krafträder', 'Krafträder mit Beiwagen', 'L5e über 15kW ab 21'], note: 'Einschluss: A2, A1, AM', attention: 'Mehrere Wege: Direkt ab 24 oder Stufen (A1→A2→A je 2 Jahre). Stufenweg = verkürzte Prüfung! Dreiräder >15kW erst ab 21!', merksatz: '📌 "24 direkt oder 16-18-20 Stufen | Dreirad >15kW ab 21"', bbhInfo: 'Unbegrenzte bbH → Autobahn/Kraftfahrstraße erlaubt.' },
+            { id: 24, name: 'B', icon: '🚗', license: 'B', age: '18 Jahre (BF17)', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'PKW bis 3,5t + Dreiräder bis 15kW', legal: ['§6 FeV', '§6 Abs.3 FeV', '§6 Abs.3a FeV', 'EU-VO 2018/858'], reqs: ['zGM max 3.500kg', 'Max 8+1 Sitze', 'Anhänger bis 750kg', 'Dreiräder L5e bis 15kW'], note: 'Einschluss: AM, L', attention: 'zGM ist entscheidend! Nicht Leergewicht. BF17 = nur mit Begleitperson. Dreiräder bis 15kW erlaubt (§6 Abs.3a)!', merksatz: '📌 "3,5t zGM, 8+1 Sitze + Dreirad 15kW"', bbhInfo: 'PKW haben meist bbH >60 km/h → Autobahn/Kraftfahrstraße erlaubt.' },
+            { id: 25, name: 'BE', icon: '🚙', license: 'BE', age: '18 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'PKW mit schwerem Anhänger', legal: ['§6 FeV'], reqs: ['Zugfahrzeug B', 'Anhänger max 3.500kg'], note: 'Vorbesitz B erforderlich', attention: 'BE für SCHWERE Anhänger! Anhänger bis 3,5t. KEINE Begrenzung der Kombination mehr .', merksatz: '📌 "B-Auto + 3,5t-Anhänger = BE"', bbhInfo: 'Gespanne können >60 km/h → Autobahn erlaubt (wenn Gespann zugelassen).' },
+                { id: 26, name: 'B96', icon: '🚐', license: 'B + SZ 96', age: '18 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Variable', desc: 'PKW + Anhänger bis 4,25t', legal: ['§6a FeV', 'Anlage 9 FeV'], reqs: ['Kombination 3,5-4,25t', 'Schulung ohne Prüfung'], note: 'Keine eigene Klasse', attention: 'KEINE Prüfung! Nur Schulung. Kombination 3,5-4,25t. Günstiger als BE!', merksatz: '📌 "96 = bis 4,25t, keine Prüfung"', bbhInfo: 'Je nach Gespann → Autobahn möglich wenn Kombination zugelassen.' },
+                { id: 27, name: 'B196', icon: '🏍️', license: 'B + SZ 196', age: 'mind. 25 Jahre', speed: 'unbegrenzt', power: '11kW/125ccm (15 PS)', bbh: 'Unbegrenzt', desc: '125er mit Autoführerschein', legal: ['§6b FeV', 'Anlage 9 FeV'], reqs: ['5 Jahre B-Vorbesitz', '4x Theorie + 5x Praxis á 90min', 'NUR in Deutschland gültig!'], note: 'Kein Aufstieg zu A2 möglich', attention: 'NUR Deutschland! Im Ausland VERBOTEN. Keine Prüfung. KEIN Aufstieg zu A2. 5 Jahre B Pflicht!', merksatz: '📌 "B196 = 125er nur DE, keine Prüfung, ab 25"', bbhInfo: 'Wie A1: Autobahn erlaubt bei Motorrädern >60 km/h bbH.' },
+                { id: 28, name: 'B197', icon: '🚗', license: 'B + SZ 197', age: '18 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Automatik mit Schaltberechtigung', legal: ['§17 Abs.2a FeV', 'Anlage 9 FeV'], reqs: ['10 Schaltstunden', '15min Testfahrt', 'Prüfung auf Automatik'], note: 'International: Code 78', attention: 'Prüfung Automatik, Schalter fahren OK! Im Ausland Code 78 = nur Automatik!', merksatz: '📌 "197 = Automatikprüfung, Schalter OK"', bbhInfo: 'Normale PKW → Autobahn erlaubt.' },
+                { id: 29, name: 'C1', icon: '🚚', license: 'C1', age: '18 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Mittlere LKW 3,5-7,5t', legal: ['§6 FeV', '§11 FeV', '§12 FeV', '§23 FeV'], reqs: ['zGM 3,5-7,5t', 'Max 8+1 Sitze', 'Ärztliche Untersuchung'], note: 'Befristung 5 Jahre bis 50', attention: 'Ärztliche Untersuchung Pflicht! Alle 5 Jahre verlängern. Unter 50: einmalig, ab 50: alle 5 Jahre.', merksatz: '📌 "C1 = 3,5-7,5t, Arzt alle 5 Jahre"', bbhInfo: 'LKW haben meist >60 km/h → Autobahn erlaubt.' },
+                { id: 30, name: 'C1E', icon: '🚛', license: 'C1E', age: '18 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Mittlere LKW + Anhänger', legal: ['§6 FeV'], reqs: ['Zugfahrzeug C1', 'Anhänger über 750kg', 'Kombi max 12t'], note: 'Vorbesitz C1', attention: 'Kombination max 12t! C1 (bis 7,5t) + Anhänger, zusammen nicht über 12t.', merksatz: '📌 "C1E = C1 + Hänger, max 12t"', bbhInfo: 'LKW-Gespanne → Autobahn erlaubt.' },
+                { id: 31, name: 'C', icon: '🚛', license: 'C', age: '21 Jahre (18 Ausb.)', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Schwere LKW über 7,5t', legal: ['§6 FeV', '§6 Abs.3 FeV', '§11 FeV', '§12 FeV', '§23 FeV'], reqs: ['zGM über 3,5t', 'Ärztliche Untersuchung'], note: 'Einschluss: C1. Befristung 5 Jahre', attention: 'Ab 18 nur mit Ausbildung! Sonst 21. Keine Gewichtsgrenze nach oben!', merksatz: '📌 "C = über 7,5t, ab 21"', bbhInfo: 'Schwere LKW → Autobahn erlaubt.' },
+                { id: 32, name: 'CE', icon: '🚛', license: 'CE', age: '21 Jahre (18 Ausb.)', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Schwere LKW + Anhänger', legal: ['§6 FeV', '§6 Abs.3 FeV'], reqs: ['Zugfahrzeug C', 'Anhänger über 750kg', 'Keine Grenze'], note: 'Einschluss: BE, C1E, T', attention: 'Königsklasse! Keine Gewichtsbegrenzung. 40t mit Hänger OK. Schließt BE, C1E, T ein!', merksatz: '📌 "CE = Alles bei LKW+Anhänger"', bbhInfo: 'Schwerste Gespanne → Autobahn erlaubt.' },
+                { id: 33, name: 'D1', icon: '🚌', license: 'D1', age: '21 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Kleinbusse 9-16 Sitze', legal: ['§6 FeV', '§11 FeV', '§12 FeV', '§23 FeV'], reqs: ['9-16 Sitze + Fahrer', 'Max 8m Länge', 'Ärztliche Unters.'], note: 'Befristung 5 Jahre', attention: 'Minibus! Max 16 Fahrgäste. Max 8m. Befristung alle 5 Jahre mit Arzt.', merksatz: '📌 "D1 = Minibus 16 Sitze, 8m"', bbhInfo: 'Busse → Autobahn erlaubt.' },
+                { id: 34, name: 'D1E', icon: '🚌', license: 'D1E', age: '21 Jahre', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Variable', desc: 'Kleinbusse + Anhänger', legal: ['§6 FeV'], reqs: ['Zugfahrzeug D1', 'Anhänger über 750kg', 'Kombi max 12t'], note: 'Vorbesitz D1', attention: 'Minibus mit Anhänger z.B. für Gepäck. Kombi max 12t.', merksatz: '📌 "D1E = Minibus + Hänger, 12t"', bbhInfo: 'Bus-Gespanne → Autobahn erlaubt.' },
+                { id: 35, name: 'D', icon: '🚌', license: 'D', age: '24 Jahre (20 Ausb.)', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Meist >60 km/h', desc: 'Busse über 8 Sitze', legal: ['§6 FeV', '§6 Abs.3 FeV', '§11 FeV', '§12 FeV', '§23 FeV'], reqs: ['Über 8 Sitze + Fahrer', 'Ärztliche Unters.'], note: 'Einschluss: D1. Befristung 5 Jahre', attention: 'Busführerschein! Oft 50+ Personen! Ab 20 mit Ausbildung, sonst 24.', merksatz: '📌 "D = Alle Busse, ab 24"', bbhInfo: 'Reisebusse → Autobahn erlaubt.' },
+                { id: 36, name: 'DE', icon: '🚌', license: 'DE', age: '24 Jahre (20 Ausb.)', speed: 'unbegrenzt', power: 'unbegrenzt', bbh: 'Variable', desc: 'Busse + Anhänger', legal: ['§6 FeV', '§6 Abs.3 FeV'], reqs: ['Zugfahrzeug D', 'Anhänger über 750kg'], note: 'Einschluss: BE, D1E. Vorbesitz D', attention: 'Reisebus mit Anhänger! Keine Gewichtsbegrenzung. Höchste Anforderung!', merksatz: '📌 "DE = Bus + schwerer Hänger"', bbhInfo: 'Bus mit Anhänger → Autobahn erlaubt.' },
+                { id: 37, name: 'L', icon: '🚜', license: 'L', age: '16 Jahre', speed: '40 km/h (25 mit Hänger)', power: 'unbegrenzt', bbh: '40 km/h (25 mit Hänger)', desc: 'LoF-Zugmaschinen', legal: ['§6 Abs.5 FeV', '§6 Abs.3 FeV', 'EU-VO 167/2013'], reqs: ['LoF-Zugmaschinen bis 40', 'Arbeitsmaschinen bis 25', 'Mit Hänger nur 25'], note: 'In B und T enthalten', attention: 'Traktor für Jugendliche! Nur LoF-Zwecke. Mit Anhänger nur 25! Wer B hat, braucht L nicht.', merksatz: '📌 "L = Traktor 40, mit Hänger 25"', bbhInfo: 'bbH 40 km/h (25 mit Hänger) → Keine Autobahn. Normale Straßen OK.' },
+                { id: 38, name: 'T', icon: '🚜', license: 'T', age: '16 (40 km/h) / 18 (60 km/h)', speed: 'max 60 km/h', power: 'unbegrenzt', bbh: '40 km/h (ab 16) / 60 km/h (ab 18)', desc: 'Schnelle LoF-Zugmaschinen', legal: ['§6 Abs.5 FeV', '§6 Abs.3 FeV', 'EU-VO 167/2013'], reqs: ['LoF-Zugmaschinen bis 60', 'Arbeitsmaschinen bis 40', 'Nur LoF-Zwecke'], note: 'Einschluss: L, AM', attention: 'Stufenführerschein! Ab 16: nur 40 km/h. Ab 18: volle 60 km/h. Nur Land-/Forstwirtschaft!', merksatz: '📌 "T = Turbo-Traktor 60, ab 18 voll"', bbhInfo: 'bbH bis 60 km/h → Autobahn erlaubt wenn bbH exakt >60 km/h (selten bei Traktoren).' },
+            ],
+            special: [
+                { id: 50, name: 'S-Pedelec L1e-B', icon: '⚡', license: 'AM', age: '15 Jahre', speed: '45 km/h', power: '4kW (5,4 PS)', bbh: '45 km/h', desc: 'Schnelles Pedelec = Kleinkraftrad', legal: ['§4 Abs.4 Nr.2 FeV', 'EU-VO 168/2013 L1e-B'], reqs: ['Führerschein AM', 'Versicherung', 'Helmpflicht', 'KEIN Radweg'], note: 'KEIN Fahrrad!', attention: 'Variante 2: Tretunterstützung bis 45 km/h, >0,25kW → L1e-B Kleinkraftrad. AM Pflicht (ab 15 J.). Helm! Versicherung! Radweg VERBOTEN (außer freigegeben). Bei Tuning >45 km/h → A1/A2/A erforderlich!', merksatz: '📌 "S-Pedelec = Mofa auf Steroiden, KEIN Radweg!"', bbhInfo: 'bbH 45 km/h → Keine Autobahn. Radweg verboten (außer freigegeben).' },
+                { id: 51, name: 'Quad L6e', icon: '🎯', license: 'AM', age: '15 Jahre', speed: '45 km/h', power: '4kW/50ccm (5,4 PS)', bbh: '45 km/h', desc: 'Leichtes vierrädriges Kfz', legal: ['§6 FeV', 'EU-VO 168/2013 L6e'], reqs: ['Max 425kg leer', 'Max 2 Sitze', 'Versicherung'], note: '"Moped-Auto"', attention: 'Moped-Auto für Jugendliche! Max 425kg, 2 Sitze, 45 km/h. Anschnallen Pflicht! Kein Helm.', merksatz: '📌 "L6e = Moped-Auto, 45, ab 15"', bbhInfo: 'bbH 45 km/h → Keine Autobahn/Kraftfahrstraße.' },
+                { id: 52, name: 'Quad L7e', icon: '🎯', license: 'B', age: '18 Jahre', speed: 'unbegrenzt', power: '15kW (20 PS)', bbh: 'Meist >45 km/h', desc: 'Schweres vierrädriges Kfz', legal: ['§6 FeV', 'EU-VO 168/2013 L7e'], reqs: ['Max 15kW', 'Max 450kg (600kg Güter)'], note: 'Gilt als PKW', attention: 'Schweres Quad mit B! Max 15kW (20PS). Zählt als PKW. Helm NICHT Pflicht. Anschnallen Pflicht!', merksatz: '📌 "L7e = Schwer-Quad mit B, kein Helm | 15kW = 20PS"', bbhInfo: 'Je nach Modell → Autobahn möglich wenn bbH >60 km/h.' },
+                { id: 53, name: 'Trike L5e (bis 15kW)', icon: '🛺', license: 'A1 (ab 16) oder B (ab 18)', age: '16 (A1) / 18 (B)', speed: 'unbegrenzt', power: 'max 15kW (20 PS)', bbh: 'Unbegrenzt', desc: 'Dreirädriges Kraftfahrzeug', legal: ['§6 Abs.1 S.2 FeV', '§6 Abs.3a FeV', 'EU-VO 168/2013 L5e'], reqs: ['Symmetrische Räder', 'Max 15kW', 'A1 ab 16 ODER B ab 18'], note: 'Mit A1 oder B fahrbar', attention: 'A1 ab 16 ODER B ab 18! Symmetrische Räder wichtig. Bis 15kW. Darüber = A nötig!', merksatz: '📌 "Trike bis 15kW = A1 oder B | 15kW = 20PS"', bbhInfo: 'Trikes können >60 km/h → Autobahn erlaubt.' },
+                { id: 54, name: 'Trike L5e (über 15kW)', icon: '🛺', license: 'A (ab 21)', age: '21 Jahre', speed: 'unbegrenzt', power: 'über 15kW (>20 PS)', bbh: 'Unbegrenzt', desc: 'Starkes Dreirad', legal: ['§6 Abs.3a FeV', '§10 Abs.1 Nr.1 FeV', 'EU-VO 168/2013 L5e'], reqs: ['Symmetrische Räder', 'Über 15kW', 'Klasse A', 'Mindestalter 21'], note: 'Nur mit A fahrbar, ab 21!', attention: 'Starke Trikes brauchen A! NICHT mit B fahrbar. Erst ab 21 (§10 FeV). Oft Harley-Trikes.', merksatz: '📌 "Trike über 15kW = nur A, ab 21"', bbhInfo: 'Starke Trikes → Autobahn erlaubt.' },
+                { id: 55, name: 'Krankenfahrstuhl (über 15)', icon: '♿', license: 'AM (ab 15 km/h)', age: '15 Jahre', speed: '15-25 km/h', power: 'Elektrisch', bbh: '15-25 km/h', desc: 'Schneller Krankenfahrstuhl', legal: ['§4 Abs.4 Nr.1 FeV'], reqs: ['Über 15 km/h: AM', 'Einsitzig', 'Max 25 km/h'], note: 'Selten, meist auf 15 begrenzt', attention: 'Über 15 km/h = AM nötig! Daher werden die meisten auf 15 begrenzt.', merksatz: '📌 "Krankenfahrstuhl: bis 15 frei, drüber AM"', bbhInfo: 'bbH 15-25 km/h → Keine Autobahn.' },
+                { id: 56, name: 'Arbeitsmaschine 6-20', icon: '🏗️', license: 'Keine (bis 20)', age: 'ab 15 Jahre', speed: '6-20 km/h', power: 'unbegrenzt', bbh: '6-20 km/h', desc: 'Mittlere Arbeitsmaschine', legal: ['§4 Abs.1 Nr.4 FeV'], reqs: ['Nur Arbeitsfahrten', 'Betriebserlaubnis'], note: 'Keine FE, aber Mindestalter 15', attention: 'Ab 15 OHNE Führerschein bis 20 km/h! Nur Arbeitsfahrten. Kein Radlader-Spritztour!', merksatz: '📌 "15 Jahre, 20 km/h Arbeitsmaschine OK"', bbhInfo: 'bbH 6-20 km/h → Keine Autobahn.' },
+                { id: 57, name: 'LoF-Zugmaschine 6-25', icon: '🚜', license: 'Keine (bis 25)', age: 'ab 15 Jahre', speed: '6-25 km/h', power: 'unbegrenzt', bbh: '6-25 km/h', desc: 'Mittlere LoF-Zugmaschine', legal: ['§4 Abs.1 Nr.4a FeV', 'EU-VO 167/2013'], reqs: ['Nur LoF-Zwecke', 'Betriebserlaubnis'], note: 'Keine FE, aber Mindestalter 15', attention: 'Traktor ab 15 ohne Führerschein bis 25! Nur Land-/Forstwirtschaft. Jugendliche auf dem Hof.', merksatz: '📌 "15 Jahre, 25 km/h Traktor für LoF OK"', bbhInfo: 'bbH 6-25 km/h → Keine Autobahn.' },
+                { id: 58, name: 'Einachsschlepper', icon: '🚜', license: 'Keine / L', age: 'Variabel', speed: 'variabel', power: 'unbegrenzt', bbh: 'Bis 25 km/h frei, darüber L', desc: 'Einachsige Zugmaschine', legal: ['§4 FeV', 'StVZO', 'EU-VO 167/2013'], reqs: ['Mit Lenkstangen geführt', 'Bis 25: keine FE', 'Über 25: L'], note: 'Vom gehenden Führer gelenkt', attention: 'Geführt, nicht gefahren! Führer geht neben Maschine. Bis 25 frei, darüber L.', merksatz: '📌 "Einachser = Nebenher gehen, bis 25 frei"', bbhInfo: 'Gehgeschwindigkeit → Keine Autobahn.' },
+                { id: 59, name: 'Stapler (öffentlich)', icon: '🏗️', license: 'Abhängig von bbH', age: 'Variabel', speed: 'variabel', power: 'unbegrenzt', bbh: 'Variable', desc: 'Gabelstapler im Straßenverkehr', legal: ['§4 FeV', 'DGUV 68'], reqs: ['Bis 6: keine FE', '6-20: ab 15', 'Über 20: FE nötig', 'Staplerschein für Bedienung'], note: 'Staplerschein ≠ Fahrerlaubnis!', attention: 'Staplerschein ≠ Straßenfahrerlaubnis! Staplerschein = nur Betriebsgelände. Straße: je nach Geschwindigkeit FE nötig!', merksatz: '📌 "Staplerschein ≠ Straßenfahrerlaubnis"', bbhInfo: 'Je nach bbH: Meist keine Autobahn.' },
+                { id: 60, name: 'Ellenator (L5e Umbau)', icon: '🛺', license: 'A1 (ab 16)', age: '16 Jahre', speed: 'unbegrenzt', power: '15kW gedrosselt (20 PS)', bbh: 'Gedrosselt', desc: 'Zwillingsräder-Trike auf 15kW', legal: ['§6 Abs.1 S.2 FeV', 'EU-VO 168/2013 L5e', 'Twinned wheels ≤460mm'], reqs: ['Zwillingsräder hinten ≤460mm', 'Gedrosselt auf 15kW', 'Symmetrische Anordnung', 'A1 ab 16'], note: 'Sonderfall: Zwillingsräder = 1 Rad', attention: 'Spezialfall! Zwillingsräder hinten (Abstand ≤460mm) gelten als EIN Rad. Drossel auf 15kW → A1 möglich ab 16!', merksatz: '📌 "Ellenator = Twinned wheels ≤460mm, 15kW, A1 ab 16"', bbhInfo: 'Gedrosselt, aber → Autobahn möglich wenn Fahrzeug >60 km/h fährt.' },
+            ],
+            forbidden: [
+                { id: 70, name: 'Hoverboard ohne ABE', icon: '🛹', license: 'VERBOTEN', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Selbstbalancierendes Board ohne Zulassung', legal: ['§1 eKFV', '§6 StVG', '§1 PflVG'], reqs: ['Keine ABE verfügbar'], note: 'Nur auf Privatgelände', warning: 'Illegal im Straßenverkehr! Bußgeld + Strafverfahren!', attention: 'STRAFTAT! Fahren ohne Versicherung + Zulassung. Punkte + Geldstrafe möglich. Nur Privatgelände!', merksatz: '📌 "Hoverboard = Privat ja, Straße NEIN"', bbhInfo: 'Keine Straßenzulassung möglich.' },
+                { id: 71, name: 'E-Monowheel ohne ABE', icon: '⚙️', license: 'VERBOTEN', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Elektrisches Einrad ohne Zulassung', legal: ['§1 eKFV', '§6 StVG', '§1 PflVG'], reqs: ['Keine ABE'], note: 'Nur Privatgelände', warning: 'Strafbar nach §6 StVG!', attention: 'Hochgefährlich! Straftat nach §6 StVG. Verstoß Pflichtversicherungsgesetz. Geld- oder Freiheitsstrafe!', merksatz: '📌 "Monowheel = Straße verboten, Strafe droht"', bbhInfo: 'Keine Straßenzulassung möglich.' },
+                { id: 72, name: 'Oxboard ohne ABE', icon: '🛹', license: 'VERBOTEN', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Selbstbalancierendes Board', legal: ['§1 eKFV', '§6 StVG', '§1 PflVG'], reqs: ['Keine ABE'], note: 'Nur privat', warning: 'Fahren öffentlich = Straftat!', attention: 'Wie Hoverboard VERBOTEN auf öffentlichen Wegen! Auch Gehwege nicht. Nur Privatgrundstück.', merksatz: '📌 "Oxboard = wie Hoverboard verboten"', bbhInfo: 'Keine Straßenzulassung.' },
+                { id: 73, name: 'E-Skateboard ohne ABE', icon: '🛹', license: 'VERBOTEN', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Elektrisches Skateboard', legal: ['§1 eKFV', '§6 StVG', '§1 PflVG'], reqs: ['Keine ABE', 'Keine Lenkstange'], note: 'Erfüllt nicht eKFV', warning: 'Im öffentlichen Raum verboten!', attention: 'Erfüllt eKFV nicht (keine Lenkstange)! Keine ABE möglich. Komplett illegal im Straßenverkehr.', merksatz: '📌 "E-Skateboard = keine Lenkstange, keine Straße"', bbhInfo: 'Keine Zulassung möglich.' },
+                { id: 74, name: 'E-Scooter über 20', icon: '🛴', license: 'AM erforderlich', age: '15 Jahre', speed: '20-45 km/h', power: '4kW (5,4 PS)', bbh: '20-45 km/h', desc: 'Schneller E-Scooter = Kleinkraftrad', legal: ['EU-VO 168/2013 L1e-B', '§4 FeV', '§1 PflVG'], reqs: ['AM zwingend', 'Versicherung', 'Helmpflicht'], note: 'Über 20 = KEIN Elektrokleinstfahrzeug!', warning: 'Ohne AM: Fahren ohne Fahrerlaubnis = Straftat!', attention: 'FALLE! Sieht aus wie E-Scooter, IST Kleinkraftrad! Über 20 = AM + Helm + Versicherung Pflicht. Sonst Straftat!', merksatz: '📌 "E-Scooter über 20 = Kleinkraftrad AM"', bbhInfo: 'Über 20 km/h = Kleinkraftrad → Keine Autobahn.' },
+                { id: 75, name: 'Pedelec über 25', icon: '🚴', license: 'AM erforderlich', age: '15 Jahre', speed: 'über 25 km/h', power: '4kW (5,4 PS)', bbh: 'Über 25 km/h', desc: 'S-Pedelec ohne FE', legal: ['EU-VO 168/2013 L1e-B', '§4 FeV', '§1 PflVG'], reqs: ['AM zwingend', 'Versicherung', 'Helm'], note: 'Ab 25 = Kleinkraftrad!', warning: 'Ohne Führerschein: Straftat §21 StVG!', attention: 'Variante 1: Pedelec >0,25kW aber bis 25 km/h → fahrerlaubnisfrei, ABER Mofa-Prüfbescheinigung nötig (§4 Abs.1 Nr.1b, §5 Abs.1 FeV). Darüber 25 km/h = L1e-B → AM Pflicht! Viele fahren illegal ohne AM/Prüfbescheinigung.', merksatz: '📌 "Pedelec über 25 = S-Pedelec = AM"', bbhInfo: 'Über 25 = S-Pedelec → Keine Autobahn.' },
+                { id: 76, name: 'Tuning-Mofa über 25', icon: '🛵', license: 'Illegal', age: '-', speed: 'über 25 km/h', power: '-', bbh: 'Über 25 km/h', desc: 'Entdrosseltes Mofa', legal: ['§22a StVG', '§69a StVZO', '§1 PflVG'], reqs: ['Betriebserlaubnis erloschen'], note: 'Tuning = Straftat!', warning: 'Straftat §22a StVG! Geld-/Freiheitsstrafe + Führerscheinentzug!', attention: 'SCHWERE STRAFTAT! Tuning = BE erloschen + Fahren ohne FE + ohne Versicherung. Führerschein kann entzogen werden!', merksatz: '📌 "Mofa-Tuning = Führerschein weg, Strafe sicher"', bbhInfo: 'Illegal getunt → Keine bbH-Einstufung.' },
+{ id: 77, name: 'Tuning-Kleinkraftrad über 45', icon: '🛵', license: 'Illegal', age: '-', speed: 'über 45 km/h', power: '-', bbh: 'Über 45 km/h', desc: 'Entdrosseltes AM-Fahrzeug', legal: ['§22a StVG', '§69a StVZO', '§1 PflVG'], reqs: ['BE erloschen'], note: 'Tuning = Versicherungsschutz weg', warning: 'Schwere Straftat! Bei Unfall kein Versicherungsschutz!', attention: 'EXTREM GEFÄHRLICH! Tuning → BE weg → Versicherung ungültig! Bei Unfall zahlt Versicherung NICHTS. Du zahlst allen Schaden selbst + Strafverfahren!', merksatz: '📌 "Kleinkraftrad-Tuning = Versicherung weg, Privatinsolvenz droht"', bbhInfo: 'Illegal getunt → Versicherung erloschen.' },
+{ id: 78, name: 'Pocket-Bike', icon: '🏍️', license: 'Keine Zulassung', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Mini-Motorrad für Rennstrecke', legal: ['§3 FZV', 'StVZO'], reqs: ['Keine Zulassung möglich'], note: 'Erfüllt keine StVZO', warning: 'Auf öffentlichen Straßen verboten!', attention: 'Rennstrecken-Spielzeug! Keine Beleuchtung, keine Spiegel, keine Zulassung möglich. Nur Privatgelände oder Rennstrecke.', merksatz: '📌 "Pocket-Bike = Rennstrecke ja, Straße NEIN"', bbhInfo: 'Keine Straßenzulassung möglich.' },
+{ id: 79, name: 'Go-Kart nicht zugelassen', icon: '🎯', license: 'Keine Zulassung', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Renn-Kart ohne Zulassung', legal: ['§3 FZV', 'StVZO'], reqs: ['Keine Zulassung'], note: 'Nur für Kartbahnen', warning: 'Nutzung öffentlich illegal!', attention: 'Kartbahn-Fahrzeug! Keine Zulassung möglich (zu niedrig, keine Beleuchtung). Nur Kartbahn!', merksatz: '📌 "Go-Kart = Kartbahn, nicht Straße"', bbhInfo: 'Rennfahrzeug - keine Straßenzulassung.' },
+{ id: 80, name: 'Segway ohne ABE', icon: '🛴', license: 'Eingeschränkt', age: '-', speed: '20 km/h', power: '-', bbh: '20 km/h', desc: 'Selbstbalancierender Transporter', legal: ['§1 eKFV (nicht erfüllt)', 'MobHV'], reqs: ['Keine eKFV-Konformität'], note: 'Sondergenehmigungen möglich', warning: 'Ohne Genehmigung verboten!', attention: 'Grauzone! Erfüllt eKFV nicht (Selbstbalancierung >500W). Manche Städte erteilen Ausnahmegenehmigungen für Stadtführungen. Privat meist verboten.', merksatz: '📌 "Segway = meist verboten, Ausnahmen per Sondergenehmigung"', bbhInfo: 'Meist keine Zulassung.' },
+{ id: 81, name: 'E-Bike über 25 ohne Pedale', icon: '⚡', license: 'AM erforderlich', age: '15 Jahre', speed: 'über 25 km/h', power: '4kW (5,4 PS)', bbh: 'Über 25 km/h', desc: 'E-Bike mit Selbstfahrfunktion/Daumengas ohne Tretpflicht', legal: ['EU-VO 168/2013 L1e-A/B', '§4 FeV', '§1 PflVG'], reqs: ['AM', 'Versicherung', 'Helm'], note: 'Kein Fahrrad - Kleinkraftrad!', warning: 'Ohne AM: Fahren ohne Fahrerlaubnis!', attention: 'E-Bike = Selbstfahrfunktion (Daumengas bis 20/25/45 km/h) ohne Tretpflicht. Kann auch MIT Pedalen sein, aber unabhängig vom Treten! >25 km/h = L1e-B Kleinkraftrad → AM, Helm, Versicherung Pflicht. Oft verwechselt!', merksatz: '📌 "E-Bike ohne Pedale über 25 = Kleinkraftrad AM"', bbhInfo: 'Kleinkraftrad → Keine Autobahn.' },
+],
+procedure: [
+{ id: 90, name: '§21 FeV - Antrag', icon: '📝', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Antrag auf Erteilung Fahrerlaubnis', legal: ['§21 FeV', '§22 FeV', '§11 FeV', '§12 FeV'], reqs: ['Persönliche Vorsprache bei Behörde', 'Lichtbild biometrisch', 'Sehtest', 'Erste-Hilfe-Kurs', 'Nachweis Fahrschulausbildung'], note: 'Zuständig: Wohnsitz-Behörde', attention: 'Antrag VOR Prüfung stellen! Ohne Antrag keine Prüfung. Unterlagen komplett einreichen. Bearbeitungszeit beachten!', merksatz: '📌 "§21 = Antrag mit allen Unterlagen VOR Prüfung"', bbhInfo: 'Verwaltungsverfahren - keine bbH.' },
+{ id: 91, name: '§20 FeV - Erweiterung', icon: '➕', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Erweiterung bestehender Fahrerlaubnis', legal: ['§20 FeV', '§7 Abs.2 FahrschAusbO'], reqs: ['Vorbesitz einer Klasse', 'Teilweise Prüfungsbefreiung', 'Verkürzte Ausbildung möglich'], note: 'Anrechnung Vorbesitz', attention: 'Erweiterung = oft verkürzt! A1→A2 und A2→A nach 2 Jahren nur praktische Kurzprüfung. B→BE nur Praxis. B→B96 nur Schulung. Vorbesitz wird angerechnet!', merksatz: '📌 "§20 = Erweiterung mit Erleichterungen"', bbhInfo: 'Verwaltungsverfahren.' },
+{ id: 92, name: '§46 FeV - Entziehung', icon: '🚫', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Entziehung der Fahrerlaubnis', legal: ['§46 FeV', '§11 FeV'], reqs: ['Ungeeignetheit festgestellt', 'Alkohol/Drogen', 'Verkehrsverstöße', 'MPU oft erforderlich'], note: 'Sperrfrist wird verhängt', attention: 'SCHWERWIEGEND! Führerschein weg, Sperrfrist 6 Monate bis 5 Jahre. Neuerteilung nur nach Eignungsnachweis. Oft MPU erforderlich!', merksatz: '📌 "§46 = Entziehung mit Sperrfrist + MPU"', bbhInfo: 'Verwaltungsverfahren.' },
+{ id: 93, name: '§47 FeV - Neuerteilung', icon: '🔄', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Neuerteilung nach Entziehung', legal: ['§47 FeV', '§11 FeV', '§7 Abs.2 FahrschAusbO'], reqs: ['Sperrfrist abgelaufen', 'Eignung nachgewiesen', 'Meist MPU erforderlich', 'Prüfung meist nötig'], note: 'Fahrschule kann entfallen', attention: 'Nach Entzug: Sperrfrist abwarten, MPU bestehen, Eignung nachweisen. Behörde KANN auf Fahrschule verzichten (§7 Abs.2 FahrschAusbO). Prüfung meist Pflicht!', merksatz: '📌 "§47 = Neuerteilung nach MPU + Prüfung"', bbhInfo: 'Verwaltungsverfahren.' },
+{ id: 94, name: 'Umschreibung EU/EWR', icon: '🇪🇺', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'EU-Führerschein in Deutschland', legal: ['§28 FeV', '§29 FeV', 'RL 2006/126/EG'], reqs: ['EU/EWR-FS grundsätzlich gültig', 'Auflagen bleiben bestehen', 'Umtausch bei Wohnsitz optional', 'Befristungen beachten (C/D)'], note: 'Gegenseitige Anerkennung', attention: 'EU-FS gilt in DE! Umschreibung freiwillig, aber bei Auflagen/Befristungen empfohlen. C/D-Klassen: Befristungen beachten!', merksatz: '📌 "EU-FS = direkt gültig, Umschreibung freiwillig"', bbhInfo: 'Verwaltungsverfahren.' },
+{ id: 95, name: 'Umschreibung Drittstaat', icon: '🌍', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Ausländischer FS → deutscher FS', legal: ['§30 FeV', '§31 FeV', 'Anlage 11 FeV'], reqs: ['6 Monate Wohnsitz → Umschreibung', 'Anlage 11: Prüfungen je nach Land', 'Übersetzung erforderlich', 'Ggf. theoretische/praktische Prüfung'], note: 'Länderliste Anlage 11 prüfen!', attention: 'Nach 6 Monaten Wohnsitz MUSS umgeschrieben werden! Anlage 11 prüfen: manche Länder ohne Prüfung, andere mit. USA variiert je nach Bundesstaat!', merksatz: '📌 "Drittstaat = 6 Monate, dann Umschreibung nach Anlage 11"', bbhInfo: 'Verwaltungsverfahren.' },
+{ id: 96, name: '§76 FeV Übergangsrecht', icon: '⏳', license: 'Verfahren', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Alte Führerscheine und Besitzstände', legal: ['§76 FeV'], reqs: ['Besitzstand bleibt', 'Umtauschfristen beachten', 'Alte Klassen = neue Klassen', 'Schlüsselzahlen prüfen'], note: 'Lange Übergangsregelungen', attention: 'Alter FS = oft mehr Rechte! Klasse 3 alt = B, BE, C1, C1E, L. Umtauschpflicht bis 2033 je nach Geburtsjahr!', merksatz: '📌 "§76 = Besitzstand + Umtauschfristen"', bbhInfo: 'Übergangsrecht.' },
+],
+glossary: [
+{ id: 100, name: 'bbH Definition', icon: '🚦', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: 'Konzept', desc: 'Bauartbedingte Höchstgeschwindigkeit', legal: ['§30a StVZO'], reqs: ['Durch Bauart bestimmte Geschwindigkeit', 'Drosselung senkt bbH', 'Nicht durch Fahrer übersteigbar'], note: 'Wichtig für Autobahn/Kraftfahrstraße', attention: 'bbH = max. mögliche Geschwindigkeit durch Bauart. Drosselung ändert bbH! Autobahn: bbH >60 km/h. Kraftfahrstraße: je nach Beschilderung.', merksatz: '📌 "bbH = Bauart-Maximum, nicht Fahrer-Maximum"', bbhInfo: 'Autobahn: bbH >60 km/h erforderlich. Kraftfahrstraße: meist auch >60 km/h.' },
+{ id: 101, name: 'kW ↔ PS Umrechnung', icon: '🔄', license: 'Glossar', age: '-', speed: '-', power: 'Umrechnung', bbh: '-', desc: 'Leistung umrechnen', legal: ['-'], reqs: ['1 kW = 1,35962 PS (≈1,36)', '1 PS = 0,73549 kW (≈0,735)'], note: 'Immer kW in Papieren!', attention: 'Offizielle Einheit = kW! PS nur umgangssprachlich. Beispiele: 11kW = 15PS, 35kW = 48PS, 4kW = 5,4PS, 15kW = 20PS.', merksatz: '📌 "kW × 1,36 ≈ PS | PS × 0,735 ≈ kW"', bbhInfo: 'Keine bbH-Relevanz.' },
+{ id: 102, name: 'Twinned Wheels', icon: '🔧', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Zwillingsräder Definition', legal: ['EU-VO 168/2013'], reqs: ['Radabstand ≤460mm', 'Gelten als EIN Rad', 'Symmetrische Anordnung'], note: 'Wichtig für L5e-Einstufung', attention: 'Zwillingsräder ≤460mm Abstand = 1 Rad! Daher Ellenator mit A1 fahrbar. Über 460mm = 2 separate Räder = vierrädriges Fahrzeug!', merksatz: '📌 "Twinned ≤460mm = 1 Rad für Gesetz"', bbhInfo: 'Technische Definition.' },
+{ id: 103, name: 'Symmetrische Räder', icon: '⚖️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Definition für Dreiräder', legal: ['EU-VO 168/2013'], reqs: ['Räder gleichmäßig angeordnet', '2 vorne + 1 hinten ODER', '1 vorne + 2 hinten'], note: 'Relevant für L2e/L5e', attention: 'Symmetrisch = räumlich gleichmäßig! Nicht asymmetrisch versetzt. Wichtig für Trike-Einstufung als L5e.', merksatz: '📌 "Symmetrisch = gleichmäßig angeordnet"', bbhInfo: 'Technische Definition.' },
+{ id: 104, name: 'zGM vs Leergewicht', icon: '⚖️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Gewichtsangaben richtig verstehen', legal: ['§34 StVZO', 'EU-VO'], reqs: ['zGM = zulässige Gesamtmasse', 'Leergewicht = ohne Ladung/Personen', 'zGM entscheidend für Klassen!'], note: 'Steht in Zulassung Feld F.1/F.2', attention: 'IMMER zGM maßgeblich für Führerscheinklasse! Nicht Leergewicht. B = 3,5t zGM, nicht Leergewicht! In Fahrzeugschein Feld F.1 (zGM) und G (Leergewicht).', merksatz: '📌 "Führerschein = zGM, nicht Leergewicht"', bbhInfo: 'Gewichtsklassifizierung.' },
+{ id: 105, name: 'Schlüsselzahlen Übersicht', icon: '🔢', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Alle wichtigen Codes im Führerschein', legal: ['Anlage 9 FeV'], reqs: ['EU-Codes 01-99', 'Nationale Codes 100+', 'Einschränkungen beachten!'], note: 'Rückseite Führerschein Feld 12', attention: 'Codes = Einschränkungen! Siehe Detailansicht für alle wichtigen Schlüsselzahlen.', merksatz: '📌 "Schlüsselzahlen = Einschränkungen im Detail prüfen"', bbhInfo: 'Administrativ.' },
+{ id: 106, name: 'SZ 01 - Sehhilfe', icon: '👓', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Brille oder Kontaktlinsen', legal: ['Anlage 9 FeV', '§12 FeV'], reqs: ['Sehhilfe beim Fahren Pflicht', 'Brille oder Kontaktlinsen'], note: 'Häufigste Auflage', attention: 'Ohne Sehhilfe fahren = 25€ Bußgeld! Brille/Kontaktlinsen immer tragen beim Fahren.', merksatz: '📌 "01 = Brille Pflicht"', bbhInfo: 'Medizinische Auflage.' },
+{ id: 107, name: 'SZ 78 - Automatik', icon: '⚙️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Nur Automatikgetriebe', legal: ['Anlage 9 FeV', '§17 FeV'], reqs: ['Nur Fahrzeuge mit Automatikgetriebe', 'Kein Schaltgetriebe erlaubt'], note: 'Nach Automatikprüfung', attention: 'Mit Code 78 nur Automatik! Schaltwagen fahren = Fahren ohne Fahrerlaubnis = Straftat! AUSNAHME: B197 (nur in Deutschland).', merksatz: '📌 "78 = Nur Automatik"', bbhInfo: 'Getriebebeschränkung.' },
+{ id: 108, name: 'SZ 79.03 / 79.04 / 79.06', icon: '🏍️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Kraftrad-Beschränkungen', legal: ['Anlage 9 FeV'], reqs: ['79.03 = Nur 3-rädrige Fahrzeuge', '79.04 = Nur Kombis max. 3 Räder', '79.06 = Nur bis 125ccm'], note: 'Bei A-Klassen relevant', attention: '79.03 = Nur Trikes! 79.04 = Mit Beiwagen. 79.06 = Nur 125er (z.B. bei A-Beschränkungen).', merksatz: '📌 "79.XX = Motorrad-Einschränkungen"', bbhInfo: 'Fahrzeugbeschränkung.' },
+{ id: 109, name: 'SZ 96 - B96', icon: '🚐', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Anhänger bis 4,25t Kombination', legal: ['§6a FeV', 'Anlage 9 FeV'], reqs: ['Kombination 3,5-4,25t zGM', 'Nur mit Schulung', 'Keine Prüfung'], note: 'Günstige Alternative zu BE', attention: 'B96 = Schulung statt Prüfung! Kombination bis 4,25t. Günstiger und schneller als BE.', merksatz: '📌 "96 = 3,5-4,25t Kombi, Schulung"', bbhInfo: 'Anhängerregelung.' },
+{ id: 110, name: 'SZ 196 - B196', icon: '🏍️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: '125er mit B-Führerschein', legal: ['§6b FeV', 'Anlage 9 FeV'], reqs: ['Ab 25 Jahre', '5 Jahre B-Vorbesitz', '4x Theorie + 5x Praxis', 'NUR in Deutschland!'], note: 'Nicht im Ausland gültig!', attention: 'B196 NUR Deutschland! Im Ausland VERBOTEN. Kein Aufstieg zu A2. 125er bis 11kW/15PS.', merksatz: '📌 "196 = 125er nur DE, ab 25"', bbhInfo: 'Nationale Sonderregelung.' },
+{ id: 111, name: 'SZ 197 - B197', icon: '🚗', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Schalter nach Automatikprüfung', legal: ['§17 Abs.2a FeV', 'Anlage 9 FeV'], reqs: ['10 Schaltstunden', '15min Testfahrt', 'Prüfung auf Automatik'], note: 'International = Code 78', attention: 'B197 = Schalter OK in Deutschland! Im Ausland gilt Code 78 (nur Automatik). 10 Fahrstunden + Testfahrt nötig.', merksatz: '📌 "197 = DE Schalter OK, Ausland nur Automatik"', bbhInfo: 'Getrieberegelung.' },
+{ id: 112, name: 'EU-Codes vs Nationale', icon: '🇪🇺', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Unterschied EU/National', legal: ['Anlage 9 FeV', 'EU-RL 2006/126/EG'], reqs: ['Codes 01-99 = EU-weit', 'Codes 100+ = Nur national'], note: 'Wichtig für Auslandsfahrten!', attention: 'EU-Codes (01-99) gelten überall in EU! Nationale Codes (100+) nur in Deutschland! B196 (Code 196) = nur DE!', merksatz: '📌 "Bis 99 = EU, ab 100 = nur DE"', bbhInfo: 'Regelungsbereich.' },
+{ id: 113, name: 'Leistungsgewicht', icon: '⚖️', license: 'Glossar', age: '-', speed: '-', power: 'kW/kg', bbh: '-', desc: 'Verhältnis Leistung zu Gewicht', legal: ['§6 FeV', 'EU-VO 168/2013'], reqs: ['A1: max 0,1 kW/kg', 'A2: max 0,2 kW/kg', 'Bei Drosselung relevant'], note: 'Wichtig für Motorräder', attention: 'Leistungsgewicht verhindert übermotorisierte leichte Motorräder! A1: 11kW braucht mind. 110kg. A2: 35kW braucht mind. 175kg.', merksatz: '📌 "A1: 0,1 kW/kg | A2: 0,2 kW/kg"', bbhInfo: 'Sicherheitsregelung.' },
+{ id: 114, name: 'Drosselung Regeln', icon: '🔧', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: 'Verringert', desc: 'Was bei Drosselung beachten', legal: ['§69a StVZO', '§22a StVG'], reqs: ['Eintragung erforderlich', 'Fachgerecht durchführen', 'Originalleistung beachten (A2)'], note: 'Für Mofa/AM/A2 relevant', attention: 'Drosselung MUSS eingetragen sein! Selbst drosseln = Illegal. A2: Original max 70kW erlaubt (auf 35kW gedrosselt).', merksatz: '📌 "Drosselung = Eintragen Pflicht"', bbhInfo: 'Technische Änderung.' },
+{ id: 115, name: 'Autobahn-Zufahrt', icon: '🛣️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '>60 km/h', desc: 'Wer darf auf Autobahn', legal: ['§18 StVO', '§3 StVO'], reqs: ['bbH über 60 km/h erforderlich', 'Mofa/AM/L verboten', 'Fahrräder verboten'], note: 'Zeichen 330.1', attention: 'Autobahn: Nur Fahrzeuge mit bbH >60 km/h! Mofa (25), AM (45), L (40) → VERBOTEN. A1/A2/A/B → Erlaubt wenn Fahrzeug >60 fährt.', merksatz: '📌 "Autobahn = bbH >60 km/h"', bbhInfo: 'Zufahrtsvoraussetzung: bbH >60 km/h.' },
+{ id: 116, name: 'Kraftfahrstraße-Zufahrt', icon: '🛣️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: 'Variable', desc: 'Kraftfahrstraße vs Autobahn', legal: ['§18 StVO'], reqs: ['Meist bbH >60 km/h', 'Je nach Beschilderung', 'Zeichen 331.1'], note: 'Nicht immer wie Autobahn', attention: 'Kraftfahrstraße: MEIST wie Autobahn (>60 km/h), aber je nach Beschilderung unterschiedlich! Manche erlauben auch langsamere Fahrzeuge.', merksatz: '📌 "Kraftfahrstraße = meist >60, Schilder beachten"', bbhInfo: 'Meist >60 km/h bbH erforderlich.' },
+{ id: 117, name: 'Einschlüsse Übersicht', icon: '📊', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Welche Klasse schließt was ein', legal: ['§6 Abs.3 FeV'], reqs: ['A → A2, A1, AM', 'A2 → A1, AM', 'A1 → AM', 'B → AM, L', 'C → C1', 'CE → C1E, BE, T'], note: 'Wichtig für Vorbesitz', attention: 'Einschlüsse bedeuten: Große Klasse = auch kleinere fahren! A → automatisch A2, A1, AM. CE → automatisch BE, C1E, T (unter Voraussetzungen).', merksatz: '📌 "Groß schließt klein ein"', bbhInfo: 'Berechtigungsumfang.' },
+{ id: 118, name: 'LoF-Anhänger/Geräte', icon: '🚜', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Anhänger und Geräte bei L/T', legal: ['EU-VO 167/2013 Art.2'], reqs: ['Auswechselbare gezogene Geräte', 'Auswechselbare angebaute Geräte', 'LoF-Anhänger'], note: 'Wichtig für L und T', attention: 'Bei L und T: Anhänger und Arbeitsgeräte erlaubt! Aber: Mit Anhänger reduzierte Geschwindigkeit (L: nur 25 km/h statt 40 km/h). Geräte müssen für land-/forstwirtschaftliche Zwecke bestimmt sein!', merksatz: '📌 "L/T mit Anhänger = langsamer (L: 25 km/h)"', bbhInfo: 'LoF-Spezialregelung.' },
+{ id: 119, name: '§11 Eignung', icon: '🩺', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Körperliche und geistige Anforderungen', legal: ['§11 FeV', 'Anlage 4/5 FeV'], reqs: ['Ärztliches Gutachten bei Bedenken', 'MPU bei Alkohol/Drogen', 'Regelmäßig bei C/D-Klassen'], note: 'Grundvoraussetzung für Fahrerlaubnis', attention: 'Bei Zweifeln kann Behörde Gutachten anordnen! C/D-Klassen: Regelmäßige ärztliche Untersuchung alle 5 Jahre Pflicht. Anlage 4 = körperliche Mängel, Anlage 5 = Alkohol/Drogen/Medikamente.', merksatz: '📌 "§11 = Eignung prüfen lassen bei Zweifeln"', bbhInfo: 'Medizinische Voraussetzung.' },
+{ id: 120, name: '§12 Sehvermögen', icon: '👁️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Sehtest-Anforderungen', legal: ['§12 FeV', 'Anlage 6 FeV'], reqs: ['A/B/L/T: Sehtest', 'C/D: Augenärztliches Zeugnis', 'Mind. 0,7 Sehschärfe je Auge'], note: 'Bei Ersterteilung immer erforderlich', attention: 'A/B/L/T = einfacher Sehtest beim Optiker genügt! C/D = augenärztliches Zeugnis Pflicht (höhere Anforderungen). Bei Sehhilfe → Schlüsselzahl 01 im Führerschein.', merksatz: '📌 "§12 = PKW Optiker, LKW/Bus Augenarzt"', bbhInfo: 'Medizinische Voraussetzung.' },
+{ id: 121, name: '§1 PflVG - Versicherungspflicht', icon: '🛡️', license: 'Glossar', age: '-', speed: '-', power: '-', bbh: '-', desc: 'Pflichtversicherung für Kraftfahrzeuge', legal: ['§1 PflVG', '§6 PflVG'], reqs: ['Haftpflichtversicherung Pflicht', 'Für alle Kraftfahrzeuge', 'Auch E-Scooter, Mofa, AM'], note: 'Bei Tuning erlischt Versicherung!', attention: 'Ohne Versicherung = Straftat (§6 PflVG)! Geldstrafe oder bis 1 Jahr Freiheitsstrafe. Bei Unfall zahlst DU ALLES selbst. Tuning → Betriebserlaubnis weg → Versicherung automatisch ungültig!', merksatz: '📌 "Kein Versicherung = Straftat + Privatinsolvenz bei Unfall"', bbhInfo: 'Rechtliche Pflicht.' }
+]
+};
+let filter = 'all';
+    let allItems = [...DATA.free, ...DATA.mofa, ...DATA.license, ...DATA.special, ...DATA.forbidden, ...DATA.procedure, ...DATA.glossary];
+
+    function setFilter(newFilter) {
+        filter = newFilter;
+        document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        render();
+    }
+
+    function showLawModal(lawKey) {
+        const law = LAWS[lawKey];
+        if (!law) return;
+        
+        document.getElementById('modalTitle').textContent = law.title; document.getElementById('modalBody').innerHTML = law.text;
+document.getElementById('lawModal').classList.add('show');
+}
+  function closeLawModal() {
+        document.getElementById('lawModal').classList.remove('show');
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event) {
+        const modal = document.getElementById('lawModal');
+        if (event.target === modal) {
+            closeLawModal();
+        }
+    }
+
+    function render() {
+        const sidebar = document.getElementById('sidebar');
+        let html = '';
+        
+        const categories = {
+            free: '✅ Fahrerlaubnisfrei',
+            mofa: '📋 Mofa',
+            license: '🚗 Führerschein',
+            special: '⚙️ Sonder',
+            forbidden: '❌ Verboten',
+            procedure: '📄 Verfahren',
+            glossary: '📚 Glossar'
+        };
+        
+        Object.keys(DATA).forEach(key => {
+            if (filter === 'all' || filter === key) {
+                html += `<div class="category"><h3>${categories[key]}</h3>`;
+                DATA[key].forEach(item => {
+                    const itemClass = key === 'forbidden' ? 'forbidden' : key === 'procedure' ? 'procedure' : '';
+                    html += `<div class="item ${itemClass}" data-id="${item.id}">${item.icon} ${item.name}</div>`;
+                });
+                html += '</div>';
+            }
+        });
+        
+        sidebar.innerHTML = html;
+        document.querySelectorAll('.item').forEach(el => {
+            el.onclick = () => show(parseInt(el.dataset.id));
+        });
+    }
+
+    function show(id) {
+        const item = allItems.find(i => i.id === id);
+        if (!item) return;
+        
+        document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.item').forEach(el => {
+            if (parseInt(el.dataset.id) === id) el.classList.add('active');
+        });
+        
+        const legalBadges = item.legal.map(l => 
+            `<span class="badge" onclick="showLawModal('${l}')" title="Klicken für vollständigen Gesetzestext">${l}</span>`
+        ).join('');
+        
+        document.getElementById('detail').innerHTML = `
+            <div class="detail-card">
+                <h2>${item.icon} ${item.name}</h2>
+                <p style="font-size: 1.1em; margin-bottom: 20px;">${item.desc}</p>
+                ${item.warning ? `<div class="forbidden-warning">⚠️ ${item.warning}</div>` : ''}
+                
+                <div class="info-grid">
+                    <div class="info-box"><div class="info-label">Fahrerlaubnis</div><div class="info-value">${item.license}</div></div>
+                    <div class="info-box"><div class="info-label">Mindestalter</div><div class="info-value">${item.age}</div></div>
+                    <div class="info-box"><div class="info-label">Geschwindigkeit</div><div class="info-value">${item.speed}</div></div>
+                    <div class="info-box"><div class="info-label">Leistung</div><div class="info-value">${item.power}</div></div>
+                    ${item.bbh ? `<div class="info-box" style="border-left-color: #ff9800;"><div class="info-label">bbH</div><div class="info-value">${item.bbh}</div></div>` : ''}
+                </div>
+                
+                ${item.bbhInfo ? `<div class="bbh-info"><strong>🚦 bbH-Info:</strong> ${item.bbhInfo}</div>` : ''}
+                
+                <h3>📖 Rechtsgrundlagen</h3>
+                <div style="margin: 10px 0;">${legalBadges}</div>
+                <p style="font-size: 0.9em; color: #666; margin-top: 5px;">💡 Klicken Sie auf die Rechtsgrundlagen, um den vollständigen Gesetzestext zu sehen!</p>
+                
+                <h3>📋 Anforderungen</h3>
+                <ul class="requirements">${item.reqs.map(r => `<li>${r}</li>`).join('')}</ul>
+                
+                ${item.attention ? `<div class="warning" style="margin-top: 20px;"><strong>⚠️ ACHTUNG:</strong><br>${item.attention}</div>` : ''}
+                
+                ${item.merksatz ? `<div class="success" style="margin-top: 15px;"><strong>${item.merksatz}</strong></div>` : ''}
+                
+                ${item.note ? `<div class="${item.warning ? 'warning' : 'note'}" style="margin-top: 15px;"><strong>💡 Hinweis:</strong> ${item.note}</div>` : ''}
+            </div>
+        `;
+    }
+
+    document.getElementById('searchBox').oninput = (e) => {
+        const search = e.target.value.toLowerCase();
+        document.querySelectorAll('.item').forEach(item => {
+            item.style.display = item.textContent.toLowerCase().includes(search) ? 'block' : 'none';
+        });
+        document.querySelectorAll('.category').forEach(cat => {
+            const visible = Array.from(cat.querySelectorAll('.item')).some(i => i.style.display !== 'none');
+            cat.style.display = visible ? 'block' : 'none';
+        });
+    };
+
+    // Erweiterte Suchfunktionen
+    function performAdvancedSearch() {
+        const license = document.getElementById('searchLicense').value;
+        const keyCode = document.getElementById('searchKeyCode').value;
+        const vehicleWeight = parseFloat(document.getElementById('searchVehicleWeight').value) || 0;
+        const trailerWeight = parseFloat(document.getElementById('searchTrailerWeight').value) || 0;
+        const vehicleType = document.getElementById('searchVehicleType').value;
+        const power = parseFloat(document.getElementById('searchPower').value) || 0;
+
+        const allItems = [...DATA.free, ...DATA.mofa, ...DATA.license, ...DATA.special];
+        let results = [];
+
+        // Suche nach Führerscheinklasse
+        if (license) {
+            const item = allItems.find(i => i.license && i.license.includes(license));
+            if (item) results.push(item);
+        }
+
+        // Suche nach Schlüsselzahl
+        if (keyCode) {
+            const filtered = allItems.filter(i => 
+                i.name.includes(keyCode) || 
+                i.license.includes(keyCode) ||
+                i.desc.toLowerCase().includes(keyCode.toLowerCase())
+            );
+            results.push(...filtered);
+        }
+
+        // Suche nach Gewichten (PKW + Anhänger)
+        if (vehicleWeight > 0 || trailerWeight > 0) {
+            const totalWeight = vehicleWeight + trailerWeight;
+            
+            if (vehicleWeight > 0 && vehicleWeight <= 3500) {
+                // PKW-Bereich
+                if (trailerWeight === 0) {
+                    // Nur PKW
+                    const bItem = allItems.find(i => i.id === 24); // B
+                    if (bItem) results.push(bItem);
+                } else if (trailerWeight > 0 && trailerWeight <= 750) {
+                    // PKW + leichter Anhänger
+                    const bItem = allItems.find(i => i.id === 24); // B
+                    if (bItem) results.push(bItem);
+                } else if (totalWeight > 3500 && totalWeight <= 4250) {
+                    // B96-Bereich
+                    const b96Item = allItems.find(i => i.id === 26); // B96
+                    if (b96Item) results.push(b96Item);
+                } else if (trailerWeight > 750) {
+                    // BE-Bereich
+                    const beItem = allItems.find(i => i.id === 25); // BE
+                    if (beItem) results.push(beItem);
+                    if (totalWeight <= 4250) {
+                        const b96Item = allItems.find(i => i.id === 26); // B96
+                        if (b96Item) results.push(b96Item);
+                    }
+                }
+            } else if (vehicleWeight > 3500 && vehicleWeight <= 7500) {
+                // C1-Bereich
+                const c1Item = allItems.find(i => i.id === 29); // C1
+                if (c1Item) results.push(c1Item);
+                if (trailerWeight > 750) {
+                    const c1eItem = allItems.find(i => i.id === 30); // C1E
+                    if (c1eItem) results.push(c1eItem);
+                }
+            } else if (vehicleWeight > 7500) {
+                // C-Bereich
+                const cItem = allItems.find(i => i.id === 31); // C
+                if (cItem) results.push(cItem);
+                if (trailerWeight > 750) {
+                    const ceItem = allItems.find(i => i.id === 32); // CE
+                    if (ceItem) results.push(ceItem);
+                }
+            }
+        }
+
+        // Suche nach Fahrzeugart
+        if (vehicleType) {
+            const filtered = allItems.filter(i => {
+                const itemText = (i.name + ' ' + i.desc + ' ' + i.license).toLowerCase();
+                switch(vehicleType) {
+                    case 'PKW':
+                        return itemText.includes('pkw') || itemText.includes('auto') || i.id === 24 || i.id === 25 || i.id === 26;
+                    case 'LKW':
+                        return itemText.includes('lkw') || itemText.includes('lastwagen') || [29, 30, 31, 32].includes(i.id);
+                    case 'Bus':
+                        return itemText.includes('bus') || itemText.includes('omnibus') || [33, 34, 35, 36].includes(i.id);
+                    case 'Motorrad':
+                        return itemText.includes('kraftrad') || itemText.includes('motorrad') || [21, 22, 23, 27].includes(i.id);
+                    case 'Traktor':
+                        return itemText.includes('traktor') || itemText.includes('zugmaschine') || itemText.includes('lof') || [37, 38, 5, 57].includes(i.id);
+                    case 'Kleinkraftrad':
+                        return itemText.includes('kleinkraftrad') || itemText.includes('roller') || i.id === 20 || i.id === 50;
+                    case 'Mofa':
+                        return itemText.includes('mofa') || [10, 11, 12, 13].includes(i.id);
+                    case 'Quad':
+                        return itemText.includes('quad') || [51, 52].includes(i.id);
+                    case 'Trike':
+                        return itemText.includes('trike') || itemText.includes('dreirad') || [53, 54, 60].includes(i.id);
+                    case 'Dreirad-Kleinkraft':
+                        return (itemText.includes('dreirad') || itemText.includes('l2e') || itemText.includes('l5e')) && 
+                               (itemText.includes('am') || itemText.includes('a1') || i.id === 13 || i.id === 53);
+                    case 'Fahrrad':
+                        return itemText.includes('fahrrad') || itemText.includes('pedelec') || itemText.includes('epac') || i.id === 1 || i.id === 4;
+                    case 'E-Scooter':
+                        return itemText.includes('e-scooter') || itemText.includes('elektrokleinstfahrzeug') || i.id === 2 || i.id === 74;
+                    case 'Mopedauto':
+                        return itemText.includes('l6e') || itemText.includes('moped-auto') || itemText.includes('mopedauto') || i.id === 51;
+                    case 'Anhänger':
+                        return itemText.includes('anhänger') || itemText.includes('be') || itemText.includes('b96') || 
+                               [25, 26, 30, 32, 34, 36].includes(i.id);
+                    default:
+                        return false;
+                }
+            });
+            results.push(...filtered);
+        }
+
+        // Suche nach Motorleistung
+        if (power > 0) {
+            const filtered = allItems.filter(i => {
+                const powerStr = i.power.toLowerCase();
+                if (powerStr.includes('kw')) {
+                    const match = powerStr.match(/(\d+(?:\.\d+)?)\s*kw/i);
+                    if (match) {
+                        const itemPower = parseFloat(match[1]);
+                        return Math.abs(itemPower - power) < 1; // +/- 1 kW Toleranz
+                    }
+                }
+                return false;
+            });
+            results.push(...filtered);
+        }
+
+        // Entferne Duplikate
+        results = Array.from(new Set(results.map(r => r.id))).map(id => results.find(r => r.id === id));
+
+        // Zeige Ergebnisse an
+        displaySearchResults(results);
+    }
+
+    function displaySearchResults(results) {
+        const resultsContainer = document.getElementById('searchResults');
+        
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<h3>Suchergebnisse</h3><div class="no-results">😕 Keine passenden FeV-Vorschriften gefunden.<br>Bitte versuchen Sie es mit anderen Suchkriterien.</div>';
+            resultsContainer.style.display = 'block';
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            return;
+        }
+
+        // Extrahiere einzigartige Führerscheinklassen
+        const uniqueLicenses = [...new Set(results.map(r => r.license))];
+        const licenseSummary = uniqueLicenses.map(lic => `<span class="badge" style="margin: 5px; font-size: 1em;">${lic}</span>`).join('');
+
+        let html = `
+            <h3>🎯 ${results.length} passende FeV-Vorschrift${results.length > 1 ? 'en' : ''} gefunden</h3>
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 15px; font-size: 1.3em;">📋 Übersicht: Benötigte Führerscheinklasse${uniqueLicenses.length > 1 ? 'n' : ''}:</h4>
+                <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                    ${licenseSummary}
+                </div>
+                <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.9;">
+                    💡 Klicken Sie auf ein Ergebnis unten für detaillierte Informationen
+                </p>
+            </div>
+        `;
+        
+        results.forEach(item => {
+            html += `
+                <div class="result-item" onclick="showItemFromSearch(${item.id})">
+                    <div class="result-header">
+                        <div class="result-title">${item.icon} ${item.name}</div>
+                        <div class="result-license">${item.license}</div>
+                    </div>
+                    <div class="result-details" style="background: #e3f2fd; padding: 12px; border-radius: 6px; margin: 10px 0; border-left: 4px solid #2196f3;">
+                        <strong style="font-size: 1.1em; color: #1976d2;">📋 Benötigte Fahrerlaubnis:</strong> 
+                        <span style="font-size: 1.15em; font-weight: bold; color: #0d47a1;">${item.license}</span>
+                    </div>
+                    <div class="result-details">
+                        <strong>Beschreibung:</strong> ${item.desc}
+                    </div>
+                    <div class="result-info">
+                        <div class="result-badge">👤 Ab ${item.age}</div>
+                        <div class="result-badge">⚡ ${item.power}</div>
+                        <div class="result-badge">🏎️ ${item.speed}</div>
+                        ${item.bbh ? `<div class="result-badge">🛣️ bbH: ${item.bbh}</div>` : ''}
+                    </div>
+                    ${item.merksatz ? `<div class="result-details" style="margin-top: 10px; font-weight: bold; color: #667eea;">${item.merksatz}</div>` : ''}
+                </div>
+            `;
+        });
+
+        resultsContainer.innerHTML = html;
+        resultsContainer.style.display = 'block';
+        resultsContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showItemFromSearch(itemId) {
+        // Finde das Item in allen Kategorien
+        const allItems = [...DATA.free, ...DATA.mofa, ...DATA.license, ...DATA.special, ...DATA.forbidden, ...DATA.procedure];
+        const item = allItems.find(i => i.id === itemId);
+        
+        if (item) {
+            // Bestimme die Kategorie
+            let category = '';
+            if (DATA.free.includes(item)) category = 'free';
+            else if (DATA.mofa.includes(item)) category = 'mofa';
+            else if (DATA.license.includes(item)) category = 'license';
+            else if (DATA.special.includes(item)) category = 'special';
+            else if (DATA.forbidden.includes(item)) category = 'forbidden';
+            else if (DATA.procedure.includes(item)) category = 'procedure';
+
+            // Setze den Filter und zeige das Item
+            currentFilter = category;
+            render();
+            setTimeout(() => {
+                showDetail(item);
+                document.querySelector('.item.active')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+    }
+
+    function resetAdvancedSearch() {
+        document.getElementById('searchLicense').value = '';
+        document.getElementById('searchKeyCode').value = '';
+        document.getElementById('searchVehicleWeight').value = '';
+        document.getElementById('searchTrailerWeight').value = '';
+        document.getElementById('searchVehicleType').value = '';
+        document.getElementById('searchPower').value = '';
+        document.getElementById('searchResults').style.display = 'none';
+        document.getElementById('advancedSearch').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ========================================
+    // GITHUB SYNC SYSTEM - V3.5
+    // ========================================
+    
+    const GITHUB_CONFIG = {
+        owner: '710Deckel',
+        repo: 'FeV_Nachschlagewerk',
+        token: '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',
+        dataFile: 'fev_complete_data.json',
+        autoSyncInterval: 5 * 60 * 1000 // 5 Minuten
+    };
+
+    let syncInterval;
+    let lastSyncTime = null;
+
+    async function syncToGitHub() {
+        updateSyncStatus('syncing', 'Synchronisiere...');
+        
+        try {
+            // Extrahiere ALLE Daten aus der aktuellen Seite
+            const exportData = {
+                version: '3.5',
+                lastUpdate: new Date().toISOString(),
+                categories: {
+                    free: DATA.free,
+                    mofa: DATA.mofa,
+                    license: DATA.license,
+                    special: DATA.special,
+                    forbidden: DATA.forbidden,
+                    procedure: DATA.procedure
+                },
+                laws: LAWS,
+                totalEntries: [...DATA.free, ...DATA.mofa, ...DATA.license, ...DATA.special, ...DATA.forbidden, ...DATA.procedure].length
+            };
+
+            // Hole die aktuelle SHA (für Update)
+            let sha = null;
+            try {
+                const getResponse = await fetch(
+                    `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.dataFile}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${GITHUB_CONFIG.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+                if (getResponse.ok) {
+                    const data = await getResponse.json();
+                    sha = data.sha;
+                }
+            } catch (e) {
+                console.log('Datei existiert noch nicht, erstelle neue...');
+            }
+
+            // Konvertiere zu Base64
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(exportData, null, 2))));
+            const timestamp = new Date().toLocaleString('de-DE');
+            
+            const body = {
+                message: `Auto-Sync: FeV V3.5 - ${timestamp} (${exportData.totalEntries} Einträge)`,
+                content: content,
+                branch: 'main'
+            };
+            
+            if (sha) {
+                body.sha = sha;
+            }
+
+            // Upload zu GitHub
+            const response = await fetch(
+                `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.dataFile}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${GITHUB_CONFIG.token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify(body)
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+
+            lastSyncTime = new Date();
+            updateSyncStatus('success', 'Synchronisiert');
+            console.log('✅ GitHub Sync erfolgreich!');
+        } catch (error) {
+            console.error('❌ Sync error:', error);
+            updateSyncStatus('error', 'Sync fehlgeschlagen');
+        }
+    }
+
+    async function loadFromGitHub() {
+        try {
+            const response = await fetch(
+                `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.dataFile}`,
+                {
+                    headers: {
+                        'Authorization': `token ${GITHUB_CONFIG.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                }
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                const content = atob(data.content);
+                const jsonData = JSON.parse(content);
+                
+                // Optional: Daten laden wenn verfügbar
+                console.log('✅ GitHub Daten verfügbar:', jsonData.totalEntries, 'Einträge');
+            }
+        } catch (error) {
+            console.log('ℹ️ Keine GitHub-Daten gefunden oder Fehler:', error.message);
+        }
+    }
+
+    function updateSyncStatus(status, text) {
+        const indicator = document.getElementById('syncIndicator');
+        const statusText = document.getElementById('syncText');
+        
+        if (indicator && statusText) {
+            indicator.className = 'sync-indicator';
+            if (status === 'syncing') {
+                indicator.classList.add('syncing');
+            } else if (status === 'error') {
+                indicator.classList.add('error');
+            }
+            
+            statusText.textContent = text;
+        }
+    }
+
+    function startAutoSync() {
+        // Initiales Sync nach 5 Sekunden
+        setTimeout(() => {
+            syncToGitHub();
+        }, 5000);
+        
+        // Dann alle 5 Minuten
+        syncInterval = setInterval(() => {
+            syncToGitHub();
+        }, GITHUB_CONFIG.autoSyncInterval);
+    }
+
+    // Auto-Sync starten
+    startAutoSync();
+    
+    // Cleanup bei Seite verlassen
+    window.addEventListener('beforeunload', () => {
+        if (syncInterval) {
+            clearInterval(syncInterval);
+        }
+    });
+
+    render();
+</script>
+</body>
+</html>
